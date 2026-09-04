@@ -142,4 +142,5 @@ confirmReservation.addEventListener("click", () => {
     "_blank"
   );
 });
+renderProducts();
 renderCart();
