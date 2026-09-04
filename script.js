@@ -1,10 +1,10 @@
 ﻿const products = [
-  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta.jpg" },
-  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatillas.jpg" },
-  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera.jpg" },
-  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "img/lampara.jpg" },
-  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "img/cojin.jpg" },
-  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso.jpg" }
+  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "images/camiseta01.jpg" },
+  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "images/zapatos01.jpg" },
+  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "images/sudadera01.jpg" },
+  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "images/lampara01.jpg" },
+  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "images/cojin01.jpg" },
+  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "images/bolso01.jpg" }
 ];
 
 let cart = [];
