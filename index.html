@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kepler | Tienda Online</title>
+  <meta name="description" content="Kepler: ropa, calzado, decoración y más." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#">KEPLER</a>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#nosotros">Nosotros</a>
+      <button id="cartBtn" class="cart-btn">Carrito (<span id="cartCount">0</span>)</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">NUEVA COLECCIÓN</p>
+        <h1>Estilo para ti.<br>Detalles para tu hogar.</h1>
+        <p>Ropa, calzado, accesorios y decoración seleccionados para tu día a día.</p>
+        <a class="primary-btn" href="#productos">Ver productos</a>
+      </div>
+      <div class="hero-card">
+        <span>KEPLER</span>
+        <small>Style · Home · Essentials</small>
+      </div>
+    </section>
+
+    <section id="productos" class="products-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CATÁLOGO</p>
+          <h2>Productos destacados</h2>
+        </div>
+        <select id="categoryFilter" aria-label="Filtrar por categoría">
+          <option value="Todos">Todos</option>
+          <option value="Ropa">Ropa</option>
+          <option value="Calzado">Calzado</option>
+          <option value="Hogar">Hogar</option>
+          <option value="Accesorios">Accesorios</option>
+        </select>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section id="nosotros" class="about">
+      <p class="eyebrow">SOBRE KEPLER</p>
+      <h2>Una tienda sencilla, moderna y cercana.</h2>
+      <p>Descubre productos para vestir, regalar y transformar tus espacios. Haz tu pedido fácilmente por WhatsApp.</p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>KEPLER</strong>
+    <p>© 2026 Kepler. Todos los derechos reservados.</p>
+  </footer>
+
+  <aside id="cartPanel" class="cart-panel" aria-hidden="true">
+    <div class="cart-header">
+      <h2>Tu carrito</h2>
+      <button id="closeCart" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>Total</span>
+        <strong id="cartTotal">0,00 €</strong>
+      </div>
+      <button id="whatsappBtn" class="whatsapp-btn">Pedir por WhatsApp</button>
+      <p class="cart-note">Antes de publicar, cambia el número de WhatsApp en <code>script.js</code>.</p>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
