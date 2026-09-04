@@ -92,27 +92,54 @@ document.getElementById("cartBtn").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
 overlay.addEventListener("click", closeCart);
 filter.addEventListener("change", e => renderProducts(e.target.value));
-
-document.getElementById("whatsappBtn").addEventListener("click", () => {
-  if (!cart.length) {
+ 
+const whatsappBtn = document.getElementById("whatsappBtn");
+const reservationForm = document.getElementById("reservationForm");
+const customerName = document.getElementById("customerName");
+const confirmReservation = document.getElementById("confirmReservation");
+const cancelReservation = document.getElementById("cancelReservation");
+whatsappBtn.addEventListener("click", () => {
+   if (!cart.length) {
     alert("Añade al menos un producto al carrito.");
     return;
   }
 
-  // IMPORTANTE: sustituye este número por tu WhatsApp con código de país, sin + ni espacios.
-  // Ejemplo España: 34600111222
-  const phone = "53691544";
+  reservationForm.hidden = false;
+    customerName.focus();
+ });
 
+cancelReservation.addEventListener("click", () => {
+  reservationForm.hidden = true;
+  customerName.value = "";
+});
+
+confirmReservation.addEventListener("click", () => {
+  const name = customerName.value.trim();
+
+  if (!name) {
+    alert("Escribe tu nombre completo.");
+    customerName.focus();
+    return;
+  }
+  const phone = "53691544
   const lines = cart.map(item =>
     `- ${item.name} x${item.qty} = ${money(item.price * item.qty)}`
   );
-  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.qty,
+    0
+  );
 
   const message =
-    `Hola Kepler, quiero hacer este pedido:\n\n${lines.join("\n")}\n\nTotal: ${money(total)}`;
-
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+    `Hola Kepler, quiero hacer una reserva.\n\n` +
+    `Nombre: ${name}\n\n` +
+    `Productos:\n${lines.join("\n")}\n\n` +
+    `Total: ${money(total)}\n\n` +
+    `Quiero comprar los productos en persona en la tienda.`;
+    
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
 });
-
-renderProducts();
 renderCart();
