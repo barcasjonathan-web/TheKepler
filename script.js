@@ -7,7 +7,7 @@
   { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "images/bolso01.jpg" }
 ];
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("keplerCart")) || [];
 
 const grid = document.getElementById("productGrid");
 const filter = document.getElementById("categoryFilter");
@@ -53,6 +53,8 @@ function removeFromCart(id) {
 }
 
 function renderCart() {
+  localStorage.setItem("keplerCart", JSON.stringify(cart));
+  
   const count = cart.reduce((sum, item) => sum + item.qty, 0);
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   cartCount.textContent = count;
