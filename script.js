@@ -121,7 +121,7 @@ confirmReservation.addEventListener("click", () => {
     customerName.focus();
     return;
   }
-  const phone = "53691544
+  const phone = "53691544";
   const lines = cart.map(item =>
     `- ${item.name} x${item.qty} = ${money(item.price * item.qty)}`
   );
@@ -138,9 +138,8 @@ confirmReservation.addEventListener("click", () => {
     `Quiero comprar los productos en persona en la tienda.`;
     
   window.open(
-    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
     "_blank"
   );
 });
-renderProducts();
 renderCart();
