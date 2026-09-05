@@ -306,6 +306,19 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   right: 0;
 }
 
+/* ===== Overlay menú móvil ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  z-index: 998;
+}
+
+.menu-overlay.show {
+  display: block;
+    }
+
 
 @media(max-width: 850px) {
   .header-menu {
