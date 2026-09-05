@@ -58,7 +58,7 @@ if (categoryFilter) {
     renderProducts(selected);   // muestra solo la categoría elegida
     renderCart();               // refresca el carrito si hace falta
   });
-
+}
 function addToCart(id) {
   const product = products.find(p => p.id === Number(id));
   if (!product) return;
