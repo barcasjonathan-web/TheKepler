@@ -154,12 +154,22 @@
 
   <script src="script.js"></script>
   <script>
-  const hamburgerBtn = document.getElementById("hamburgerBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuOverlay = document.getElementById("menuOverlay");
 
-  hamburgerBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("open");
-  });
+    function toggleMenu() {
+      mobileMenu.classList.toggle("open");
+      menuOverlay.classList.toggle("show");
+    }
+
+    hamburgerBtn.addEventListener("click", toggleMenu);
+    menuOverlay.addEventListener("click", toggleMenu);
+
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", toggleMenu);
+    });
   </script>
   
 </body>
