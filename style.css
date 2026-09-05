@@ -253,6 +253,13 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   color: #111;
 }
 
+.icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
 .cart-icon {
   background: transparent;
   border: none;
