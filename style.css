@@ -3,11 +3,6 @@ html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff}
 a{text-decoration:none;color:inherit}
 
-.topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:rgba(255,255,255,.96);border-bottom:1px solid #e8e8e8}
-.logo{font-size:1.55rem;font-weight:900;letter-spacing:.2em}
-.topbar nav{display:flex;align-items:center;gap:22px;font-size:.95rem}
-.cart-btn,.topbar button{background:#111;color:#fff;border:0;padding:11px 16px;cursor:pointer}
-
 /* ===== Nuevo HERO ===== */
 
 .hero-new {
@@ -194,6 +189,100 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   white-space: nowrap;
 }
 
+/* ===== Nuevo Header ===== */
+
+.header-new {
+  width: 100%;
+  padding: 14px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.search-box {
+  position: relative;
+  max-width: 260px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 34px 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
+.header-logo {
+  height: 42px;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 22px;
+}
+
+.header-menu {
+  display: flex;
+  gap: 22px;
+  font-weight: 600;
+}
+
+.header-menu a {
+  color: #111;
+}
+
+.cart-icon {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width: 850px) {
+  .header-menu {
+    display: none;
+  }
+  .search-box {
+    max-width: 160px;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+
 @media(max-width: 560px) {
   .tb-center {
     display: none;
@@ -207,14 +296,12 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 
 @media(max-width:850px){
-  .topbar nav a{display:none}
   .hero{grid-template-columns:1fr;min-height:auto}
   .hero-card{aspect-ratio:16/10}
   .product-grid{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:560px){
-  .topbar{padding:16px 5%}
   .hero,.products-section,.about{padding-left:5%;padding-right:5%}
   .product-grid{grid-template-columns:1fr}
   .section-heading{align-items:start;flex-direction:column}
