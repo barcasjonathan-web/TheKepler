@@ -56,6 +56,7 @@
 
 <!-- ⭐ MENÚ MÓVIL ⭐ -->
 <div class="mobile-menu" id="mobileMenu">
+  <button class="close-mobile" id="closeMobileBtn">✕</button>
   <a href="#inicio">Inicio</a>
   <a href="#productos">Categorías</a>
   <a href="#nosotros">Nosotros</a>
@@ -157,6 +158,7 @@
     const hamburgerBtn = document.getElementById("hamburgerBtn");
     const mobileMenu = document.getElementById("mobileMenu");
     const menuOverlay = document.getElementById("menuOverlay");
+    const closeMobileBtn = document.getElementById("closeMobileBtn");
 
     function toggleMenu() {
       mobileMenu.classList.toggle("open");
@@ -165,6 +167,7 @@
 
     hamburgerBtn.addEventListener("click", toggleMenu);
     menuOverlay.addEventListener("click", toggleMenu);
+    closeMobileBtn.addEventListener("click", toggleMenu);
 
     // Cerrar menú al hacer clic en un enlace
     document.querySelectorAll("#mobileMenu a").forEach(link => {
