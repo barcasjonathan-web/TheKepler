@@ -38,14 +38,19 @@ function renderProducts(category = "Todos") {
         <h3 class="product-name">${p.name}</h3>
         <div class="product-meta">
           <div class="price">${money(p.price)}</div>
-          <button class="add-circle" data-id="${p.id}" aria-label="Añadir">+</button>
         </div>
         <button class="add-full" data-id="${p.id}">Añadir al carrito</button>
       </div>
     </article>
   `).join('');
 }
-
+grid.addEventListener("click", (e) => {
+  const btn = e.target.closest(".add-full");
+  if (!btn) return;
+  const id = btn.dataset.id;
+  addToCart(id);
+  renderCart(); // refresca el panel con los productos
+});
 
 function addToCart(id) {
   const product = products.find(p => p.id === Number(id));
@@ -57,15 +62,12 @@ function addToCart(id) {
   } else {
     cart.push({ id: product.id, qty: 1, price: product.price, name: product.name });
   }
-    // Actualizar contador y total
+
   const totalQty = cart.reduce((s, it) => s + it.qty, 0);
   const totalPrice = cart.reduce((s, it) => s + it.qty * it.price, 0);
 
-  cartCountEl.textContent = totalQty;
-  cartTotalEl.textContent = money(totalPrice);
-
-  // (Opcional) abrir panel carrito si tienes función para eso:
-  // document.getElementById('cartPanel').classList.add('open');
+  cartCount.textContent = totalQty;
+  cartTotal.textContent = money(totalPrice);
 }
 
 function removeFromCart(id) {
