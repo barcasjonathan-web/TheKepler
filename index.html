@@ -54,6 +54,17 @@
 
   </header>
 
+<!-- ⭐ MENÚ MÓVIL ⭐ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#inicio">Inicio</a>
+  <a href="#productos">Categorías</a>
+  <a href="#nosotros">Nosotros</a>
+
+  <div class="mobile-search">
+    <input type="text" placeholder="Buscar productos..." />
+  </div>
+</div>
+  
   <main>
     <section id="inicio" class="hero-new">
       <div class="hero-overlay"></div>
@@ -138,5 +149,14 @@
   <div id="overlay" class="overlay"></div>
 
   <script src="script.js"></script>
+  <script>
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  hamburgerBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("open");
+  });
+  </script>
+  
 </body>
 </html>
