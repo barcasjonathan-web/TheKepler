@@ -73,23 +73,25 @@
         <strong id="cartTotal">0,00 €</strong>
       </div>
       <button id="whatsappBtn" class="whatsapp-btn">Reservar por WhatsApp</button>
+      
       <div id="reservationForm" class="reservation-form" hidden>
-       <label for="customerName">Nombre completo</label>
-       <input
-        type="text"
-        id="customerName"
-        placeholder="Escribe tu nombre"
-        autocomplete="name"
-       />
+        <h3>Confirmar reserva</h3>
+ 
+        <div id="orderPreview"></div>
 
-      <button id="confirmReservation" class="whatsapp-btn">
-       Confirmar reserva
-      </button>
-
-      <button id="cancelReservation" type="button">
-       Cancelar
-      </button>
-     </div>
+        <label for="customerName">Nombre completo</label>
+        <input
+          type="text"
+          id="customerName"
+          placeholder="Escribe tu nombre"
+          autocomplete="name"
+        />
+        <div class="form-buttons">
+          <button id="cancelReservation" type="button">Cancelar</button>
+          <button id="confirmReservation" class="whatsapp-btn">Aceptar</button>
+        </div>
+      </div>
+      
       <p class="cart-note">Antes de publicar, cambia el número de WhatsApp en <code>script.js</code>.</p>
     </div>
   </aside>
