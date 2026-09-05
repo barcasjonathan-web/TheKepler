@@ -21,14 +21,37 @@
       🟢 Pedidos por WhatsApp
     </div>
   </div>
-  <header class="topbar">
-    <a class="logo" href="#">KEPLER</a>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#productos">Productos</a>
-      <a href="#nosotros">Nosotros</a>
-      <button id="cartBtn" class="cart-btn">Carrito (<span id="cartCount">0</span>)</button>
-    </nav>
+  <header class="header-new">
+
+    <!-- Buscador -->
+    <div class="header-left">
+      <div class="search-box">
+        <input type="text" placeholder="Buscar productos..." />
+        <span class="search-icon">🔍</span>
+      </div>
+    </div>
+
+    <!-- Logo centrado -->
+    <div class="header-center">
+      <img src="img/logo-kepler.png" alt="Kepler" class="header-logo">
+    </div>
+
+    <!-- Menú + carrito -->
+    <div class="header-right">
+      <nav class="header-menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Categorías</a>
+        <a href="#nosotros">Nosotros</a>
+      </nav>
+
+      <button id="cartBtn" class="cart-icon">
+        🛒 <span id="cartCount">0</span>
+      </button>
+
+      <!-- Menú hamburguesa móvil -->
+      <button class="hamburger" id="hamburgerBtn">☰</button>
+    </div>
+
   </header>
 
   <main>
