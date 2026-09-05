@@ -51,6 +51,13 @@ grid.addEventListener("click", (e) => {
   addToCart(id);
   renderCart(); // refresca el panel con los productos
 });
+const categoryFilter = document.getElementById("categoryFilter");
+if (categoryFilter) {
+  categoryFilter.addEventListener("change", (e) => {
+    const selected = e.target.value;
+    renderProducts(selected);   // muestra solo la categoría elegida
+    renderCart();               // refresca el carrito si hace falta
+  });
 
 function addToCart(id) {
   const product = products.find(p => p.id === Number(id));
