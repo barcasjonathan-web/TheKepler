@@ -318,6 +318,15 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 .menu-overlay.show {
   display: block;
     }
+/* Botón cerrar menú móvil */
+.close-mobile {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
 
 
 @media(max-width: 850px) {
