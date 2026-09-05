@@ -104,6 +104,18 @@ whatsappBtn.addEventListener("click", () => {
     return;
   }
   reservationForm.hidden = false;
+
+  const preview = cart.map(item =>
+    `<p>${item.name} x${item.qty} = ${money(item.price * item.qty)}</p>`
+  ).join("");
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  
+  document.getElementById("orderPreview").innerHTML = `
+    <strong>Tu pedido:</strong>
+    ${preview}
+    <p><strong>Total: ${money(total)}</strong></p>
+  `;
   customerName.focus();
 });
 
