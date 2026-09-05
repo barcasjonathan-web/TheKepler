@@ -17,6 +17,12 @@ const cartTotal = document.getElementById("cartTotal");
 const cartPanel = document.getElementById("cartPanel");
 const overlay = document.getElementById("overlay");
 
+const whatsappBtn = document.getElementById("whatsappBtn");
+const reservationForm = document.getElementById("reservationForm");
+const customerName = document.getElementById("customerName");
+const confirmReservation = document.getElementById("confirmReservation");
+const cancelReservation = document.getElementById("cancelReservation");
+
 function money(value) {
   return value.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
 }
@@ -67,7 +73,8 @@ function renderCart() {
     <div class="cart-item">
       <div>
         <strong>${item.name}</strong><br>
-        <small>${item.qty} × ${money(item.price)}</small>
+        <small>${item.qty} × ${money(item.price)} = ${money(item.price * item.qty)}</small>
+        
       </div>
       <button class="remove-btn" onclick="removeFromCart(${item.id})">Quitar</button>
     </div>
@@ -91,26 +98,43 @@ document.getElementById("closeCart").addEventListener("click", closeCart);
 overlay.addEventListener("click", closeCart);
 filter.addEventListener("change", e => renderProducts(e.target.value));
 
-document.getElementById("whatsappBtn").addEventListener("click", () => {
+whatsappBtn.addEventListener("click", () => {
   if (!cart.length) {
     alert("Añade al menos un producto al carrito.");
     return;
   }
+  reservationForm.hidden = false;
+  customerName.focus();
+});
 
-  // IMPORTANTE: sustituye este número por tu WhatsApp con código de país, sin + ni espacios.
-  // Ejemplo España: 34600111222
-  const phone = "53691544";
+confirmReservation.addEventListener("click", () => {
+  const name = customerName.value.trim();
+
+  if (!name) {
+    alert("Escribe tu nombre completo.");
+    customerName.focus();
+    return;
+  }
+  const phone = "53691544"; // tu número
 
   const lines = cart.map(item =>
-    `- ${item.name} x${item.qty} = ${money(item.price * item.qty)}`
-  );
+  `- ${item.name} x${item.qty} = ${money(item.price * item.qty)}`
+);
+
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const message =
-    `Hola Kepler, quiero hacer este pedido:\n\n${lines.join("\n")}\n\nTotal: ${money(total)}`;
-
+    `Hola Kepler, mi nombre es ${name}.\n\nQuiero hacer este pedido:\n\n${lines.join("\n")}\n\nTotal: ${money(total)}`;
+  
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+  reservationForm.hidden = true;
+  customerName.value = "";
 });
 
+cancelReservation.addEventListener("click", () => {
+  reservationForm.hidden = true;
+  customerName.value = "";
+});
+  
 renderProducts();
 renderCart();
