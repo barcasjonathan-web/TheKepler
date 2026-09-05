@@ -270,6 +270,43 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 
 /* ===== Responsive ===== */
 
+/* ===== Menú móvil ===== */
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -10px 0 25px rgba(0,0,0,0.15);
+  padding: 40px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.mobile-menu a {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.mobile-search input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Mostrar menú cuando está abierto */
+.mobile-menu.open {
+  right: 0;
+}
+
+
 @media(max-width: 850px) {
   .header-menu {
     display: none;
