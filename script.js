@@ -30,21 +30,20 @@ function money(value) {
 function renderProducts(category = "Todos") {
   const list = category === "Todos" ? products : products.filter(p => p.category === category);
   grid.innerHTML = list.map(p => `
-    <article class="product-card">
+    <div class="product-card">
       <img src="${p.image}" alt="${p.name}">
       <div class="product-info">
+        <p class="category">${p.category}</p>
+        <h3>${p.name}</h3>
         <div class="product-meta">
-          <div>
-            <h3>${p.name}</h3>
-            <span class="category">${p.category}</span>
-          </div>
           <span class="price">${money(p.price)}</span>
+          <button class="add-circle" onclick="addToCart(${p.id})">🛒</button>
         </div>
-        <button class="add-btn" onclick="addToCart(${p.id})">Añadir al carrito</button>
       </div>
-    </article>
+    </div>
   `).join("");
 }
+
 
 function addToCart(id) {
   const found = cart.find(item => item.id === id);
