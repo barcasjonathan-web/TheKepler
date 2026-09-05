@@ -48,10 +48,24 @@ function renderProducts(category = "Todos") {
 
 
 function addToCart(id) {
-  const found = cart.find(item => item.id === id);
-  if (found) found.qty += 1;
-  else cart.push({ ...products.find(p => p.id === id), qty: 1 });
-  renderCart();
+  const product = products.find(p => p.id === Number(id));
+  if (!product) return;
+
+  const existing = cart.find(item => item.id === product.id);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ id: product.id, qty: 1, price: product.price, name: product.name });
+  }
+    // Actualizar contador y total
+  const totalQty = cart.reduce((s, it) => s + it.qty, 0);
+  const totalPrice = cart.reduce((s, it) => s + it.qty * it.price, 0);
+
+  cartCountEl.textContent = totalQty;
+  cartTotalEl.textContent = money(totalPrice);
+
+  // (Opcional) abrir panel carrito si tienes función para eso:
+  // document.getElementById('cartPanel').classList.add('open');
 }
 
 function removeFromCart(id) {
