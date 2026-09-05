@@ -67,9 +67,7 @@ function renderProducts(category = "Todos") {
       ? products
       : products.filter(p => p.category === category);
 
-  grid.innerHTML = list
-    .map(
-      p => `
+  grid.innerHTML = list.map(p => `
         <article class="product-card">
           <img src="${p.image}" alt="${p.name}">
 
