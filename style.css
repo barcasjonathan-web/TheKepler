@@ -175,6 +175,36 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   background: #111;
   color: #fff;
 }
+.topbar-black {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  padding: 8px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.tb-left,
+.tb-center,
+.tb-right {
+  white-space: nowrap;
+}
+
+@media(max-width: 560px) {
+  .tb-center {
+    display: none;
+  }
+  .tb-left {
+    font-size: 0.75rem;
+  }
+  .tb-right {
+    font-size: 0.75rem;
+  }
+}
 
 @media(max-width:850px){
   .topbar nav a{display:none}
@@ -191,3 +221,4 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   footer{flex-direction:column}
   .hero h1{font-size:3.25rem}
 }
+
