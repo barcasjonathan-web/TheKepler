@@ -10,7 +10,6 @@ const products = [
 let cart = [];
 
 const grid = document.getElementById("productGrid");
-const filter = document.getElementById("categoryFilter");
 const cartCount = document.getElementById("cartCount");
 const cartItems = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
@@ -95,7 +94,7 @@ function closeCart() {
 document.getElementById("cartBtn").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
 overlay.addEventListener("click", closeCart);
-filter.addEventListener("change", e => renderProducts(e.target.value));
+
 
 whatsappBtn.addEventListener("click", () => {
   if (!cart.length) {
