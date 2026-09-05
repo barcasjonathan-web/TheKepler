@@ -115,14 +115,20 @@
     
     <section id="productos" class="products-section">
       <div class="section-heading">
-        <h2>PRODUCTOS DESTACADOS</h2>
-        <a href="#todos" class="view-all">Ver todos →</a>
+        <div>
+          <p class="eyebrow">CATÁLOGO</p>
+          <h2>Productos destacados</h2>
+        </div>
+        <select id="categoryFilter" aria-label="Filtrar por categoría">
+          <option value="Todos">Todos</option>
+          <option value="Ropa">Ropa</option>
+          <option value="Calzado">Calzado</option>
+          <option value="Hogar">Hogar</option>
+          <option value="Accesorios">Accesorios</option>
+        </select>
       </div>
-
       <div id="productGrid" class="product-grid"></div>
-      
     </section>
-
     <section id="nosotros" class="about">
       <p class="eyebrow">SOBRE KEPLER</p>
       <h2>Una tienda sencilla, moderna y cercana.</h2>
