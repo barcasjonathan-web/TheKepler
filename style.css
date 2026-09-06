@@ -452,8 +452,8 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   gap: 20px;
   padding: 60px 6%;
   text-align: center;
-  min-height: 40px;   /* 🔹 altura vertical más baja */
-  max-height: 60px;   /* 🔹 límite máximo opcional */
+  min-height: 10px;   /* 🔹 altura vertical más baja */
+  max-height: 10px;   /* 🔹 límite máximo opcional */
   overflow: hidden;
 }
 
