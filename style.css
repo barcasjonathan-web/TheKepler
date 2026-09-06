@@ -455,11 +455,12 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 
 .category {
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 8px;
+  position: relative;
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
   padding: 20px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Overlay oscuro */
