@@ -446,49 +446,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 
 /* ===== Sección Categorías ===== */
-.categories {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 60px 6%;
-  text-align: center;
-}
 
-.category {
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 20px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.cat-icon {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  margin-bottom: 12px;
-}
-
-.category h3 {
-  margin: 10px 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.category a {
-  color: #111;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.category a:hover {
-  text-decoration: underline;
-}
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -508,6 +466,72 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   .header-menu {
     display: none;
   }
+/* ===== Sección Categorías ===== */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 60px 6%;
+  text-align: center;
+}
+
+.category {
+  position: relative;
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+  min-height: 240px;
+}
+
+/* Overlay oscuro */
+.category::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+/* Asegurar que icono, texto y botón estén encima del overlay */
+.category h3, .category p, .category a, .category .cat-icon {
+  position: relative;
+  z-index: 2;
+}
+
+/* Icono arriba */
+.cat-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 12px;
+}
+
+/* Botón Explorar */
+.explore-btn {
+  display: inline-block;
+  margin-top: 12px;
+  background: #fff;
+  color: #111;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.explore-btn:hover { background: #ddd; }
+
+/* Fondos específicos */
+.moda { background: url("img/ropabg.jpg") center/cover no-repeat; }
+.calzado { background: url("img/calzadobg.jpg") center/cover no-repeat; }
+.hogar { background: url("img/hogarbg.jpg") center/cover no-repeat; }
+.accesorios { background: url("img/masbg.jpg") center/cover no-repeat; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .categories { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .categories { grid-template-columns: 1fr; }
+}
   .search-box {
     max-width: 160px;
   }
