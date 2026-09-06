@@ -492,7 +492,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 /* Botón Explorar */
 .explore-btn {
   display: inline-block;
-  margin-down: 12px;
+  margin-top: 12px;
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
