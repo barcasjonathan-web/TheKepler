@@ -490,7 +490,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 
 .category h3 {
-  font-size: 4px;
+  font-size: 100px;
   line-height: 1;
   margin: 4px 0;
 }
@@ -506,8 +506,8 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   
 /* Icono arriba */
 .cat-icon {
-  width: 10px;
-  height: 10px;
+  width: 25px;
+  height: 25px;
   margin-bottom: 10px;
 }
 /* Botón Explorar */
