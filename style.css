@@ -461,7 +461,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   overflow: hidden;
   text-align: center;
   padding: 20px;
-  min-height: 5px;
+  min-height: 100px;
 }
 
 /* Overlay oscuro */
@@ -485,7 +485,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 /* Icono arriba */
 .cat-icon {
   width: 40px;
-  height: 406px;
+  height: 40px;
   margin-bottom: 12px;
 }
 
