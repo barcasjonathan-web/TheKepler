@@ -450,26 +450,21 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 60px 6%;
+  padding: 40px 6%;
   text-align: center;
 }
 
 .category {
   position: relative;
-  color: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  text-align: center;
-
-  /* ALTURA DE LAS TARJETAS */
-  height: 150px;
-
-  padding: 10px 6px;
-
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
+  padding: 20px;
+  height: 250px; /* altura fija para rectángulo horizontal */
+  border-radius: 8px;
+  overflow: hidden;
+  color: #fff;
 }
 
 /* Overlay oscuro */
@@ -478,42 +473,48 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.45);
+  z-index: 1;
 }
 
-/* Asegurar que icono, texto y botón estén encima del overlay */
+/* Contenido encima del overlay */
 .category h3,
 .category p,
 .category a,
 .category .cat-icon {
   position: relative;
   z-index: 2;
+  margin: 6px 0;
 }
 
-.category h3 {
-  font-size: 100px;
-  line-height: 1;
-  margin: 4px 0;
-}
-
-.category p {
-  font-size: 2px;
-  line-height: 1.2;
-  margin: 3px 0;
-}
-  
-/* Icono arriba */
+/* Icono pequeño arriba */
 .cat-icon {
-  width: 1px;
-  height: 1px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
 }
+
+/* Título grande */
+.category h3 {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* Subtítulo más pequeño */
+.category p {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
 /* Botón Explorar */
 .explore-btn {
   display: inline-block;
-  margin-top: 12px;
+  margin-top: auto;
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
-  padding: 3px 6px;
+  padding: 6px 12px;
   border-radius: 6px;
   font-weight: 600;
   text-decoration: none;
