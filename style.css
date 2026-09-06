@@ -532,13 +532,13 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   .search-box { max-width: 160px; }
   .hamburger { display: block; }
     .category h3 { font-size: 1.2rem; }
-  .category a { font-size: 1rem; display: inline-block; }
+  .category a { font-size: 0.5rem; display: inline-block; }
 }
 
 @media (max-width: 600px) {
   .categories { grid-template-columns: 1fr; }
   .category h3 { font-size: 1rem; }
-  .category a { font-size: 0.9rem; display: inline-block; white-space: nowrap; }
+  .category a { font-size: 0.5rem; display: inline-block; white-space: nowrap; }
 }
 
 @media (max-width: 560px) {
@@ -552,7 +552,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   footer { flex-direction: column; }
   .hero h1 { font-size: 3.25rem; }
   .category h3 { font-size: 0.9rem; }
-  .category a { font-size: 0.8rem; }
+  .category a { font-size: 0.5rem; }
 }
 
 @media (max-width: 850px) {
