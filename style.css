@@ -460,8 +460,16 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   border-radius: 12px;
   overflow: hidden;
   text-align: center;
-  padding: 20px;
-  min-height: 5px;
+
+  /* ALTURA DE LAS TARJETAS */
+  height: 150px;
+
+  padding: 10px 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Overlay oscuro */
@@ -483,6 +491,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 
 .category h3 {
   font-size: 2px;
+  line-height: 1;
   margin: 4px 0;
 }
 
@@ -490,6 +499,10 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   font-size: 1px;
   line-height: 1.2;
   margin: 3px 0;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
   
 /* Icono arriba */
 .cat-icon {
@@ -497,10 +510,6 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   height: 20px;
   margin-bottom: 10px;
 }
-display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 /* Botón Explorar */
 .explore-btn {
   display: inline-block;
