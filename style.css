@@ -448,7 +448,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 /* ===== Sección Categorías ===== */
 .categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 20px;
   padding: 60px 6%;
   text-align: center;
@@ -493,8 +493,8 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 
 /* Icono pequeño arriba */
 .cat-icon {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   margin-bottom: 12px;
 }
 
@@ -521,7 +521,6 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .categories { grid-template-columns: repeat(2, 1fr); }
   .search-box { max-width: 160px; }
   .hamburger { display: block; }
 }
