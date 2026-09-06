@@ -486,7 +486,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 .category h3 {
   font-size: 1rem;   /* 🔹 título más pequeño */
-  margin: 3px 0;
+  margin: 4px 0;
 }
 .category p {
   font-size: 0.85rem; /* 🔹 frase más pequeña */
