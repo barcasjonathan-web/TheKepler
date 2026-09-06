@@ -486,17 +486,17 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 
 .category h3 {
   font-size: 1rem;   /* 🔹 título más pequeño */
-  margin: 6px 0;
+  margin: 3px 0;
 }
 .category p {
   font-size: 0.85rem;   /* 🔹 frase más pequeña */
-  margin: 4px 0;
+  margin: 1px 0;
 }
 /* Icono arriba */
 .cat-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 8px;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 4px;
 }
 
 /* Botón Explorar */
@@ -506,7 +506,8 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
-  padding: 8px 14px;
+  padding: 4px 8px;
+  font-size: 0.6rem;
   border-radius: 6px;
   font-weight: 600;
   text-decoration: none;
