@@ -484,12 +484,15 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   position: relative;
   z-index: 2;
 }
-
+.category h3 {
+  font-size: 1rem;   /* 🔹 título más pequeño */
+  margin: 4px 0;
+}
 /* Icono arriba */
 .cat-icon {
   width: 36px;
   height: 36px;
-  margin-bottom: 100px;
+  margin-bottom: 6px;
 }
 
 /* Botón Explorar */
