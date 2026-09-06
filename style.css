@@ -520,7 +520,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 .explore-btn:hover { background: #ddd; }
 
 /* Fondos específicos */
-.moda { background: url("img/ropa.png") center/cover no-repeat; }
+.moda { background: url("img/ropabg.png") center/cover no-repeat; }
 .calzado { background: url("img/calzadobg.png") center/cover no-repeat; }
 .hogar { background: url("img/hogarbg.png") center/cover no-repeat; }
 .accesorios { background: url("img/masbg.png") center/cover no-repeat; }
