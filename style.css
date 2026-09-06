@@ -470,7 +470,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.25);
 }
 
 .category h3 { 
