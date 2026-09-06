@@ -201,6 +201,13 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   font-weight: 800;
   margin-bottom: 40px;
 }
+.footer-logo img {
+  width: 140px;      /* tamaño del logo */
+  height: auto;
+  display: block;
+  margin: 0 auto 40px;
+}
+
 
 /* CONTENEDOR PRINCIPAL */
 .footer-content {
