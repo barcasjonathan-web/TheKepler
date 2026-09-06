@@ -202,6 +202,8 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   margin-bottom: 40px;
 }
 .footer-logo img {
+  max-width: 110px;   /* límite para que no rompa */
+  width: 100%;        /* se adapta */
   width: 140px;      /* tamaño del logo */
   height: auto;
   display: block;
