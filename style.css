@@ -484,9 +484,9 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 
 /* Icono arriba */
 .cat-icon {
-  width: 36px;
-  height: 36px;
-  margin-bottom: 6px;
+  width: 40px;
+  height: 406px;
+  margin-bottom: 12px;
 }
 
 /* Botón Explorar */
@@ -496,7 +496,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
-  padding: 4px 8px;
+  padding: 6px 12px;
   border-radius: 6px;
   font-weight: 600;
   text-decoration: none;
