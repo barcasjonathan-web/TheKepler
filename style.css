@@ -482,19 +482,19 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 
 .category h3 {
-  font-size: 18px;
+  font-size: 2px;
   margin: 4px 0;
 }
 
 .category p {
-  font-size: 14px;
+  font-size: 1px;
   line-height: 1.2;
   margin: 3px 0;
 /* Icono arriba */
 .cat-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 12px;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 10px;
 }
 
 /* Botón Explorar */
