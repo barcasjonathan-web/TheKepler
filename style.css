@@ -474,11 +474,11 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 
 .category h3 { 
-  font-size: 1.2rem; 
+  font-size: 0.6rem; 
   font-weight: bold;
 }
 .category p {
-  font-size: 0.95rem;
+  font-size: 0.45rem;
   font-weight: 400;
 }
 
