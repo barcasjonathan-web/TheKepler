@@ -448,7 +448,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 /* ===== Sección Categorías ===== */
 .categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(2, 1fr));
   gap: 20px;
   padding: 60px 6%;
   text-align: center;
@@ -462,6 +462,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   text-align: center;
   padding: 20px;
   min-height: 5px;
+  text-align: left;
 }
 
 /* Overlay oscuro */
@@ -489,6 +490,8 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   position: relative;
   z-index: 2;
   margin: 6px 0;
+  text-align: left; /* 👈 fuerza alineación izquierda */
+  display: block;   /* 👈 asegura que ocupen toda la línea */
 }
 
 /* Icono pequeño arriba */
