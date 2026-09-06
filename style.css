@@ -490,13 +490,13 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 
 .category h3 {
-  font-size: 2px;
+  font-size: 4px;
   line-height: 1;
   margin: 4px 0;
 }
 
 .category p {
-  font-size: 1px;
+  font-size: 2px;
   line-height: 1.2;
   margin: 3px 0;
   -webkit-line-clamp: 2;
@@ -506,8 +506,8 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   
 /* Icono arriba */
 .cat-icon {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   margin-bottom: 10px;
 }
 /* Botón Explorar */
@@ -517,7 +517,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
-  padding: 6px 12px;
+  padding: 3px 6px;
   border-radius: 6px;
   font-weight: 600;
   text-decoration: none;
