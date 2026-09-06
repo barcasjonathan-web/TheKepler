@@ -450,21 +450,16 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 40px 6%;
-  text-align: center;
+  padding: 60px 6%;
+  text-align: left;
 }
 
 .category {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 20px;
-  height: 1px; /* altura fija para rectángulo horizontal */
+  background: #fff;
+  border: 1px solid #eee;
   border-radius: 8px;
-  overflow: hidden;
-  color: #fff;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Overlay oscuro */
@@ -488,33 +483,19 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 
 /* Icono pequeño arriba */
 .cat-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 10px;
-}
-
-/* Título grande */
-.category h3 {
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 1.2;
-}
-
-/* Subtítulo más pequeño */
-.category p {
-  font-size: 14px;
-  line-height: 1.4;
-  margin-bottom: 10px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 12px;
 }
 
 /* Botón Explorar */
 .explore-btn {
   display: inline-block;
-  margin-top: auto;
+  margin-down: 12px;
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
-  padding: 6px 12px;
+  padding: 10px 16px;
   border-radius: 6px;
   font-weight: 600;
   text-decoration: none;
