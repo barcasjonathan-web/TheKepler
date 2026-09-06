@@ -471,7 +471,9 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   inset: 0;
   background: rgba(0,0,0,0.45);
 }
-
+p { font-size: 1rem; }
+h3 { font-size: 2rem; }
+a { font-size: 2rem; }
 /* Contenido encima del overlay */
 .category h3,
 .category p,
