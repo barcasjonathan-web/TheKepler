@@ -499,16 +499,12 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   font-size: 2px;
   line-height: 1.2;
   margin: 3px 0;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
   
 /* Icono arriba */
 .cat-icon {
   width: 1px;
   height: 1px;
-  margin-bottom: 1px;
 }
 /* Botón Explorar */
 .explore-btn {
