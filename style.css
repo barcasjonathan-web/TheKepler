@@ -524,10 +524,14 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   .categories { grid-template-columns: repeat(2, 1fr); }
   .search-box { max-width: 160px; }
   .hamburger { display: block; }
+    .category h3 { font-size: 1.2rem; }
+  .category a { font-size: 1rem; display: inline-block; }
 }
 
 @media (max-width: 600px) {
   .categories { grid-template-columns: 1fr; }
+  .category h3 { font-size: 1rem; }
+  .category a { font-size: 0.9rem; display: inline-block; white-space: nowrap; }
 }
 
 @media (max-width: 560px) {
@@ -540,6 +544,8 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   .section-heading { align-items: start; flex-direction: column; }
   footer { flex-direction: column; }
   .hero h1 { font-size: 3.25rem; }
+  .category h3 { font-size: 0.9rem; }
+  .category a { font-size: 0.8rem; }
 }
 
 @media (max-width: 850px) {
