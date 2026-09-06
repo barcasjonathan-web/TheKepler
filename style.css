@@ -448,7 +448,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 /* ===== Sección Categorías ===== */
 .categories {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 20px;
   padding: 60px 6%;
   text-align: center;
@@ -477,12 +477,12 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   font-weight: bold;
 }
 .category a { 
-  font-size: 0.5rem;
-  font-weight: none;
   display: inline-block;
+  font-size: 0.5rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: fit-content;
 }
 
 /* Contenido encima del overlay */
