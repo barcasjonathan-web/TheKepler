@@ -477,6 +477,9 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   font-weight: bold;
 }
 .category a { 
+  display: -webkit-box;        /* 🔹 activa el modo caja flexible */
+  -webkit-line-clamp: 1;       /* 🔹 número máximo de líneas */
+  -webkit-box-orient: vertical;
   display: inline-block;
   font-size: 0.5rem;
   white-space: nowrap;
