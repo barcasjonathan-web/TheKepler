@@ -471,9 +471,16 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   inset: 0;
   background: rgba(0,0,0,0.45);
 }
-p { font-size: 1rem; }
-h3 { font-size: 2rem; }
-a { font-size: 2rem; }
+
+.category h3 { 
+  font-size: 1rem; 
+  font-weight: bold;
+}
+.category a { 
+  font-size: 0.5rem;
+  font-weight: none;
+}
+
 /* Contenido encima del overlay */
 .category h3,
 .category p,
@@ -494,12 +501,12 @@ a { font-size: 2rem; }
 /* Botón Explorar */
 .explore-btn {
   display: inline-block;
-  margin-top: 12px;
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
-  padding: 10px 16px;
   border-radius: 6px;
+  font-size: 0.4rem;
+  padding: 10px 16px;
   font-weight: 600;
   text-decoration: none;
   transition: 0.2s;
