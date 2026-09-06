@@ -188,12 +188,73 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 .product-card .product-info small { color: #666; }
 
 
-.about{padding:90px 6%;background:#111;color:#fff}
-.about p{max-width:700px;line-height:1.7;color:#cfcfcf}
-.about .eyebrow{color:#fff!important}
+.footer {
+  background: #000;
+  color: #fff;
+  padding: 60px 6%;
+  text-align: center;
+}
 
-footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;border-top:1px solid #ddd}
+/* LOGO CENTRADO */
+.footer-logo {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
 
+/* CONTENEDOR PRINCIPAL */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  text-align: left;
+}
+
+/* IZQUIERDA: SOBRE KEPLER */
+.footer-about p {
+  max-width: 420px;
+  line-height: 1.6;
+  color: #ccc;
+}
+.footer-about .eyebrow {
+  color: #fff !important;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* DERECHA: WHATSAPP */
+.footer-whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+
+.footer-whatsapp .wa-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.footer-whatsapp strong {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.footer-whatsapp p {
+  color: #ccc;
+  margin-top: 4px;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  margin-top: 50px;
+  font-size: 0.9rem;
+  color: #aaa;
+  border-top: 1px solid #333;
+  padding-to
+    p: 20px;
+}
 .cart-panel{position:fixed;z-index:50;top:0;right:-450px;width:min(420px,100%);height:100vh;background:#fff;box-shadow:-10px 0 30px rgba(0,0,0,.15);transition:.28s;display:flex;flex-direction:column}
 .cart-panel.open{right:0}
 
@@ -530,6 +591,17 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 
 @media (max-width: 600px) {
   .categories { grid-template-columns: 1fr; }
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-about p {
+    max-width: 100%;
+  }
+
+  .footer-whatsapp {
+    justify-content: center;
+  }}
 
 @media (max-width: 560px) {
   .tb-center { display: none; }
