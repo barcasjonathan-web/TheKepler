@@ -448,7 +448,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 /* ===== Sección Categorías ===== */
 .categories {
   display: grid;
-  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 60px 6%;
   text-align: center;
@@ -473,10 +473,13 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
 }
 
 .category h3 { 
-  font-size: 1rem; 
+  font-size: 1.2rem; 
   font-weight: bold;
-  }
-
+}
+.category p {
+  font-size: 0.95rem;
+  font-weight: 400;
+}
 
 /* Contenido encima del overlay */
 .category h3,
