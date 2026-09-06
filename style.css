@@ -506,9 +506,9 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   
 /* Icono arriba */
 .cat-icon {
-  width: 25px;
-  height: 25px;
-  margin-bottom: 10px;
+  width: 1px;
+  height: 1px;
+  margin-bottom: 1px;
 }
 /* Botón Explorar */
 .explore-btn {
