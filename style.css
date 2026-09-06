@@ -489,8 +489,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   margin: 4px 0;
 }
 .category p {
-  font-size: 0.85rem; /* 🔹 frase más pequeña */
-  margin: 4px 0;
+  margin: 50px 0;
 }
 
 /* Icono arriba */
