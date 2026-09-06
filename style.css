@@ -451,7 +451,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 60px 6%;
-  text-align: left;
+  text-align: center;
 }
 
 .category {
@@ -461,6 +461,7 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   overflow: hidden;
   text-align: center;
   padding: 20px;
+  min-height: 5px;
 }
 
 /* Overlay oscuro */
@@ -469,7 +470,6 @@ footer{padding:38px 6%;display:flex;justify-content:space-between;gap:20px;borde
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.45);
-  z-index: 1;
 }
 
 /* Contenido encima del overlay */
