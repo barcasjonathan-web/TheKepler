@@ -50,6 +50,21 @@ function renderProducts(category = "Todos") {
     </article>
   `).join('');
 }
+function toggleLike(id) {
+  likes[id] = !likes[id]; // alterna true/false
+  localStorage.setItem("likes", JSON.stringify(likes));
+  renderProducts(); // refresca la vista
+}
+
+// Delegación de eventos para el corazón
+grid.addEventListener("click", (e) => {
+  const btn = e.target.closest(".like-btn");
+  if (!btn) return;
+  const id = btn.dataset.id;
+  toggleLike(id);
+});
+
+
 grid.addEventListener("click", (e) => {
   const btn = e.target.closest(".add-full");
   if (!btn) return;
