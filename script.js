@@ -8,6 +8,7 @@ const products = [
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let likes = JSON.parse(localStorage.getItem("likes")) || {};
 
 const grid = document.getElementById("productGrid");
 const cartCount = document.getElementById("cartCount");
