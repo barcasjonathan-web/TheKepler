@@ -184,6 +184,17 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 .add-full:hover { background: #222; transform: translateY(-2px); }
 
+.like-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.heart-icon {
+  width: 28px;
+  height: 28px;
+}
 /* Ajustes visuales menores */
 .product-card .product-info small { color: #666; }
 
