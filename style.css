@@ -237,7 +237,13 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   align-items: center;
   gap: 14px;
   text-align: left;
+  text-decoration: none; /* quita subrayado */
+  color: inherit;        
 }
+.footer-whatsapp:hover {
+  opacity: 0.85; /* efecto visual al pasar el mouse */
+}
+
 
 .footer-whatsapp .wa-icon {
   width: 42px;
