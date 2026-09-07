@@ -51,7 +51,7 @@ function renderProducts(category = "Todos") {
   `).join('');
 }
 function toggleLike(id) {
-  likes[id] = !likes[id]; // alterna true/false
+  likes[id] = !likes[id]? false : true; // alterna true/false
   localStorage.setItem("likes", JSON.stringify(likes));
   renderProducts(); // refresca la vista
 }
@@ -60,7 +60,7 @@ function toggleLike(id) {
 grid.addEventListener("click", (e) => {
   const btn = e.target.closest(".like-btn");
   if (!btn) return;
-  const id = btn.dataset.id;
+  const id = parseInt(btn.dataset.id);
   toggleLike(id);
 });
 
