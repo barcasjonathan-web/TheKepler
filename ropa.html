@@ -117,11 +117,31 @@
         <strong id="cartTotal">0,00 €</strong>
       </div>
       <button id="whatsappBtn" class="whatsapp-btn">Reservar por WhatsApp</button>
+      
+      <div id="reservationForm" class="reservation-form" hidden>
+        <h3>Confirmar reserva</h3>
+ 
+        <div id="orderPreview"></div>
+
+        <label for="customerName">Nombre completo</label>
+        <input
+          type="text"
+          id="customerName"
+          placeholder="Escribe tu nombre"
+          autocomplete="name"
+        />
+        <div class="form-buttons">
+          <button id="cancelReservation" type="button">Cancelar</button>
+          <button id="confirmReservation" class="whatsapp-btn">Aceptar</button>
+        </div>
+      </div>
+      
       <p class="cart-note">Antes de publicar, cambia el número de WhatsApp en <code>script.js</code>.</p>
     </div>
   </aside>
 
   <div id="overlay" class="overlay"></div>
+
 
   <script src="script.js"></script>
 <script>
@@ -130,27 +150,23 @@
   renderCart();
 
   // Conexión del carrito (igual que en index.html)
-  const cartBtn = document.getElementById("cartBtn");
-  const cartPanel = document.getElementById("cartPanel");
-  const closeCart = document.getElementById("closeCart");
-  const overlay = document.getElementById("overlay");
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const menuOverlay = document.getElementById("menuOverlay");
+  const closeMobileBtn = document.getElementById("closeMobileBtn");
 
-  cartBtn.addEventListener("click", () => {
-    cartPanel.classList.add("open");
-    overlay.classList.add("show");
-    cartPanel.setAttribute("aria-hidden", "false");
-  });
+  function toggleMenu() {
+    mobileMenu.classList.toggle("open");
+    menuOverlay.classList.toggle("show");
+  }
 
-  closeCart.addEventListener("click", () => {
-    cartPanel.classList.remove("open");
-    overlay.classList.remove("show");
-    cartPanel.setAttribute("aria-hidden", "true");
-  });
+  hamburgerBtn.addEventListener("click", toggleMenu);
+  menuOverlay.addEventListener("click", toggleMenu);
+  closeMobileBtn.addEventListener("click", toggleMenu);
 
-  overlay.addEventListener("click", () => {
-    cartPanel.classList.remove("open");
-    overlay.classList.remove("show");
-    cartPanel.setAttribute("aria-hidden", "true");
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", toggleMenu);
   });
 </script>
 
