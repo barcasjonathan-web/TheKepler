@@ -31,10 +31,7 @@
 
     <div class="header-right">
       <nav class="header-menu">
-        <a href="index.html">Inicio</a>
-        <a href="categorias.html">Categorías</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="contacto.html">Contacto</a>
+        <a href="index.html"class="home-btn">Inicio</a>
       </nav>
 
       <button id="cartBtn" class="cart-icon">
@@ -42,22 +39,9 @@
         <span id="cartCount">0</span>
       </button>
 
-      <button class="hamburger" id="hamburgerBtn">☰</button>
-    </div>
+      </div>
   </header>
 
-  <!-- ⭐ MENÚ MÓVIL ⭐ -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="close-mobile" id="closeMobileBtn">✕</button>
-    <a href="index.html">Inicio</a>
-    <a href="categorias.html">Categorías</a>
-    <a href="nosotros.html">Nosotros</a>
-    <a href="contacto.html">Contacto</a>
-    <div class="mobile-search">
-      <input type="text" placeholder="Buscar productos..." />
-    </div>
-  </div>
-  <div id="menuOverlay" class="menu-overlay"></div>
 
   <!-- ⭐ CONTENIDO DE LA CATEGORÍA ROPA ⭐ -->
   <main>
@@ -128,6 +112,25 @@
   // Renderiza solo la categoría Ropa
   renderProducts("Ropa");
   renderCart();
+
+    const cartBtn = document.getElementById("cartBtn");
+  const cartPanel = document.getElementById("cartPanel");
+  const closeCart = document.getElementById("closeCart");
+  const overlay = document.getElementById("overlay");
+
+  cartBtn.addEventListener("click", () => {
+    cartPanel.setAttribute("aria-hidden", "false");
+    overlay.classList.add("show");
+  });
+
+  closeCart.addEventListener("click", () => {
+    cartPanel.setAttribute("aria-hidden", "true");
+    overlay.classList.remove("show");
+  });
+
+  overlay.addEventListener("click", () => {
+    cartPanel.setAttribute("aria-hidden", "true");
+    overlay.classList.remove("show");
   </script>
 </body>
 </html>
