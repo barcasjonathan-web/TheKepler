@@ -109,28 +109,31 @@
 
   <script src="script.js"></script>
   <script>
-  // Renderiza solo la categoría Ropa
-  renderProducts("Ropa");
-  renderCart();
+    // Renderiza solo la categoría Ropa
+    renderProducts("Ropa");
+    renderCart();
 
     const cartBtn = document.getElementById("cartBtn");
-  const cartPanel = document.getElementById("cartPanel");
-  const closeCart = document.getElementById("closeCart");
-  const overlay = document.getElementById("overlay");
+    const cartPanel = document.getElementById("cartPanel");
+    const closeCart = document.getElementById("closeCart");
+    const overlay = document.getElementById("overlay");
 
-  cartBtn.addEventListener("click", () => {
-    cartPanel.setAttribute("aria-hidden", "false");
-    overlay.classList.add("show");
-  });
 
-  closeCart.addEventListener("click", () => {
-    cartPanel.setAttribute("aria-hidden", "true");
-    overlay.classList.remove("show");
-  });
+    cartBtn.addEventListener("click", () => {
+      cartPanel.setAttribute("aria-hidden", "false"); 
+      overlay.classList.add("show");
+    });
 
-  overlay.addEventListener("click", () => {
-    cartPanel.setAttribute("aria-hidden", "true");
-    overlay.classList.remove("show");
+
+    closeCart.addEventListener("click", () => {  
+      cartPanel.setAttribute("aria-hidden", "true");       
+      overlay.classList.remove("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      cartPanel.setAttribute("aria-hidden", "true");  
+      overlay.classList.remove("show"); 
+    });
   </script>
 </body>
 </html>
