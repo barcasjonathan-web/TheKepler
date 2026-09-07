@@ -7,7 +7,7 @@ const products = [
   { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg" }
 ];
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const grid = document.getElementById("productGrid");
 const cartCount = document.getElementById("cartCount");
@@ -75,11 +75,15 @@ function addToCart(id) {
 
   cartCount.textContent = totalQty;
   cartTotal.textContent = money(totalPrice);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  
 }
 
 function removeFromCart(id) {
   cart = cart.filter(item => item.id !== id);
   renderCart();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  
 }
 
 function renderCart() {
