@@ -39,6 +39,11 @@ function renderProducts(category = "Todos") {
         <div class="product-meta">
           <div class="price">${money(p.price)}</div>
         </div>
+        <!-- ❤️ Botón de me gusta -->
+        <button class="like-btn" data-id="${p.id}">
+          <img src="img/${likes[p.id] ? 'like.png' : 'unlike.png'}" 
+               alt="Me gusta" class="heart-icon">
+        </button>
         <button class="add-full" data-id="${p.id}">Añadir al carrito</button>
       </div>
     </article>
