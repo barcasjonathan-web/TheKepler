@@ -139,6 +139,11 @@
   // Renderiza solo la categoría Ropa
   renderProducts("Calzado");
   renderCart();
+  window.addEventListener("focus", () => {
+  renderProducts("Calzado");
+  renderCart();
+});
+  
 
   // Conexión del carrito (igual que en index.html)
   const hamburgerBtn = document.getElementById("hamburgerBtn");
