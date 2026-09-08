@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kepler | Calzado</title>
+  <meta name="description" content="Kepler: Descubre zapatillas, sandalias, botas y más." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+  <body data-category="Ropa">
+  <!-- ⭐ BARRA SUPERIOR NEGRA ⭐ -->
+  <div class="topbar-black">
+    <div class="tb-left">🚚 Domicilios y Encargos</div>
+    <div class="tb-center">Calidad · Estilo · Hogar</div>
+    <div class="tb-right">🟢 Pedidos por WhatsApp</div>
+  </div>
+
+  <!-- ⭐ HEADER ⭐ -->
+  <header class="header-new">
+    <div class="search-box">
+      <input type="text" placeholder="Buscar productos..." />
+      <span class="search-icon">
+        <img src="img/lupa.png" alt="Buscar" class="icon-img">
+      </span>
+    </div>
+
+    <div class="header-center">
+      <img src="img/logo-kepler.png" alt="Kepler" class="header-logo">
+    </div>
+
+    <div class="header-right">
+      <nav class="header-menu">
+        <a href="index.html"class="home-btn">Inicio</a>
+      </nav>
+
+      <button id="cartBtn" class="cart-icon">
+        <img src="img/carrito.png" alt="Carrito" class="icon-img">
+        <span id="cartCount">0</span>
+      </button>
+
+    </div>
+  </header>
+    
+      
+  <!-- ⭐ MENÚ MÓVIL ⭐ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-mobile" id="closeMobileBtn">✕</button>  
+    <a href="#inicio">Inicio</a>  
+    <a href="#productos">Categorías</a> 
+    <a href="#nosotros">Nosotros</a>
+
+    <div class="mobile-search"> 
+      <input type="text" placeholder="Buscar productos..." />
+    </div>
+  </div>
+
+  <!-- Overlay oscuro -->
+<div id="menuOverlay" class="menu-overlay"></div>
+  
+  <!-- ⭐ CONTENIDO DE LA CATEGORÍA ROPA ⭐ -->
+  <main>
+    <section class="category-page">
+      <h1>CALZADO</h1>
+      <p>Descubre zapatillas, sandalias, botas y más.</p>
+
+      <div id="productGrid" class="product-grid"></div>
+  </section>
+</main>
+
+
+  <!-- ⭐ FOOTER ⭐ -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="img/logo-kepler.png" alt="Kepler">
+    </div>
+    <div class="footer-content">
+      <div class="footer-about">
+        <p class="eyebrow">SOBRE KEPLER</p>
+        <p>Una tienda sencilla, moderna y cercana.</p>
+        <p>Descubre productos para vestir, regalar y transformar tus espacios.</p>
+        <p>Haz tu pedido fácilmente por WhatsApp.</p>
+      </div>
+      <a href="https://wa.me/5353691544" target="_blank" class="footer-whatsapp">
+        <img src="img/whatsapp.png" alt="WhatsApp" class="wa-icon">
+        <div>
+          <strong>Contáctanos por WhatsApp</strong>
+          <p>Estamos para ayudarte</p>
+        </div>
+      </a>
+    </div>
+    <div class="footer-copy">
+      © 2026 Kepler. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- ⭐ CARRITO ⭐ -->
+  <aside id="cartPanel" class="cart-panel" aria-hidden="true">
+    <div class="cart-header">
+      <h2>Tu carrito</h2>
+      <button id="closeCart" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>Total</span>
+        <strong id="cartTotal">0,00 €</strong>
+      </div>
+      <button id="whatsappBtn" class="whatsapp-btn">Reservar por WhatsApp</button>
+      
+      <div id="reservationForm" class="reservation-form" hidden>
+        <h3>Confirmar reserva</h3>
+ 
+        <div id="orderPreview"></div>
+
+        <label for="customerName">Nombre completo</label>
+        <input
+          type="text"
+          id="customerName"
+          placeholder="Escribe tu nombre"
+          autocomplete="name"
+        />
+        <div class="form-buttons">
+          <button id="cancelReservation" type="button">Cancelar</button>
+          <button id="confirmReservation" class="confirm-btn">Aceptar</button>
+        </div>
+      </div>
+      
+      <p class="cart-note">Antes de publicar, cambia el número de WhatsApp en <code>script.js</code>.</p>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+
+  <script src="script.js"></script>
+<script>
+  // Renderiza solo la categoría Ropa
+  renderProducts("Calzado");
+  renderCart();
+
+  // Conexión del carrito (igual que en index.html)
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const menuOverlay = document.getElementById("menuOverlay");
+  const closeMobileBtn = document.getElementById("closeMobileBtn");
+
+  function toggleMenu() {
+    mobileMenu.classList.toggle("open");
+    menuOverlay.classList.toggle("show");
+  }
+
+  hamburgerBtn.addEventListener("click", toggleMenu);
+  menuOverlay.addEventListener("click", toggleMenu);
+  closeMobileBtn.addEventListener("click", toggleMenu);
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", toggleMenu);
+  });
+</script>
+
+</body>
+</html>
+
