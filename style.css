@@ -82,15 +82,16 @@ a{text-decoration:none;color:inherit}
   margin: 6px 0;
   color: #444;
 }
-<!-- ⭐ PANEL DE PERFIL ⭐ -->
-<div id="profilePanel" class="profile-panel" hidden>
-  <button class="close">✕</button>
-  <h2>Mi Perfil</h2>
-  <img id="profilePic" src="img/default-avatar.png" alt="Foto de perfil">
-  <p id="profileName">Nombre Apellido</p>
-  <p id="profileEmail">correo@ejemplo.com</p>
-  <button id="logoutBtn">Cerrar sesión</button>
-</div>
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 900;
+  display: none;
+}
+.overlay.show {
+  display: block;
+}
 /* ===== Nuevo HERO ===== */
 
 .hero-new {
