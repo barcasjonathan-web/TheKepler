@@ -2,7 +2,95 @@
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff}
 a{text-decoration:none;color:inherit}
-
+/*===== Seccion=====*/
+/* Fondo semitransparente detrás del modal */
+.modal,
+.profile-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 90%;
+  max-width: 380px;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.25);
+  z-index: 1000;
+}
+/* Botón de cerrar */
+.modal .close,
+.profile-panel .close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+/* Títulos */
+.modal h2,
+.profile-panel h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+/* Inputs y botones */
+.modal input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.modal button,
+.profile-panel button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+#googleLogin {
+  background: #4285F4;
+  color: #fff;
+}
+#registerBtn {
+  background: #111;
+  color: #fff;
+}
+#logoutBtn {
+  background: #ddd;
+  color: #111;
+}
+/* Panel de perfil */
+.profile-panel {
+  text-align: center;
+}
+.profile-panel img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+.profile-panel p {
+  margin: 6px 0;
+  color: #444;
+}
+<!-- ⭐ PANEL DE PERFIL ⭐ -->
+<div id="profilePanel" class="profile-panel" hidden>
+  <button class="close">✕</button>
+  <h2>Mi Perfil</h2>
+  <img id="profilePic" src="img/default-avatar.png" alt="Foto de perfil">
+  <p id="profileName">Nombre Apellido</p>
+  <p id="profileEmail">correo@ejemplo.com</p>
+  <button id="logoutBtn">Cerrar sesión</button>
+</div>
 /* ===== Nuevo HERO ===== */
 
 .hero-new {
