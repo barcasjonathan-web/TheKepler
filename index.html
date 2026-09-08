@@ -37,7 +37,9 @@
     <div class="header-center">
       <img src="img/logo-kepler.png" alt="Kepler" class="header-logo">
     </div>
-
+    <!-- Registro-->
+    <button id="loginBtn">Entrar / Registrarse</button>
+    
     <!-- Menú + carrito -->
     <div class="header-right">
       <nav class="header-menu">
@@ -56,7 +58,34 @@
     </div>
 
   </header>
+    <!-- ⭐ MODAL LOGIN/REGISTRO ⭐ -->
+<div id="loginModal" class="modal" hidden>
+  <button class="close">✕</button>
+  <h2>Entrar / Registrarse</h2>
 
+  <!-- Google -->
+  <button id="googleLogin">Entrar con Google</button>
+
+  <!-- Email/Contraseña -->
+  <form id="emailForm">
+    <input type="text" id="name" placeholder="Nombre">
+    <input type="text" id="surname" placeholder="Apellido">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button type="submit">Entrar</button>
+    <button type="button" id="registerBtn">Registrarse</button>
+  </form>
+</div>
+
+<!-- ⭐ PANEL DE PERFIL ⭐ -->
+<div id="profilePanel" class="profile-panel" hidden>
+  <button class="close">✕</button>
+  <h2>Mi Perfil</h2>
+  <img id="profilePic" src="img/default-avatar.png" alt="Foto de perfil">
+  <p id="profileName">Nombre Apellido</p>
+  <p id="profileEmail">correo@ejemplo.com</p>
+  <button id="logoutBtn">Cerrar sesión</button>
+</div>
 <!-- ⭐ MENÚ MÓVIL ⭐ -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-mobile" id="closeMobileBtn">✕</button>
