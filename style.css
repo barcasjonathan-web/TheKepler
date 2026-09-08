@@ -6,12 +6,9 @@ a{text-decoration:none;color:inherit}
 /* Ventanas flotantes: modal y perfil */
 .modal,
 .profile-panel {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   background: #fff;
-  width: 90%;
+  margin: auto;
   max-width: 380px;
   padding: 24px;
   border-radius: 12px;
