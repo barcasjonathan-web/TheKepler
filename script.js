@@ -36,22 +36,22 @@ function renderProducts(category = "Todos") {
         <span class="category">${p.category}</span>
       </div>
       <div class="product-info">
-        <h3 class="product-name">${p.name}</h3>
-        <div class="product-meta">
-          <div class="price">${money(p.price)}</div>
-        </div>
-        <!-- ❤️ Botón de me gusta -->
-        <button class="like-btn" data-id="${p.id}">
-        <img src="img/${likes[p.id] === true ? 'like.png' : 'unlike.png'}" 
-        alt="Me gusta" class="heart-icon">
-        </button>
-        <button class="add-full" data-id="${p.id}">Añadir al carrito</button>
-      </div>
-    </article>
-  `).join('');
+      <h3 class="product-name">${p.name}</h3>
+      <div class="product-meta">
+      <div class="price">${money(p.price)}</div>
+      <button class="like-btn" data-id="${p.id}">
+        <img src="img/${likes[p.id] ? 'like.png' : 'unlike.png'}" 
+          alt="Me gusta" class="heart-icon">
+      </button>
+   </div>
+  <button class="add-full" data-id="${p.id}">Añadir al carrito</button>
+</div>
+</article>
+`).join('');
 }
 function toggleLike(id) {
-  likes[id] = !likes[id]? false : true; // alterna true/false
+  const numId = parseInt(id, 10);
+  likes[id] = !likes[id]; // alterna true/false
   localStorage.setItem("likes", JSON.stringify(likes));
   renderProducts(); // refresca la vista
 }
@@ -60,7 +60,7 @@ function toggleLike(id) {
 grid.addEventListener("click", (e) => {
   const btn = e.target.closest(".like-btn");
   if (!btn) return;
-  const id = parseInt(btn.dataset.id);
+  const id = (btn.dataset.id);
   toggleLike(id);
 });
 
