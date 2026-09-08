@@ -21,10 +21,11 @@ a{text-decoration:none;color:inherit}
 /* Botón de cerrar */
 .modal .close,
 .profile-panel .close {
+  .modal .close,
+.profile-panel .close {
   position: absolute;
-  top: 10px;              /* la coloca a la mitad vertical */
-  right: 10px;           /* pegada a la derecha */
-  transform: translateY(-50%); /* corrige para que quede centrada */
+  top: 10px;
+  right: 10px;
   border: none;
   background: transparent;
   font-size: 1.4rem;
