@@ -22,6 +22,7 @@ const reservationForm = document.getElementById("reservationForm");
 const customerName = document.getElementById("customerName");
 const confirmReservation = document.getElementById("confirmReservation");
 const cancelReservation = document.getElementById("cancelReservation");
+const currentCategory = document.body.dataset.category || "Todos";
 
 function money(value) {
   return value.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
@@ -49,11 +50,12 @@ function renderProducts(category = "Todos") {
 </article>
 `).join('');
 }
+
 function toggleLike(id) {
   const numId = parseInt(id, 10);
   likes[id] = !likes[id]; // alterna true/false
   localStorage.setItem("likes", JSON.stringify(likes));
-  renderProducts(); // refresca la vista
+  renderProducts(currentCategory); // refresca la vista
 }
 
 // Delegación de eventos para el corazón
@@ -197,5 +199,5 @@ cancelReservation.addEventListener("click", () => {
   customerName.value = "";
 });
   
-renderProducts();
+renderProducts(currentCategory);
 renderCart();
