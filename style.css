@@ -3,7 +3,7 @@ html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff}
 a{text-decoration:none;color:inherit}
 /*===== Seccion=====*/
-/* Fondo semitransparente detrás del modal */
+/* Ventanas flotantes: modal y perfil */
 .modal,
 .profile-panel {
   position: fixed;
@@ -37,7 +37,7 @@ a{text-decoration:none;color:inherit}
   font-size: 1.3rem;
   font-weight: 800;
 }
-/* Inputs y botones */
+/* Inputs */
 .modal input {
   width: 100%;
   padding: 12px;
@@ -46,6 +46,7 @@ a{text-decoration:none;color:inherit}
   border-radius: 6px;
   font-size: 1rem;
 }
+/* Botones */
 .modal button,
 .profile-panel button {
   width: 100%;
@@ -56,12 +57,13 @@ a{text-decoration:none;color:inherit}
   cursor: pointer;
   font-weight: 700;
 }
-#googleLogin {
-  background: #4285F4;
+/* Botones específicos */
+#registerForm button {
+  background: #111;
   color: #fff;
 }
-#registerBtn {
-  background: #111;
+#loginForm button {
+  background: #4285F4; /* azul para diferenciar */
   color: #fff;
 }
 #logoutBtn {
@@ -82,6 +84,7 @@ a{text-decoration:none;color:inherit}
   margin: 6px 0;
   color: #444;
 }
+/* Overlay oscuro detrás del modal */
 .overlay {
   position: fixed;
   inset: 0;
