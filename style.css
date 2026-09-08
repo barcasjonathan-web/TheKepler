@@ -28,9 +28,6 @@ a{text-decoration:none;color:inherit}
   font-size: 1.4rem;
   cursor: pointer;
 }
-.modal {
-  position: relative; /* necesario para que el botón se posicione dentro */
-}
 .modal form {
   margin-top: 40px; 
 /* Títulos */
