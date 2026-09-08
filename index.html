@@ -265,64 +265,6 @@
   document.querySelectorAll("#mobileMenu a").forEach(link => {
     link.addEventListener("click", toggleMenu);
   });
-
-  // --- Login / Registro propio ---
-  const registerForm = document.getElementById("registerForm");
-  const loginForm = document.getElementById("loginForm");
-  const profilePanel = document.getElementById("profilePanel");
-  const loginModal = document.getElementById("loginModal");
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  // Registro
-  registerForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const user = {
-      name: document.getElementById("regName").value,
-      surname: document.getElementById("regSurname").value,
-      email: document.getElementById("regEmail").value,
-      password: document.getElementById("regPassword").value
-    };
-    localStorage.setItem(user.email, JSON.stringify(user));
-    alert("Usuario registrado correctamente");
-  });
-
-  // Login
-  loginForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const email = document.getElementById("loginEmail").value;
-    const pass = document.getElementById("loginPassword").value;
-    const user = JSON.parse(localStorage.getItem(email));
-    if (user && user.password === pass) {
-      localStorage.setItem("sessionUser", email);
-      mostrarPerfil(user);
-    } else {
-      alert("Credenciales incorrectas");
-    }
-  });
-
-  // Mostrar perfil
-  function mostrarPerfil(user) {
-    loginModal.hidden = true;
-    profilePanel.hidden = false;
-    document.getElementById("profileName").textContent = user.name + " " + user.surname;
-    document.getElementById("profileEmail").textContent = user.email;
-  }
-
-  // Logout
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("sessionUser");
-    profilePanel.hidden = true;
-    loginModal.hidden = false;
-  });
-
-  // Detectar sesión activa al cargar
-  window.addEventListener("load", () => {
-    const email = localStorage.getItem("sessionUser");
-    if (email) {
-      const user = JSON.parse(localStorage.getItem(email));
-      if (user) mostrarPerfil(user);
-    }
-  });
 </script>
     
   
