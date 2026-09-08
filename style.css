@@ -19,10 +19,7 @@ a{text-decoration:none;color:inherit}
   z-index: 1000;
 }
 /* Botón de cerrar */
-.modal .close,
-.profile-panel .close {
-  .modal .close,
-.profile-panel .close {
+.modal .close{
   position: absolute;
   top: 10px;
   right: 10px;
@@ -31,6 +28,11 @@ a{text-decoration:none;color:inherit}
   font-size: 1.4rem;
   cursor: pointer;
 }
+.modal {
+  position: relative; /* necesario para que el botón se posicione dentro */
+}
+.modal form {
+  margin-top: 40px; 
 /* Títulos */
 .modal h2,
 .profile-panel h2 {
