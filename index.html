@@ -207,6 +207,12 @@
 
   <script src="script.js"></script>
   <script>
+    window.addEventListener("focus", () => {
+      renderProducts("Todos");
+      renderCart();
+    });
+    
+    
     const hamburgerBtn = document.getElementById("hamburgerBtn");
     const mobileMenu = document.getElementById("mobileMenu");
     const menuOverlay = document.getElementById("menuOverlay");
