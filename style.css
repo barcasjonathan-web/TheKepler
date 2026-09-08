@@ -28,8 +28,6 @@ a{text-decoration:none;color:inherit}
   font-size: 1.4rem;
   cursor: pointer;
 }
-.modal form {
-  margin-top: 40px; 
 /* Títulos */
 .modal h2,
 .profile-panel h2 {
