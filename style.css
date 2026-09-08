@@ -22,8 +22,9 @@ a{text-decoration:none;color:inherit}
 .modal .close,
 .profile-panel .close {
   position: absolute;
-  top: 50%;
-  right: 5%;
+  top: 50%;              /* la coloca a la mitad vertical */
+  right: 10px;           /* pegada a la derecha */
+  transform: translateY(-50%); /* corrige para que quede centrada */
   border: none;
   background: transparent;
   font-size: 1.4rem;
