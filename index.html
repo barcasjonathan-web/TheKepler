@@ -63,17 +63,20 @@
   <button class="close">✕</button>
   <h2>Entrar / Registrarse</h2>
 
-  <!-- Google -->
-  <button id="googleLogin">Entrar con Google</button>
+  <!-- Registro -->
+  <form id="registerForm">
+    <input type="text" id="regName" placeholder="Nombre" required>
+    <input type="text" id="regSurname" placeholder="Apellido" required>
+    <input type="email" id="regEmail" placeholder="Email" required>
+    <input type="password" id="regPassword" placeholder="Contraseña" required>
+    <button type="submit">Registrarse</button>
+  </form>
 
-  <!-- Email/Contraseña -->
-  <form id="emailForm">
-    <input type="text" id="name" placeholder="Nombre">
-    <input type="text" id="surname" placeholder="Apellido">
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Contraseña">
+  <!-- Login -->
+  <form id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Contraseña" required>
     <button type="submit">Entrar</button>
-    <button type="button" id="registerBtn">Registrarse</button>
   </form>
 </div>
 
@@ -82,10 +85,11 @@
   <button class="close">✕</button>
   <h2>Mi Perfil</h2>
   <img id="profilePic" src="img/default-avatar.png" alt="Foto de perfil">
-  <p id="profileName">Nombre Apellido</p>
-  <p id="profileEmail">correo@ejemplo.com</p>
+  <p id="profileName"></p>
+  <p id="profileEmail"></p>
   <button id="logoutBtn">Cerrar sesión</button>
 </div>
+    
 <!-- ⭐ MENÚ MÓVIL ⭐ -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-mobile" id="closeMobileBtn">✕</button>
