@@ -327,6 +327,7 @@ if (loginBtn) {
         loginModal.hidden = false;
         loginModal.style.display = "block";
       }
+      cargarPerfil();
     }
   });
 }
@@ -374,4 +375,31 @@ if (logoutBtn) {
     }
 
   });
+}
+// --- Cargar datos del perfil ---
+
+async function cargarPerfil() {
+
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) return;
+
+  const nombre = user.user_metadata.name || "";
+  const apellido = user.user_metadata.surname || "";
+
+  const profileName = document.getElementById("profileName");
+  const profileSurname = document.getElementById("profileSurname");
+  const profileEmail = document.getElementById("profileEmail");
+
+  if (profileName) {
+    profileName.textContent = "Nombre: " + nombre;
+  }
+
+  if (profileSurname) {
+    profileSurname.textContent = "Apellido: " + apellido;
+  }
+
+  if (profileEmail) {
+    profileEmail.textContent = "Email: " + user.email;
+  }
 }
