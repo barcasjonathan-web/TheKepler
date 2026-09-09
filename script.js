@@ -277,40 +277,44 @@ if (loginForm) {
   });
 }
 
-
 // --- Botones X para cerrar paneles ---
-
 const closeButtons = document.querySelectorAll(".close");
-
 closeButtons.forEach((button) => {
   button.addEventListener("click", () => {
-
     const loginModal = document.getElementById("loginModal");
     const profilePanel = document.getElementById("profilePanel");
-
     // Cerrar Login
     if (loginModal) {
       loginModal.style.display = "none";
       loginModal.hidden = true;
     }
-
     // Cerrar Perfil
     if (profilePanel) {
+      profilePanel.style.display = "none";
       profilePanel.hidden = true;
     }
-
   });
 });
 // --- Botón Entrar / Perfil ---
 const loginBtn = document.getElementById("loginBtn");
 const loginModal = document.getElementById("loginModal");
 const profilePanel = document.getElementById("profilePanel");
-
+// Actualizar texto del botón según la sesión
+async function actualizarBotonUsuario() {
+  if (!loginBtn) return;
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  if (session) {
+    loginBtn.textContent = "Mi Perfil";
+  } else {
+    loginBtn.textContent = "Entrar / Registrarse";
+  }
+}
+// Comprobar sesión al cargar la página
+actualizarBotonUsuario();
+// Qué hacer al pulsar Entrar / Mi Perfil
 if (loginBtn) {
   loginBtn.addEventListener("click", async () => {
-
     const { data: { session } } = await supabaseClient.auth.getSession();
-
     if (session) {
       // Usuario conectado → abrir Perfil
       if (profilePanel) {
@@ -324,29 +328,11 @@ if (loginBtn) {
         loginModal.style.display = "block";
       }
     }
-
   });
 }
-// --- Estado del botón de usuario ---
-const loginBtn = document.getElementById("loginBtn");
-
-async function actualizarBotonUsuario() {
-  if (!loginBtn) return;
-
-  const { data: { session } } = await supabaseClient.auth.getSession();
-
-  if (session) {
-    loginBtn.textContent = "Mi Perfil";
-  } else {
-    loginBtn.textContent = "Entrar / Registrarse";
-  }
-}
-
-// Comprobar al cargar la página
-actualizarBotonUsuario();
-
-// Detectar automáticamente Login / Logout
+// Detectar Login / Logout automáticamente
 supabaseClient.auth.onAuthStateChange((event, session) => {
+  if (!loginBtn) return;
   if (session) {
     loginBtn.textContent = "Mi Perfil";
   } else {
