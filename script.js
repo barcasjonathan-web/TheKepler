@@ -321,13 +321,13 @@ if (loginBtn) {
         profilePanel.hidden = false;
         profilePanel.style.display = "block";
       }
+      cargarPerfil();
     } else {
       // Usuario no conectado → abrir Login
       if (loginModal) {
         loginModal.hidden = false;
         loginModal.style.display = "block";
       }
-      cargarPerfil();
     }
   });
 }
