@@ -291,6 +291,7 @@ closeButtons.forEach((button) => {
     // Cerrar Login
     if (loginModal) {
       loginModal.style.display = "none";
+      loginModal.hidden = true;
     }
 
     // Cerrar Perfil
@@ -307,5 +308,7 @@ const loginModal = document.getElementById("loginModal");
 if (loginBtn && loginModal) {
   loginBtn.addEventListener("click", () => {
     loginModal.hidden = false;
+    loginModal.style.display = "block";
   });
 }
+console.log("SCRIPT CARGADO");
