@@ -224,44 +224,14 @@ if (registerForm && loginForm) {
     }
   });
 
-  // Login
-  loginForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const email = document.getElementById("loginEmail").value;
-    const pass = document.getElementById("loginPassword").value;
-    const user = JSON.parse(localStorage.getItem(email));
-    if (user && user.password === pass) {
-      localStorage.setItem("sessionUser", email);
-      mostrarPerfil(user);
-    } else {
-      alert("Credenciales incorrectas");
-    }
-  });
-
-  // Mostrar perfil
-  function mostrarPerfil(user) {
-    loginModal.hidden = true;
-    profilePanel.hidden = false;
-    document.getElementById("profileName").textContent = user.name + " " + user.surname;
-    document.getElementById("profileEmail").textContent = user.email;
-  }
-
-  // Logout
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("sessionUser");
-    profilePanel.hidden = true;
-    loginModal.hidden = false;
-  });
-
-  // Detectar sesión activa al cargar
-  const email = localStorage.getItem("sessionUser");
-  if (email) {
-    const user = JSON.parse(localStorage.getItem(email));
-    if (user) mostrarPerfil(user);
-  }
-}
-
-
-
+  
 renderProducts(currentCategory);
 renderCart();
+  // --- Conexión con Supabase ---
+const SUPABASE_URL = "https://nsoiiuzuqstjmicotruf.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_8p928Sjxq2K7yhFscTx41w_ocI76h4i";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
