@@ -301,14 +301,55 @@ closeButtons.forEach((button) => {
 
   });
 });
-// --- Abrir ventana de Login ---
+// --- Botón Entrar / Perfil ---
 const loginBtn = document.getElementById("loginBtn");
 const loginModal = document.getElementById("loginModal");
+const profilePanel = document.getElementById("profilePanel");
 
-if (loginBtn && loginModal) {
-  loginBtn.addEventListener("click", () => {
-    loginModal.hidden = false;
-    loginModal.style.display = "block";
+if (loginBtn) {
+  loginBtn.addEventListener("click", async () => {
+
+    const { data: { session } } = await supabaseClient.auth.getSession();
+
+    if (session) {
+      // Usuario conectado → abrir Perfil
+      if (profilePanel) {
+        profilePanel.hidden = false;
+        profilePanel.style.display = "block";
+      }
+    } else {
+      // Usuario no conectado → abrir Login
+      if (loginModal) {
+        loginModal.hidden = false;
+        loginModal.style.display = "block";
+      }
+    }
+
   });
 }
-console.log("SCRIPT CARGADO");
+// --- Estado del botón de usuario ---
+const loginBtn = document.getElementById("loginBtn");
+
+async function actualizarBotonUsuario() {
+  if (!loginBtn) return;
+
+  const { data: { session } } = await supabaseClient.auth.getSession();
+
+  if (session) {
+    loginBtn.textContent = "Mi Perfil";
+  } else {
+    loginBtn.textContent = "Entrar / Registrarse";
+  }
+}
+
+// Comprobar al cargar la página
+actualizarBotonUsuario();
+
+// Detectar automáticamente Login / Logout
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  if (session) {
+    loginBtn.textContent = "Mi Perfil";
+  } else {
+    loginBtn.textContent = "Entrar / Registrarse";
+  }
+});
