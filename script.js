@@ -198,32 +198,6 @@ cancelReservation.addEventListener("click", () => {
   reservationForm.hidden = true;
   customerName.value = "";
 });
-
-// --- Login / Registro ---
-const registerForm = document.getElementById("registerForm");
-const loginForm = document.getElementById("loginForm");
-const profilePanel = document.getElementById("profilePanel");
-const loginModal = document.getElementById("loginModal");
-const logoutBtn = document.getElementById("logoutBtn");
-
-if (registerForm && loginForm) {
-  // Registro
-  registerForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const user = {
-      name: document.getElementById("regName").value,
-      surname: document.getElementById("regSurname").value,
-      email: document.getElementById("regEmail").value,
-      password: document.getElementById("regPassword").value
-    };
-    if (localStorage.getItem(user.email)) {
-      alert("Ese email ya está registrado");
-    } else {
-      localStorage.setItem(user.email, JSON.stringify(user));
-      alert("Usuario registrado correctamente");
-    }
-  });
-
   
 renderProducts(currentCategory);
 renderCart();
