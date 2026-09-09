@@ -339,3 +339,24 @@ supabaseClient.auth.onAuthStateChange((event, session) => {
     loginBtn.textContent = "Entrar / Registrarse";
   }
 });
+// --- Cerrar sesión ---
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
+    const { error } = await supabaseClient.auth.signOut();
+    if (error) {
+      alert("Error al cerrar sesión: " + error.message);
+      return;
+    }
+    // Cerrar el panel de perfil
+    if (profilePanel) {
+      profilePanel.style.display = "none";
+      profilePanel.hidden = true;
+    }
+    // Cambiar el botón a Entrar / Registrarse
+    if (loginBtn) {
+      loginBtn.textContent = "Entrar / Registrarse";
+    }
+    alert("Sesión cerrada correctamente");
+  });
+}
