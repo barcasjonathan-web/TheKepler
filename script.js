@@ -300,3 +300,12 @@ closeButtons.forEach((button) => {
 
   });
 });
+// --- Abrir ventana de Login ---
+const loginBtn = document.getElementById("loginBtn");
+const loginModal = document.getElementById("loginModal");
+
+if (loginBtn && loginModal) {
+  loginBtn.addEventListener("click", () => {
+    loginModal.hidden = false;
+  });
+}
