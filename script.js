@@ -209,6 +209,7 @@ const supabaseClient = supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
+alert("Cliente Supabase creado");
 // --- Registro con Supabase ---
 const registerForm = document.getElementById("registerForm");
 
