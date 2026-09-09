@@ -235,3 +235,35 @@ const supabaseClient = supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
+// --- Registro con Supabase ---
+const registerForm = document.getElementById("registerForm");
+
+if (registerForm) {
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("regName").value;
+    const surname = document.getElementById("regSurname").value;
+    const email = document.getElementById("regEmail").value;
+    const password = document.getElementById("regPassword").value;
+
+    const { error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          name: name,
+          surname: surname
+        }
+      }
+    });
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert("Registro realizado correctamente. Revisa tu correo para confirmar tu cuenta.");
+    registerForm.reset();
+  });
+}
