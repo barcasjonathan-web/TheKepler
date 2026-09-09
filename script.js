@@ -244,3 +244,27 @@ if (registerForm) {
     registerForm.reset();
   });
 }
+// --- Login con Supabase ---
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert("Inicio de sesión correcto");
+    console.log(data.user);
+  });
+}
