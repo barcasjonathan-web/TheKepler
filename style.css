@@ -4,7 +4,19 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff}
 a{text-decoration:none;color:inherit}
 /*===== Seccion=====*/
 /* Ventanas flotantes: modal y perfil */
-.modal,
+.modal {
+  position: fixed; /* centrado en pantalla */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 90%;
+  max-width: 380px;
+  padding: 60px 24px 24px; /* espacio arriba para la X */
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.25);
+  z-index: 1000;
+  position: relative; /* contexto para la X */
 .profile-panel {
   position: fixed;
   top: 50%;
