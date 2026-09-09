@@ -265,6 +265,38 @@ if (loginForm) {
     }
 
     alert("Inicio de sesión correcto");
-    console.log(data.user);
+
+    // Cerrar el panel de Login
+    const loginModal = document.getElementById("loginModal");
+
+    if (loginModal) {
+      loginModal.style.display = "none";
+    }
+
+    console.log("Usuario conectado:", data.user);
   });
 }
+
+
+// --- Botones X para cerrar paneles ---
+
+const closeButtons = document.querySelectorAll(".close");
+
+closeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+
+    const loginModal = document.getElementById("loginModal");
+    const profilePanel = document.getElementById("profilePanel");
+
+    // Cerrar Login
+    if (loginModal) {
+      loginModal.style.display = "none";
+    }
+
+    // Cerrar Perfil
+    if (profilePanel) {
+      profilePanel.hidden = true;
+    }
+
+  });
+});
