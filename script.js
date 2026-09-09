@@ -205,7 +205,9 @@ renderCart();
 const SUPABASE_URL = "https://nsoiiuzuqstjmicotruf.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_8p928Sjxq2K7yhFscTx41w_ocI76h4i";
 alert("Supabase está cargando");
-const supabaseClient = supabase.createClient(
+const { createClient } = supabase;
+
+const supabaseClient = createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
