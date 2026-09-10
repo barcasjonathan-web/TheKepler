@@ -86,7 +86,21 @@
 /* ================================
    BOTONES
    ================================ */
+#loginBtn {
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 
+#loginBtn:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
 .modal button,
 .profile-panel button {
   padding: 14px;
