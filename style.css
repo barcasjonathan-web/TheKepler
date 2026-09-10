@@ -228,11 +228,11 @@ a{text-decoration:none;color:inherit}
   align-items: center;
   overflow: hidden;
 }
-.camera-btn img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain;
-  display: block;
+.camera-btn img { 
+   width: 100% !important;
+   height: 100% !important;
+   object-fit: contain;
+   display: block;
    transform: translate(-1px, -1px);
 }
 
