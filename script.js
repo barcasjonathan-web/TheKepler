@@ -265,6 +265,7 @@ if (loginForm) {
     }
 
     alert("Inicio de sesión correcto");
+    actualizarBotonUsuario();
 
     // Cerrar el panel de Login
     const loginModal = document.getElementById("loginModal");
@@ -376,34 +377,27 @@ const logoutBtn = document.getElementById("logoutBtn");
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async function () {
-
     console.log("Botón Cerrar sesión pulsado");
-
     const { error } = await supabaseClient.auth.signOut();
-
     if (error) {
       console.error("Error al cerrar sesión:", error);
       alert("No se pudo cerrar sesión: " + error.message);
       return;
     }
-
     console.log("Sesión cerrada correctamente");
-
     // Cerrar panel de perfil
     const profilePanel = document.getElementById("profilePanel");
-
     if (profilePanel) {
       profilePanel.hidden = true;
       profilePanel.style.display = "none";
     }
-
     // Cambiar botón principal
     const loginBtn = document.getElementById("loginBtn");
-
     if (loginBtn) {
       loginBtn.textContent = "SESIÓN";
+      loginBtn.className = "";
+      loginBtn.style.background = "black";
     }
-
   });
 }
 // --- Cargar datos del perfil ---
@@ -432,6 +426,10 @@ async function cargarPerfil() {
   if (profileEmail) {
     profileEmail.textContent = "Email: " + user.email;
   }
+  const profilePic = document.getElementById("profilePic");
+  if (profilePic && user.user_metadata.avatar_url) {
+    profilePic.src = user.user_metadata.avatar_url + "?t=" + Date.now();
+  }
 }
 // --- Cambiar foto de perfil ---
 const changePhotoBtn = document.getElementById("changePhotoBtn");
@@ -444,9 +442,7 @@ if (changePhotoBtn && profilePhotoInput) {
   });
 }
 async function subirFotoPerfil(file) {
-
   if (!file) return;
-
   // Solo JPG y PNG
   if (
     file.type !== "image/jpeg" &&
@@ -455,34 +451,25 @@ async function subirFotoPerfil(file) {
     alert("Solo puedes utilizar imágenes JPG o PNG.");
     return;
   }
-
   // Obtener usuario
   const { data: { user }, error: userError } =
     await supabaseClient.auth.getUser();
-
   if (userError || !user) {
     alert("Debes iniciar sesión para cambiar tu foto.");
     return;
   }
-
   // Crear imagen
   const img = new Image();
-
   img.onload = async () => {
-
     // Crear canvas de 100x100
     const canvas = document.createElement("canvas");
-    canvas.width = 100;
+    canvas.width = 100;    
     canvas.height = 100;
-
     const ctx = canvas.getContext("2d");
-
     // Mantener proporción y recortar al centro
     const size = Math.min(img.width, img.height);
-
     const sx = (img.width - size) / 2;
     const sy = (img.height - size) / 2;
-
     ctx.drawImage(
       img,
       sx,
@@ -494,18 +481,14 @@ async function subirFotoPerfil(file) {
       100,
       100
     );
-
     // Convertir a JPG comprimido
     canvas.toBlob(async (blob) => {
-
       if (!blob) {
         alert("No se pudo procesar la imagen.");
         return;
       }
-
       // Nombre único para cada usuario
       const fileName = user.id + ".jpg";
-
       // Subir imagen redimensionada
       const { error: uploadError } =
         await supabaseClient.storage
@@ -514,43 +497,43 @@ async function subirFotoPerfil(file) {
             upsert: true,
             contentType: "image/jpeg"
           });
-
       if (uploadError) {
         console.error("Error al subir la foto:", uploadError);
-
         alert(
           "No se pudo subir la foto: " +
           uploadError.message
         );
-
         return;
       }
-
       // Obtener URL pública
       const { data: publicUrlData } =
         supabaseClient.storage
           .from("avatars")
           .getPublicUrl(fileName);
-
       const photoUrl = publicUrlData.publicUrl;
-
       // Mostrar foto nueva
       if (profilePic) {
         profilePic.src = photoUrl + "?t=" + Date.now();
       }
-
+      // Guardar la foto en el usuario
+      const { error: updateError } =
+        await supabaseClient.auth.updateUser({
+          data: {
+            avatar_url: photoUrl
+          }
+        });
+      if (updateError) {
+        console.error("Error guardando avatar:", updateError);
+      }
+      actualizarBotonUsuario();
       alert("Foto de perfil actualizada correctamente.");
-
     }, "image/jpeg", 0.85);
-
     // Liberar memoria
     URL.revokeObjectURL(img.src);
   };
-
   img.onerror = () => {
     alert("No se pudo procesar la imagen.");
   };
-
   // Cargar archivo seleccionado
   img.src = URL.createObjectURL(file);
 }
