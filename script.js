@@ -403,3 +403,69 @@ async function cargarPerfil() {
     profileEmail.textContent = "Email: " + user.email;
   }
 }
+// --- Cambiar foto de perfil ---
+
+const changePhotoBtn = document.getElementById("changePhotoBtn");
+const profilePhotoInput = document.getElementById("profilePhotoInput");
+const profilePic = document.getElementById("profilePic");
+
+if (changePhotoBtn && profilePhotoInput) {
+
+  changePhotoBtn.addEventListener("click", () => {
+    profilePhotoInput.click();
+  });
+
+  profilePhotoInput.addEventListener("change", async () => {
+
+    const file = profilePhotoInput.files[0];
+
+    if (!file) return;
+
+    // Comprobar que sea una imagen
+    if (!file.type.startsWith("image/")) {
+      alert("Por favor, selecciona una imagen.");
+      return;
+    }
+
+    // Obtener usuario conectado
+    const { data: { user }, error: userError } =
+      await supabaseClient.auth.getUser();
+
+    if (userError || !user) {
+      alert("Debes iniciar sesión para cambiar tu foto.");
+      return;
+    }
+
+    // Nombre único para la imagen
+    const fileExt = file.name.split(".").pop();
+    const fileName = user.id + "." + fileExt;
+
+    // Subir la imagen a Supabase Storage
+    const { error: uploadError } = await supabaseClient.storage
+      .from("avatars")
+      .upload(fileName, file, {
+        upsert: true
+      });
+
+    if (uploadError) {
+      console.error("Error al subir la foto:", uploadError);
+      alert("No se pudo subir la foto: " + uploadError.message);
+      return;
+    }
+
+    // Obtener URL pública
+    const { data: publicUrlData } = supabaseClient.storage
+      .from("avatars")
+      .getPublicUrl(fileName);
+
+    const photoUrl = publicUrlData.publicUrl;
+
+    // Mostrar la nueva foto inmediatamente
+    if (profilePic) {
+      profilePic.src = photoUrl + "?t=" + Date.now();
+    }
+
+    alert("Foto de perfil actualizada correctamente.");
+  });
+
+}
