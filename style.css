@@ -220,6 +220,10 @@ a{text-decoration:none;color:inherit}
   border-radius: 50%;
   border: 3px solid white;
   background-color: black;
+   background-image: url("img/cameraperfil.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75%;
   padding: 0 !important;
   margin: 0 !important;
   cursor: pointer;
@@ -227,14 +231,6 @@ a{text-decoration:none;color:inherit}
   justify-content: center;
   align-items: center;
   overflow: hidden;
-}
-.camera-btn img { 
-   width: 100% !important;
-   height: 100% !important;
-   object-fit: cover;
-   object-position: center;
-   display: block;
-   transform: translate(-5px, 2px);
 }
 
 /* ================================
