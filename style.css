@@ -229,8 +229,8 @@ a{text-decoration:none;color:inherit}
   overflow: hidden;
 }
 .camera-btn img {
-  width: 150% !important;
-  height: 150% !important;
+  width: 120% !important;
+  height: 120% !important;
   object-fit: contain;
   display: block;
 }
