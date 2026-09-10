@@ -410,7 +410,11 @@ async function cargarPerfil() {
 
   const nombre = user.user_metadata.name || "";
   const apellido = user.user_metadata.surname || "";
-
+  const profileAvatar = document.getElementById("profileAvatar");
+  if (profileAvatar) {
+    const inicial = nombre.charAt(0).toUpperCase();
+    profileAvatar.textContent = inicial;
+  }
   const profileName = document.getElementById("profileName");
   const profileSurname = document.getElementById("profileSurname");
   const profileEmail = document.getElementById("profileEmail");
