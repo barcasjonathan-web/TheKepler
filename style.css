@@ -219,12 +219,13 @@ a{text-decoration:none;color:inherit}
   height: 35px;
   border-radius: 50%;
   border: 3px solid white;
-  background: black;
+  background-color: #000 !important;
   padding: 5px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+   overflow: hidden;
 }
 .camera-btn img {
   width: 100%;
