@@ -220,7 +220,7 @@ a{text-decoration:none;color:inherit}
   border-radius: 50%;
   border: 3px solid white;
   background-color: #000 !important;
-  padding: 5px;
+  padding: 0px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -228,9 +228,10 @@ a{text-decoration:none;color:inherit}
    overflow: hidden;
 }
 .camera-btn img {
-  width: 250%;
-  height: 250%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
+   display: block;
 }
 
 
