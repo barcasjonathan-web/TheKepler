@@ -233,7 +233,7 @@ a{text-decoration:none;color:inherit}
    height: 100% !important;
    object-fit: contain;
    display: block;
-   transform: translate(-1px, -1px);
+   transform: translate(5px, -1px);
 }
 
 /* ================================
