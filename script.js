@@ -306,7 +306,7 @@ async function actualizarBotonUsuario() {
   if (session) {
     loginBtn.textContent = "Mi Perfil";
   } else {
-    loginBtn.textContent = "Entrar / Registrarse";
+    loginBtn.textContent = "SESIÓN";
   }
 }
 // Comprobar sesión al cargar la página
