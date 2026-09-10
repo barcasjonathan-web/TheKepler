@@ -84,8 +84,23 @@
   <button class="close">✕</button>
   <h2>Mi Perfil</h2>
   <img id="profilePic" src="img/default-avatar.png" alt="Foto de perfil">
-  <input type="file" id="profilePhotoInput" accept="image/*" hidden>
   <button id="changePhotoBtn">Cambiar foto</button>
+
+<div id="photoOptions" hidden>
+  <button id="selectPhotoBtn">📁 Seleccionar archivo</button>
+  <button id="cameraPhotoBtn">📷 Abrir cámara</button>
+</div>
+<input
+  type="file"
+  id="profilePhotoInput"
+  accept="image/png,image/jpeg"
+  hidden>
+<input
+  type="file"
+  id="cameraPhotoInput"
+  accept="image/png,image/jpeg"
+  capture="user"
+  hidden>
   <p id="profileName"></p>
   <p id="profileSurname"></p>
   <p id="profileEmail"></p>
