@@ -362,12 +362,7 @@ if (loginBtn) {
 }
 // Detectar Login / Logout automáticamente
 supabaseClient.auth.onAuthStateChange((event, session) => {
-  if (!loginBtn) return;
-  if (session) {
-    loginBtn.textContent = "Mi Perfil";
-  } else {
-    loginBtn.textContent = "Entrar / Registrarse";
-  }
+  actualizarBotonUsuario();
 });
 // --- CERRAR SESIÓN ---
 
