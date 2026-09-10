@@ -412,8 +412,18 @@ async function cargarPerfil() {
   const apellido = user.user_metadata.surname || "";
   const profileAvatar = document.getElementById("profileAvatar");
   if (profileAvatar) {
+    const avatarUrl = user.user_metadata.avatar_url;
+
+  if (avatarUrl) {
+    profileAvatar.innerHTML =
+      `<img src="${avatarUrl}?t=${Date.now()}" alt="Foto de perfil">`;
+  } else {
     const inicial = nombre.charAt(0).toUpperCase();
+
+    profileAvatar.innerHTML = "";
     profileAvatar.textContent = inicial;
+  }
+
   }
   const profileName = document.getElementById("profileName");
   const profileSurname = document.getElementById("profileSurname");
@@ -517,7 +527,8 @@ async function subirFotoPerfil(file) {
       const photoUrl = publicUrlData.publicUrl;
       // Mostrar foto nueva
       if (profilePic) {
-        profilePic.src = photoUrl + "?t=" + Date.now();
+        profileAvatar.innerHTML =
+          `<img src="${photoUrl}?t=${Date.now()}" alt="Foto de perfil">`;
       }
       // Guardar la foto en el usuario
       const { error: updateError } =
