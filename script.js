@@ -371,7 +371,7 @@ if (logoutBtn) {
     const loginBtn = document.getElementById("loginBtn");
 
     if (loginBtn) {
-      loginBtn.textContent = "Entrar / Registrarse";
+      loginBtn.textContent = "SESIÓN";
     }
 
   });
