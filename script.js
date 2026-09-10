@@ -305,28 +305,26 @@ async function actualizarBotonUsuario() {
   if (!loginBtn) return;
   const { data: { session } } =
     await supabaseClient.auth.getSession();
-  // Usuario no conectado
   if (!session) {
     loginBtn.textContent = "SESIÓN";
     loginBtn.className = "";
     loginBtn.style.background = "black";
+    loginBtn.innerHTML = "SESIÓN";
     return;
   }
-  // Usuario conectado
   const user = session.user;
   const nombre =
     user.user_metadata.name || "Usuario";
   const inicial =
     nombre.charAt(0).toUpperCase();
-  // Convertir botón en avatar
-  loginBtn.textContent = "";
+  const avatarUrl =
+    user.user_metadata.avatar_url;
   loginBtn.className = "user-avatar";
-  // Si tiene foto guardada
-  if (user.user_metadata.avatar_url) {
+  loginBtn.textContent = "";
+  if (avatarUrl) {
     loginBtn.innerHTML =
-    `<img src="${user.user_metadata.avatar_url}">`;
+      `<img src="${avatarUrl}?t=${Date.now()}" alt="Foto de perfil">`;
   } else {
-    // Si no tiene foto
     const colores = [
       "#3498db",
       "#9b59b6",
@@ -335,7 +333,7 @@ async function actualizarBotonUsuario() {
       "#e74c3c"
     ];
     const color =
-    colores[Math.floor(Math.random() * colores.length)];
+      colores[Math.floor(Math.random() * colores.length)];
     loginBtn.style.background = color;
     loginBtn.textContent = inicial;
   }
