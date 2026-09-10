@@ -228,8 +228,8 @@ a{text-decoration:none;color:inherit}
    overflow: hidden;
 }
 .camera-btn img {
-  width: 120%;
-  height: 120%;
+  width: 50%;
+  height: 50%;
   object-fit: contain;
    display: block;
    transform: translateY(2px);
