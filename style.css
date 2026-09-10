@@ -219,7 +219,7 @@ a{text-decoration:none;color:inherit}
   height: 35px;
   border-radius: 50%;
   border: 3px solid white;
-  background: white;
+  background: black;
   padding: 5px;
   cursor: pointer;
   display: flex;
