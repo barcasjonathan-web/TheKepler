@@ -413,9 +413,10 @@ if (changePhotoBtn && profilePhotoInput) {
     profilePhotoInput.click();
   });
 }
-// Función para subir la foto
 async function subirFotoPerfil(file) {
+
   if (!file) return;
+
   // Solo JPG y PNG
   if (
     file.type !== "image/jpeg" &&
@@ -424,42 +425,104 @@ async function subirFotoPerfil(file) {
     alert("Solo puedes utilizar imágenes JPG o PNG.");
     return;
   }
-  // Obtener usuario conectado
+
+  // Obtener usuario
   const { data: { user }, error: userError } =
     await supabaseClient.auth.getUser();
+
   if (userError || !user) {
     alert("Debes iniciar sesión para cambiar tu foto.");
     return;
   }
-  // Nombre del archivo
-  const fileName = user.id + ".jpg";
-  // Subir a Supabase Storage
-  const { error: uploadError } =
-    await supabaseClient.storage
-      .from("avatars")
-      .upload(fileName, file, {
-        upsert: true,
-        contentType: file.type
-      });
-  if (uploadError) {
-    console.error("Error al subir la foto:", uploadError);
-    alert(
-      "No se pudo subir la foto: " +
-      uploadError.message
+
+  // Crear imagen
+  const img = new Image();
+
+  img.onload = async () => {
+
+    // Crear canvas de 100x100
+    const canvas = document.createElement("canvas");
+    canvas.width = 100;
+    canvas.height = 100;
+
+    const ctx = canvas.getContext("2d");
+
+    // Mantener proporción y recortar al centro
+    const size = Math.min(img.width, img.height);
+
+    const sx = (img.width - size) / 2;
+    const sy = (img.height - size) / 2;
+
+    ctx.drawImage(
+      img,
+      sx,
+      sy,
+      size,
+      size,
+      0,
+      0,
+      100,
+      100
     );
-    return;
-  }
-  // URL pública
-  const { data: publicUrlData } =
-    supabaseClient.storage
-      .from("avatars")
-      .getPublicUrl(fileName);
-  const photoUrl = publicUrlData.publicUrl;
-  // Mostrar la nueva foto
-  if (profilePic) {
-    profilePic.src = photoUrl + "?t=" + Date.now();
-  }
-  alert("Foto de perfil actualizada correctamente.");
+
+    // Convertir a JPG comprimido
+    canvas.toBlob(async (blob) => {
+
+      if (!blob) {
+        alert("No se pudo procesar la imagen.");
+        return;
+      }
+
+      // Nombre único para cada usuario
+      const fileName = user.id + ".jpg";
+
+      // Subir imagen redimensionada
+      const { error: uploadError } =
+        await supabaseClient.storage
+          .from("avatars")
+          .upload(fileName, blob, {
+            upsert: true,
+            contentType: "image/jpeg"
+          });
+
+      if (uploadError) {
+        console.error("Error al subir la foto:", uploadError);
+
+        alert(
+          "No se pudo subir la foto: " +
+          uploadError.message
+        );
+
+        return;
+      }
+
+      // Obtener URL pública
+      const { data: publicUrlData } =
+        supabaseClient.storage
+          .from("avatars")
+          .getPublicUrl(fileName);
+
+      const photoUrl = publicUrlData.publicUrl;
+
+      // Mostrar foto nueva
+      if (profilePic) {
+        profilePic.src = photoUrl + "?t=" + Date.now();
+      }
+
+      alert("Foto de perfil actualizada correctamente.");
+
+    }, "image/jpeg", 0.85);
+
+    // Liberar memoria
+    URL.revokeObjectURL(img.src);
+  };
+
+  img.onerror = () => {
+    alert("No se pudo procesar la imagen.");
+  };
+
+  // Cargar archivo seleccionado
+  img.src = URL.createObjectURL(file);
 }
 // Cuando selecciona un archivo
 if (profilePhotoInput) {
