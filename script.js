@@ -404,61 +404,19 @@ async function cargarPerfil() {
   }
 }
 // --- Cambiar foto de perfil ---
-
 const changePhotoBtn = document.getElementById("changePhotoBtn");
-const photoOptions = document.getElementById("photoOptions");
-
-const selectPhotoBtn = document.getElementById("selectPhotoBtn");
-const cameraPhotoBtn = document.getElementById("cameraPhotoBtn");
-
 const profilePhotoInput = document.getElementById("profilePhotoInput");
-const cameraPhotoInput = document.getElementById("cameraPhotoInput");
-
 const profilePic = document.getElementById("profilePic");
-
-
-// Abrir opciones al pulsar "Cambiar foto"
-if (changePhotoBtn && photoOptions) {
-
+// Abrir selector de archivos
+if (changePhotoBtn && profilePhotoInput) {
   changePhotoBtn.addEventListener("click", () => {
-
-    if (photoOptions.hidden) {
-      photoOptions.hidden = false;
-    } else {
-      photoOptions.hidden = true;
-    }
-
-  });
-
-}
-
-
-// Seleccionar archivo
-if (selectPhotoBtn && profilePhotoInput) {
-
-  selectPhotoBtn.addEventListener("click", () => {
     profilePhotoInput.click();
   });
-
 }
-
-
-// Abrir cámara
-if (cameraPhotoBtn && cameraPhotoInput) {
-
-  cameraPhotoBtn.addEventListener("click", () => {
-    cameraPhotoInput.click();
-  });
-
-}
-
-
 // Función para subir la foto
 async function subirFotoPerfil(file) {
-
   if (!file) return;
-
-  // Comprobar formato
+  // Solo JPG y PNG
   if (
     file.type !== "image/jpeg" &&
     file.type !== "image/png"
@@ -466,20 +424,16 @@ async function subirFotoPerfil(file) {
     alert("Solo puedes utilizar imágenes JPG o PNG.");
     return;
   }
-
   // Obtener usuario conectado
   const { data: { user }, error: userError } =
     await supabaseClient.auth.getUser();
-
   if (userError || !user) {
     alert("Debes iniciar sesión para cambiar tu foto.");
     return;
   }
-
-  // Guardar siempre con el mismo nombre
+  // Nombre del archivo
   const fileName = user.id + ".jpg";
-
-  // Subir a Supabase
+  // Subir a Supabase Storage
   const { error: uploadError } =
     await supabaseClient.storage
       .from("avatars")
@@ -487,71 +441,30 @@ async function subirFotoPerfil(file) {
         upsert: true,
         contentType: file.type
       });
-
   if (uploadError) {
-
     console.error("Error al subir la foto:", uploadError);
-
     alert(
       "No se pudo subir la foto: " +
       uploadError.message
     );
-
     return;
   }
-
-  // Obtener URL pública
+  // URL pública
   const { data: publicUrlData } =
     supabaseClient.storage
       .from("avatars")
       .getPublicUrl(fileName);
-
   const photoUrl = publicUrlData.publicUrl;
-
-  // Mostrar inmediatamente la nueva foto
+  // Mostrar la nueva foto
   if (profilePic) {
     profilePic.src = photoUrl + "?t=" + Date.now();
   }
-
-  // Ocultar opciones
-  if (photoOptions) {
-    photoOptions.hidden = true;
-  }
-
   alert("Foto de perfil actualizada correctamente.");
-
 }
-
-
 // Cuando selecciona un archivo
 if (profilePhotoInput) {
-
   profilePhotoInput.addEventListener("change", async () => {
-
     const file = profilePhotoInput.files[0];
-
     await subirFotoPerfil(file);
-
-    // Permitir seleccionar el mismo archivo otra vez
-    profilePhotoInput.value = "";
-
-  });
-
-}
-
-
-// Cuando toma una foto con la cámara
-if (cameraPhotoInput) {
-
-  cameraPhotoInput.addEventListener("change", async () => {
-
-    const file = cameraPhotoInput.files[0];
-
-    await subirFotoPerfil(file);
-
-    // Permitir tomar otra foto posteriormente
-    cameraPhotoInput.value = "";
-
-  });
-
+    profilePhotoInput.value = "";  });
 }
