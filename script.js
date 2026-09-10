@@ -406,66 +406,152 @@ async function cargarPerfil() {
 // --- Cambiar foto de perfil ---
 
 const changePhotoBtn = document.getElementById("changePhotoBtn");
+const photoOptions = document.getElementById("photoOptions");
+
+const selectPhotoBtn = document.getElementById("selectPhotoBtn");
+const cameraPhotoBtn = document.getElementById("cameraPhotoBtn");
+
 const profilePhotoInput = document.getElementById("profilePhotoInput");
+const cameraPhotoInput = document.getElementById("cameraPhotoInput");
+
 const profilePic = document.getElementById("profilePic");
 
-if (changePhotoBtn && profilePhotoInput) {
+
+// Abrir opciones al pulsar "Cambiar foto"
+if (changePhotoBtn && photoOptions) {
 
   changePhotoBtn.addEventListener("click", () => {
+
+    if (photoOptions.hidden) {
+      photoOptions.hidden = false;
+    } else {
+      photoOptions.hidden = true;
+    }
+
+  });
+
+}
+
+
+// Seleccionar archivo
+if (selectPhotoBtn && profilePhotoInput) {
+
+  selectPhotoBtn.addEventListener("click", () => {
     profilePhotoInput.click();
   });
+
+}
+
+
+// Abrir cámara
+if (cameraPhotoBtn && cameraPhotoInput) {
+
+  cameraPhotoBtn.addEventListener("click", () => {
+    cameraPhotoInput.click();
+  });
+
+}
+
+
+// Función para subir la foto
+async function subirFotoPerfil(file) {
+
+  if (!file) return;
+
+  // Comprobar formato
+  if (
+    file.type !== "image/jpeg" &&
+    file.type !== "image/png"
+  ) {
+    alert("Solo puedes utilizar imágenes JPG o PNG.");
+    return;
+  }
+
+  // Obtener usuario conectado
+  const { data: { user }, error: userError } =
+    await supabaseClient.auth.getUser();
+
+  if (userError || !user) {
+    alert("Debes iniciar sesión para cambiar tu foto.");
+    return;
+  }
+
+  // Guardar siempre con el mismo nombre
+  const fileName = user.id + ".jpg";
+
+  // Subir a Supabase
+  const { error: uploadError } =
+    await supabaseClient.storage
+      .from("avatars")
+      .upload(fileName, file, {
+        upsert: true,
+        contentType: file.type
+      });
+
+  if (uploadError) {
+
+    console.error("Error al subir la foto:", uploadError);
+
+    alert(
+      "No se pudo subir la foto: " +
+      uploadError.message
+    );
+
+    return;
+  }
+
+  // Obtener URL pública
+  const { data: publicUrlData } =
+    supabaseClient.storage
+      .from("avatars")
+      .getPublicUrl(fileName);
+
+  const photoUrl = publicUrlData.publicUrl;
+
+  // Mostrar inmediatamente la nueva foto
+  if (profilePic) {
+    profilePic.src = photoUrl + "?t=" + Date.now();
+  }
+
+  // Ocultar opciones
+  if (photoOptions) {
+    photoOptions.hidden = true;
+  }
+
+  alert("Foto de perfil actualizada correctamente.");
+
+}
+
+
+// Cuando selecciona un archivo
+if (profilePhotoInput) {
 
   profilePhotoInput.addEventListener("change", async () => {
 
     const file = profilePhotoInput.files[0];
 
-    if (!file) return;
+    await subirFotoPerfil(file);
 
-    // Comprobar que sea una imagen
-    if (!file.type.startsWith("image/")) {
-      alert("Por favor, selecciona una imagen.");
-      return;
-    }
+    // Permitir seleccionar el mismo archivo otra vez
+    profilePhotoInput.value = "";
 
-    // Obtener usuario conectado
-    const { data: { user }, error: userError } =
-      await supabaseClient.auth.getUser();
+  });
 
-    if (userError || !user) {
-      alert("Debes iniciar sesión para cambiar tu foto.");
-      return;
-    }
+}
 
-    // Nombre único para la imagen
-    const fileExt = file.name.split(".").pop();
-    const fileName = user.id + "." + fileExt;
 
-    // Subir la imagen a Supabase Storage
-    const { error: uploadError } = await supabaseClient.storage
-      .from("avatars")
-      .upload(fileName, file, {
-        upsert: true
-      });
+// Cuando toma una foto con la cámara
+if (cameraPhotoInput) {
 
-    if (uploadError) {
-      console.error("Error al subir la foto:", uploadError);
-      alert("No se pudo subir la foto: " + uploadError.message);
-      return;
-    }
+  cameraPhotoInput.addEventListener("change", async () => {
 
-    // Obtener URL pública
-    const { data: publicUrlData } = supabaseClient.storage
-      .from("avatars")
-      .getPublicUrl(fileName);
+    const file = cameraPhotoInput.files[0];
 
-    const photoUrl = publicUrlData.publicUrl;
+    await subirFotoPerfil(file);
 
-    // Mostrar la nueva foto inmediatamente
-    if (profilePic) {
-      profilePic.src = photoUrl + "?t=" + Date.now();
-    }
+    // Permitir tomar otra foto posteriormente
+    cameraPhotoInput.value = "";
 
-    alert("Foto de perfil actualizada correctamente.");
   });
 
 }
