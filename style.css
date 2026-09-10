@@ -231,7 +231,8 @@ a{text-decoration:none;color:inherit}
 .camera-btn img { 
    width: 100% !important;
    height: 100% !important;
-   object-fit: contain;
+   object-fit: cover;
+   object-position: center;
    display: block;
    transform: translate(-5px, 2px);
 }
