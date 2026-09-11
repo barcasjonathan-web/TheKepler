@@ -316,33 +316,37 @@ if (categoryFilter) {
     renderCart();               // refresca el carrito si hace falta
   });
 }
-function addToCart(id, quantity = 1, color = null, size = null) {
+ function addToCart(id, quantity = 1, color = null, size = null) {
   const product = products.find(p => p.id === Number(id));
   if (!product) return;
-  // Buscar si ya existe exactamente la misma combinación
-  // de producto + color + talla
+  // Buscar la misma combinación de producto + color + talla
   const existing = cart.find(item =>
     item.id === product.id &&
-    item.color === color &&
-    item.size === size );
+    (item.color || null) === color &&
+    (item.size || null) === size
+  );
   if (existing) {
+    // Si ya existe, aumentar su cantidad
     existing.qty += quantity;
   } else {
+    // Si no existe, crear una nueva línea
     const newItem = {
       id: product.id,
       name: product.name,
       qty: quantity,
-      price: product.price };
-    // Solo guardar color si existe
+      price: product.price
+    };
     if (color) {
-      newItem.color = color; }
-    // Solo guardar talla si existe
+      newItem.color = color;
+    }
     if (size) {
-      newItem.size = size; }
-    cart.push(newItem); }
+      newItem.size = size;
+    }
+    cart.push(newItem);
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
-}
+ }
 
 function removeFromCart(id, color = null, size = null) {
   const item = cart.find(item =>
@@ -351,17 +355,15 @@ function removeFromCart(id, color = null, size = null) {
     (item.size || null) === size
   );
   if (!item) return;
-  // Si hay más de una unidad, quitar solo una
-  if (item.qty > 1) {
-    item.qty -= 1;
-  } else {
-    // Si solo queda una, eliminar la línea completa
+  // Quitar solamente una unidad
+  item.qty -= 1;
+  // Si llega a 0, eliminar esa línea
+  if (item.qty <= 0) {
     cart = cart.filter(cartItem =>
       !(
         cartItem.id === Number(id) &&
         (cartItem.color || null) === color &&
-        (cartItem.size || null) === size
-      )  ); }
+        (cartItem.size || null) === size    )    );  }
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
