@@ -148,9 +148,15 @@ a{text-decoration:none;color:inherit}
   font-size: 18px;
   font-weight: 600;}
 .quantity-limit-message {
-  margin: 8px 0 0;
+  margin: 0 0 8px;
   font-size: 13px;
-  color: #666;}
+  color: #666;
+font-weight: 500;}
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;}
+
 
 /* Ventanas flotantes: modal y perfil */
 /* ================================
