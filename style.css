@@ -40,8 +40,7 @@ a{text-decoration:none;color:inherit}
   cursor: pointer;
   z-index: 2;}
 .product-modal-close:hover {
-  opacity: 0.8;
-}
+  opacity: 0.8;}
 .product-detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -97,6 +96,31 @@ a{text-decoration:none;color:inherit}
   height: 100%;
   object-fit: cover;
   display: block;}
+.product-option {
+  margin-top: 20px;}
+.product-option h3 {
+  margin-bottom: 10px;}
+.color-options,
+.size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;}
+.color-option,
+.size-option {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  color: black;
+  cursor: pointer;}
+.color-option.selected,
+.size-option.selected {
+  background: black;
+  color: white;
+  border-color: black;}
+.color-option:hover,
+.size-option:hover {
+  border-color: black;}
 
 /* Ventanas flotantes: modal y perfil */
 /* ================================
