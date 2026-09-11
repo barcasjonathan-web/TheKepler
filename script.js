@@ -4,7 +4,7 @@ const products = [
   
   { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatos01.jpg",
   description: "Zapatillas Urban de estilo moderno, cómodas y perfectas para el uso diario."},
-  
+
   { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera01.jpg",
   description: "Sudadera Classic cómoda y versátil, perfecta para combinar con cualquier estilo."},
   
@@ -15,7 +15,11 @@ const products = [
   description: "Cojín decorativo cómodo y elegante para cualquier espacio del hogar."},
   
   { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg",
-  description: "Bolso Essential práctico y versátil para acompañarte todos los días."}
+  description: "Bolso Essential práctico y versátil para acompañarte todos los días."},
+
+  { id: 7, name: "Zapatillas Kepler", category: "Calzado", price: 50.90, image: "products/zapataillakepler.png",
+  description: "Zapatillas Kepler de estilo moderno, unico, cómodas, lo ultimo en calzado"},
+  
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
