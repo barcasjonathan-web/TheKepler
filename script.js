@@ -1,10 +1,21 @@
 const products = [
-  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta01.jpg" },
-  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatos01.jpg" },
-  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera01.jpg" },
-  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "img/lampara01.jpg" },
-  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "img/cojin01.jpg" },
-  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg" }
+  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta01.jpg",
+  description: "Camiseta Kepler de diseño moderno y cómodo para el día a día."},
+  
+  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatos01.jpg",
+  description: "Zapatillas Urban de estilo moderno, cómodas y perfectas para el uso diario."},
+  
+  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera01.jpg",
+  description: "Sudadera Classic cómoda y versátil, perfecta para combinar con cualquier estilo."},
+  
+  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "img/lampara01.jpg",
+  description: "Lámpara de diseño minimalista para darle un toque moderno a tu hogar."},
+  
+  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "img/cojin01.jpg",
+  description: "Cojín decorativo cómodo y elegante para cualquier espacio del hogar."},
+  
+  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg",
+  description: "Bolso Essential práctico y versátil para acompañarte todos los días."}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -88,9 +99,7 @@ function abrirProducto(productId) {
           ★★★★★
         </div>
         <h3>Descripción</h3>
-        <p>
-          Descubre todos los detalles de este producto.
-        </p>
+        <p> ${product.description}</p>
       </div>
     </div>
   `;
