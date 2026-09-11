@@ -53,8 +53,6 @@ const products = [
   "products/zapataillakepler03.png",
   "products/zapataillakepler04.png",
   "products/zapataillakepler05.png"],
-   colors: ["Negro", "Blanco", "Gris"],
-   sizes: ["39", "40", "41", "42", "43", "44"],
   variants: [
   { color: "Blanco", size: "40", stock: 2 },
   { color: "Negro", size: "39", stock: 2 },
@@ -155,7 +153,6 @@ function abrirProducto(productId) {
   </div>
   <div class="product-detail-info">
   <span class="category">
-
   ${product.category}</span>
   <h2>${product.name}</h2>
   <div class="product-detail-price">
@@ -166,23 +163,59 @@ function abrirProducto(productId) {
   </div>
   <h3>Descripción</h3>
   <p>${product.description}</p>
- ${product.category}</span>
-<h2>${product.name}</h2>
-<div class="product-detail-price">
-${money(product.price)}
-</div>
-<div class="product-detail-rating">
-★★★★★
-</div>
-<h3>Descripción</h3>
-<p>${product.description}</p>
 // AQUÍ va el nuevo bloque de variants
-<div class="product-option quantity-option">
-  ...
+${product.variants && product.variants.length > 0 ? `
+
+<div class="product-option">
+
+  <h3>Color</h3>
+
+  <div class="color-options">
+
+    ${[...new Set(product.variants
+      .filter(v => v.color)
+      .map(v => v.color)
+    )]
+    .map((color, index) => `
+
+      <button
+      class="color-option ${index === 0 ? "selected" : ""}"
+      data-color="${color}">
+        ${color}
+      </button>
+
+    `).join("")}
+
+  </div>
+
 </div>
-<button type="button" class="add-product-to-cart">
-  Añadir al carrito
-</button>
+
+
+<div class="product-option">
+
+  <h3>Talla</h3>
+
+  <div class="size-options">
+
+    ${[...new Set(product.variants
+      .filter(v => v.size)
+      .map(v => v.size)
+    )]
+    .map((size, index) => `
+
+      <button
+      class="size-option ${index === 0 ? "selected" : ""}"
+      data-size="${size}">
+        ${size}
+      </button>
+
+    `).join("")}
+
+  </div>
+
+</div>
+
+` : ""}
 <div class="product-option quantity-option">
 <h3>Cantidad</h3>
 <div class="quantity-control">
@@ -213,17 +246,9 @@ function actualizarLimiteCantidad() {
   const size =
     productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
   let stockDisponible = currentProduct.stock || 0;
-  if (currentProduct.variantStock) {
-    let key;
-    if (color && size) {
-      key = `${color}-${size}`;
-    } else if (color) {
-      key = color;
-    } else if (size) {
-      key = size;    }
-    stockDisponible = key
-      ? (currentProduct.variantStock[key] || 0)
-      : 0;  }
+
+  
+  
   const yaEnCarrito = cart
     .filter(item =>
       item.id === currentProduct.id &&
@@ -358,34 +383,10 @@ if (productModalBody) {
     if (minusButton) {
       quantity = Math.max(1, quantity - 1);    }
     if (plusButton) {
-      const color =
-        productModalBody.querySelector(".color-option.selected")?.dataset.color || null;
-      const size =
-        productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
-      let stockDisponible = currentProduct.stock || 0;
-      if (currentProduct.variantStock) {
-        let key;
-        if (color && size) {
-          key = `${color}-${size}`;
-        } else if (color) {
-          key = color;
-        } else if (size) {
-          key = size;        }
-        stockDisponible = key
-          ? (currentProduct.variantStock[key] || 0)
-          : 0;
+      if (quantity < 10) {
+    quantity++;
       }
-      const yaEnCarrito = cart
-        .filter(item =>
-          item.id === currentProduct.id &&
-          (item.color || null) === color &&
-          (item.size || null) === size
-        )
-        .reduce((sum, item) => sum + item.qty, 0);
-      const disponible =
-        Math.max(0, stockDisponible - yaEnCarrito);
-      if (quantity < disponible) {
-        quantity++;      }    }
+    }
     quantityValue.textContent = quantity;
     actualizarLimiteCantidad();
   });
@@ -439,14 +440,6 @@ grid.addEventListener("click", (e) => {
   toggleLike(id);
 });
 
-
-grid.addEventListener("click", (e) => {
-  const btn = e.target.closest(".add-full");
-  if (!btn) return;
-  const id = btn.dataset.id;
-  addToCart(id);
-  renderCart(); // refresca el panel con los productos
-});
 const categoryFilter = document.getElementById("categoryFilter");
 if (categoryFilter) {
   categoryFilter.addEventListener("change", (e) => {
@@ -487,7 +480,6 @@ if (categoryFilter) {
   renderCart();
  }
 function removeFromCart(index) {
-  alert("SE EJECUTÓ REMOVE: " + index);
   if (index < 0 || index >= cart.length) return;
   // Quitar una sola unidad
   cart[index].qty -= 1;
