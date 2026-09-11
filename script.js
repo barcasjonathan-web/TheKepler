@@ -24,7 +24,9 @@ const products = [
   "products/zapataillakepler02.png",
   "products/zapataillakepler03.png",
   "products/zapataillakepler04.png",
-  "products/zapataillakepler05.png"]}
+  "products/zapataillakepler05.png"],
+   colors: ["Negro", "Blanco", "Gris"],
+   sizes: ["39", "40", "41", "42", "43", "44"]}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -125,8 +127,31 @@ function abrirProducto(productId) {
   </div>
   <h3>Descripción</h3>
   <p>${product.description}</p>
-  </div>
-  </div>
+  ${product.colors && product.colors.length > 0 ? `
+  <div class="product-option">
+  <h3>Color</h3>
+  <div class="color-options">
+  ${product.colors.map((color, index) => `
+  <button
+  class="color-option ${index === 0 ? "selected" : ""}"
+  data-color="${color}" >
+  ${color}
+  </button> `).join("")}
+  </div></div>` : ""}
+
+${product.sizes && product.sizes.length > 0 ? `
+<div class="product-option">
+<h3>Talla</h3>
+<div class="size-options">
+${product.sizes.map((size, index) => `
+<button
+class="size-option ${index === 0 ? "selected" : ""}"
+data-size="${size}">
+${size}
+</button>`).join("")}
+</div></div>` : ""}
+</div>
+</div>
 `;
   productModal.hidden = false;
 }
