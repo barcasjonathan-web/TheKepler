@@ -345,12 +345,11 @@ if (categoryFilter) {
     cart.push(newItem);
   }
   localStorage.setItem("cart", JSON.stringify(cart));
+  alert(JSON.stringify(cart));
   renderCart();
  }
 
 function removeFromCart(id, color = null, size = null) {
-  console.log("REMOVE:", id, color, size);
-  console.log("CART:", cart);
   const index = cart.findIndex(item =>
     Number(item.id) === Number(id) &&
     String(item.color || "") === String(color || "") &&
