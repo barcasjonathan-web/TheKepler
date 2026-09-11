@@ -32,6 +32,7 @@ const products = [
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let likes = JSON.parse(localStorage.getItem("likes")) || {};
 let currentProduct = null;
+const productModalBody = document.getElementById("productModalBody");
 
 const grid = document.getElementById("productGrid");
 const cartCount = document.getElementById("cartCount");
@@ -93,7 +94,6 @@ function abrirProducto(productId) {
   if (!product) return;
   currentProduct = product;
   const productModal = document.getElementById("productModal");
-  const productModalBody = document.getElementById("productModalBody");
   if (!productModal || !productModalBody) return;
   const gallery = product.gallery || [];
   productModalBody.innerHTML = `
