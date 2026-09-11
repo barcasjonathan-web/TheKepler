@@ -26,7 +26,12 @@ const products = [
   "products/zapataillakepler04.png",
   "products/zapataillakepler05.png"],
    colors: ["Negro", "Blanco", "Gris"],
-   sizes: ["39", "40", "41", "42", "43", "44"]}
+   sizes: ["39", "40", "41", "42", "43", "44"],
+  variantStock: {
+  "Blanco-40": 2,
+  "Negro-39": 2,
+  "Gris-44": 1
+  }}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -172,6 +177,53 @@ ${size}
 `;
   productModal.hidden = false;
 }
+function actualizarLimiteCantidad() {
+  if (!currentProduct || !productModalBody) return;
+  const quantityValue =
+    productModalBody.querySelector(".quantity-value");
+  const limitMessage =
+    productModalBody.querySelector(".quantity-limit-message");
+  if (!quantityValue) return;
+  const color =
+    productModalBody.querySelector(".color-option.selected")?.dataset.color || null;
+  const size =
+    productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
+  let stockDisponible = currentProduct.stock || 0;
+  if (currentProduct.variantStock) {
+    let key;
+    if (color && size) {
+      key = `${color}-${size}`;
+    } else if (color) {
+      key = color;
+    } else if (size) {
+      key = size;    }
+    stockDisponible = key
+      ? (currentProduct.variantStock[key] || 0)
+      : 0;  }
+  const yaEnCarrito = cart
+    .filter(item =>
+      item.id === currentProduct.id &&
+      (item.color || null) === color &&
+      (item.size || null) === size
+    )
+    .reduce((sum, item) => sum + item.qty, 0);
+  const disponible = Math.max(0, stockDisponible - yaEnCarrito);
+  let quantity =
+    parseInt(quantityValue.textContent, 10) || 1;
+  if (disponible > 0) {
+    quantity = Math.min(quantity, disponible);
+  } else {
+    quantity = 1;  }
+  quantityValue.textContent = quantity;
+  if (limitMessage) {
+    if (disponible <= 0) {
+      limitMessage.textContent =
+        "⚠ No quedan unidades disponibles para esta combinación.";
+    } else if (quantity >= disponible) {
+      limitMessage.textContent =
+        "⚠ Has llegado al límite de unidades disponibles.";
+    } else {
+      limitMessage.textContent = "";    }  }}
 // Cambiar imagen principal desde la galería
 if (productModalBody) {
   productModalBody.addEventListener("click", (e) => {
@@ -225,30 +277,45 @@ if (productModalBody) {
   productModalBody.addEventListener("click", (e) => {
     const minusButton = e.target.closest(".quantity-minus");
     const plusButton = e.target.closest(".quantity-plus");
+    if (!currentProduct) return;
     const quantityValue =
       productModalBody.querySelector(".quantity-value");
-    const limitMessage =
-      productModalBody.querySelector(".quantity-limit-message");
-    if (!quantityValue || !currentProduct) return;
-    let quantity = parseInt(quantityValue.textContent, 10) || 1;
-    // Botón -
+    if (!quantityValue) return;
+    let quantity =
+      parseInt(quantityValue.textContent, 10) || 1;
     if (minusButton) {
-      quantity = Math.max(1, quantity - 1);}
-    // Botón +
+      quantity = Math.max(1, quantity - 1);    }
     if (plusButton) {
-      if (quantity < currentProduct.stock) {
-        quantity++;
+      const color =
+        productModalBody.querySelector(".color-option.selected")?.dataset.color || null;
+      const size =
+        productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
+      let stockDisponible = currentProduct.stock || 0;
+      if (currentProduct.variantStock) {
+        let key;
+        if (color && size) {
+          key = `${color}-${size}`;
+        } else if (color) {
+          key = color;
+        } else if (size) {
+          key = size;        }
+        stockDisponible = key
+          ? (currentProduct.variantStock[key] || 0)
+          : 0;
       }
-    }
+      const yaEnCarrito = cart
+        .filter(item =>
+          item.id === currentProduct.id &&
+          (item.color || null) === color &&
+          (item.size || null) === size
+        )
+        .reduce((sum, item) => sum + item.qty, 0);
+      const disponible =
+        Math.max(0, stockDisponible - yaEnCarrito);
+      if (quantity < disponible) {
+        quantity++;      }    }
     quantityValue.textContent = quantity;
-    if (limitMessage) {
-      if (quantity >= currentProduct.stock) {
-        limitMessage.textContent =
-          "⚠ Has llegado al límite de unidades disponibles.";
-      } else {
-        limitMessage.textContent = "";
-      }
-    }
+    actualizarLimiteCantidad();
   });
 }
   // Añadir producto desde el panel
