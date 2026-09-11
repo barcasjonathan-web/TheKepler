@@ -345,28 +345,13 @@ if (categoryFilter) {
     cart.push(newItem);
   }
   localStorage.setItem("cart", JSON.stringify(cart));
-  alert(JSON.stringify(cart));
   renderCart();
  }
-
-function removeFromCart(id, color = null, size = null) {
-  const index = cart.findIndex(item =>
-    Number(item.id) === Number(id) &&
-    String(item.color || "") === String(color || "") &&
-    String(item.size || "") === String(size || "")
-  );
-  if (index === -1) {
-    console.log("No se encontró el producto:", {
-      id,
-      color,
-      size,
-      cart
-    });
-    return;
-  }
-  // Quitar UNA unidad
+function removeFromCart(index) {
+  if (index < 0 || index >= cart.length) return;
+  // Quitar una sola unidad
   cart[index].qty -= 1;
-  // Si ya no quedan unidades, eliminar la línea
+  // Si llega a 0, eliminar esa línea
   if (cart[index].qty <= 0) {
     cart.splice(index, 1);
   }
@@ -385,7 +370,7 @@ function renderCart() {
     return;
   }
 
-  cartItems.innerHTML = cart.map(item => `
+  cartItems.innerHTML = cart.map((item, index) => `
     <div class="cart-item">
       <div>
         <strong>${item.name}</strong><br>
@@ -404,10 +389,7 @@ function renderCart() {
       </div>
       <button
       class="remove-btn"
-      onclick="removeFromCart(
-      ${item.id},
-      ${item.color ? JSON.stringify(item.color) : "null"},
-      ${item.size ? JSON.stringify(item.size) : "null"})">
+      onclick="removeFromCart(${index})">
       Quitar
       </button>
     </div>
