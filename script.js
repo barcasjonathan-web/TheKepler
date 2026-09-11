@@ -168,6 +168,25 @@ if (productModalBody) {
       thumbnail.dataset.image;
   });
 }
+// Seleccionar color
+if (productModalBody) {
+  productModalBody.addEventListener("click", (e) => {
+    const colorButton = e.target.closest(".color-option");
+    if (colorButton) {
+      productModalBody
+        .querySelectorAll(".color-option")
+        .forEach(btn => btn.classList.remove("selected"));
+      colorButton.classList.add("selected");
+    }
+    const sizeButton = e.target.closest(".size-option");
+    if (sizeButton) {
+      productModalBody
+        .querySelectorAll(".size-option")
+        .forEach(btn => btn.classList.remove("selected"));
+      sizeButton.classList.add("selected");   
+    }
+  });
+}
 const closeProductModal =
   document.getElementById("closeProductModal");
 const productModal =
