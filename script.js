@@ -91,28 +91,57 @@ function abrirProducto(productId) {
   const productModal = document.getElementById("productModal");
   const productModalBody = document.getElementById("productModalBody");
   if (!productModal || !productModalBody) return;
+  const gallery = product.gallery || [];
   productModalBody.innerHTML = `
-    <div class="product-detail">
-      <div class="product-detail-image">
-        <img src="${product.image}" alt="${product.name}">
-      </div>
-      <div class="product-detail-info">
-        <span class="category">
-          ${product.category}
-        </span>
-        <h2>${product.name}</h2>
-        <div class="product-detail-price">
-          ${money(product.price)}
-        </div>
-        <div class="product-detail-rating">
-          ★★★★★
-        </div>
-        <h3>Descripción</h3>
-        <p> ${product.description}</p>
-      </div>
-    </div>
-  `;
+  <div class="product-detail">
+  <div class="product-detail-gallery">
+  <div class="product-detail-image">
+  <img 
+  id="productMainImage"
+  src="${product.image}" 
+  alt="${product.name}"
+  >
+  </div>
+  ${
+    gallery.length > 0 
+    ? `
+    <div class="product-thumbnails">
+    ${gallery.map((image, index) => `
+    <button class="product-thumbnail"data-image="${image}"aria-label="Ver imagen ${index + 1}">
+    <img src="${image}" alt="${product.name}">
+    </button>
+    `).join("")}
+    </div>`: ""}
+  </div>
+  <div class="product-detail-info">
+  <span class="category">
+  ${product.category}</span>
+  <h2>${product.name}</h2>
+  <div class="product-detail-price">
+  ${money(product.price)}
+  </div>
+  <div class="product-detail-rating">
+  ★★★★★
+  </div>
+  <h3>Descripción</h3>
+  <p>${product.description}</p>
+  </div>
+  </div>
+`;
   productModal.hidden = false;
+}
+// Cambiar imagen principal desde la galería
+if (productModalBody) {
+  productModalBody.addEventListener("click", (e) => {
+    const thumbnail =
+      e.target.closest(".product-thumbnail");
+    if (!thumbnail) return;
+    const mainImage =
+      document.getElementById("productMainImage");
+    if (!mainImage) return;
+    mainImage.src =
+      thumbnail.dataset.image;
+  });
 }
 const closeProductModal =
   document.getElementById("closeProductModal");
