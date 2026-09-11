@@ -230,11 +230,26 @@ a{text-decoration:none;color:inherit}
   font-size: 40px;
   font-weight: bold;
   overflow: hidden;
+   margin: 15px auto;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
 }
 .profile-avatar img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  border: none;
+  border-radius: 50%;
   object-fit: cover;
+  object-position: center;
 }
 /* Botón cámara */
 .camera-btn {
