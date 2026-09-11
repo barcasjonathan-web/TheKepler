@@ -433,15 +433,10 @@ async function cargarPerfil() {
   if (profileEmail) {
     profileEmail.textContent = "Email: " + user.email;
   }
-  const profilePic = document.getElementById("profilePic");
-  if (profilePic && user.user_metadata.avatar_url) {
-    profilePic.src = user.user_metadata.avatar_url + "?t=" + Date.now();
-  }
 }
 // --- Cambiar foto de perfil ---
 const changePhotoBtn = document.getElementById("changePhotoBtn");
 const profilePhotoInput = document.getElementById("profilePhotoInput");
-const profilePic = document.getElementById("profilePic");
 // Abrir selector de archivos
 if (changePhotoBtn && profilePhotoInput) {
   changePhotoBtn.addEventListener("click", () => {
@@ -519,21 +514,36 @@ async function subirFotoPerfil(file) {
           .getPublicUrl(fileName);
       const photoUrl = publicUrlData.publicUrl;
       // Mostrar foto nueva
-      if (profilePic) {
-        profileAvatar.innerHTML =
-          `<img src="${photoUrl}?t=${Date.now()}" alt="Foto de perfil">`;
-      }
-      // Guardar la foto en el usuario
-      const { error: updateError } =
-        await supabaseClient.auth.updateUser({
-          data: {
-            avatar_url: photoUrl
-          }
-        });
-      if (updateError) {
-        console.error("Error guardando avatar:", updateError);
-      }
-      actualizarBotonUsuario();
+      const profileAvatar = document.getElementById("profileAvatar");
+
+if (profileAvatar) {
+  profileAvatar.innerHTML =
+    `<img src="${photoUrl}?t=${Date.now()}" alt="Foto de perfil">`;
+}
+
+// Guardar la foto en el usuario
+const { data: updatedUser, error: updateError } =
+  await supabaseClient.auth.updateUser({
+    data: {
+      avatar_url: photoUrl
+    }
+  });
+
+if (updateError) {
+  console.error("Error guardando avatar:", updateError);
+  alert("La foto se subió, pero no se pudo guardar en tu perfil.");
+  return;
+}
+
+// Mostrar inmediatamente la foto en el botón superior
+if (loginBtn) {
+  loginBtn.className = "user-avatar";
+  loginBtn.innerHTML =
+    `<img src="${photoUrl}?t=${Date.now()}" alt="Foto de perfil">`;
+  loginBtn.style.background = "transparent";
+}
+
+alert("Foto de perfil actualizada correctamente.");
       alert("Foto de perfil actualizada correctamente.");
     }, "image/jpeg", 0.85);
     // Liberar memoria
