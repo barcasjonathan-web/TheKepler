@@ -344,11 +344,26 @@ function addToCart(id, quantity = 1, color = null, size = null) {
   renderCart();
 }
 
-function removeFromCart(id) {
-  cart = cart.filter(item => item.id !== id);
-  renderCart();
+function removeFromCart(id, color = null, size = null) {
+  const item = cart.find(item =>
+    item.id === Number(id) &&
+    (item.color || null) === color &&
+    (item.size || null) === size
+  );
+  if (!item) return;
+  // Si hay más de una unidad, quitar solo una
+  if (item.qty > 1) {
+    item.qty -= 1;
+  } else {
+    // Si solo queda una, eliminar la línea completa
+    cart = cart.filter(cartItem =>
+      !(
+        cartItem.id === Number(id) &&
+        (cartItem.color || null) === color &&
+        (cartItem.size || null) === size
+      )  ); }
   localStorage.setItem("cart", JSON.stringify(cart));
-  
+  renderCart();
 }
 
 function renderCart() {
@@ -379,7 +394,14 @@ function renderCart() {
         ` : ""}
         
       </div>
-      <button class="remove-btn" onclick="removeFromCart(${item.id})">Quitar</button>
+      <button
+      class="remove-btn"
+      onclick="removeFromCart(
+      ${item.id},
+      ${item.color ? JSON.stringify(item.color) : "null"},
+      ${item.size ? JSON.stringify(item.size) : "null"})">
+      Quitar
+      </button>
     </div>
   `).join("");
 }
