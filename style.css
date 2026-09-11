@@ -147,6 +147,10 @@ a{text-decoration:none;color:inherit}
   text-align: center;
   font-size: 18px;
   font-weight: 600;}
+.quantity-limit-message {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #666;}
 
 /* Ventanas flotantes: modal y perfil */
 /* ================================
