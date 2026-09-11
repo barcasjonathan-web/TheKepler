@@ -50,6 +50,21 @@ function renderProducts(category = "Todos") {
 </article>
 `).join('');
 }
+// --- Abrir producto individual ---
+grid.addEventListener("click", (e) => {
+  // Si se pulsa el botón de like, no abrir el producto
+  if (e.target.closest(".like-btn")) {
+    return;
+  }
+  // Si se pulsa añadir al carrito, no abrir el producto
+  if (e.target.closest(".add-full")) {
+    return;
+  }
+  const card = e.target.closest(".product-card");
+  if (!card) return;
+  const productId = Number(card.dataset.id);
+  abrirProducto(productId);
+});
 
 function toggleLike(id) {
   const numId = parseInt(id, 10);
