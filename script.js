@@ -31,6 +31,7 @@ const products = [
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let likes = JSON.parse(localStorage.getItem("likes")) || {};
+let currentProduct = null;
 
 const grid = document.getElementById("productGrid");
 const cartCount = document.getElementById("cartCount");
@@ -90,6 +91,7 @@ grid.addEventListener("click", (e) => {
 function abrirProducto(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
+  currentProduct = product;
   const productModal = document.getElementById("productModal");
   const productModalBody = document.getElementById("productModalBody");
   if (!productModal || !productModalBody) return;
@@ -217,16 +219,16 @@ if (productModalBody) {
     const plusButton = e.target.closest(".quantity-plus");
     const quantityValue =
       productModalBody.querySelector(".quantity-value");
-    if (!quantityValue) return;
+    if (!quantityValue || !currentProduct) return;
     let quantity = parseInt(quantityValue.textContent, 10) || 1;
-    // Si presiona -
+    // Botón -
     if (minusButton) {
       quantity = Math.max(1, quantity - 1);
     }
-    // Si presiona +
+    // Botón +
     if (plusButton) {
-      if (quantity < product.stock) {
-        quantity += 1;
+      if (quantity < currentProduct.stock) {
+        quantity++;
       }
     }
     quantityValue.textContent = quantity;
