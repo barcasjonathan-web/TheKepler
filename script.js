@@ -1,23 +1,23 @@
 const products = [
-  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta01.jpg",
+  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta01.jpg",stock: 9,
   description: "Camiseta Kepler de diseño moderno y cómodo para el día a día."},
   
-  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatos01.jpg",
+  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatos01.jpg",stock:3,
   description: "Zapatillas Urban de estilo moderno, cómodas y perfectas para el uso diario."},
 
-  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera01.jpg",
+  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera01.jpg",stock: 1,
   description: "Sudadera Classic cómoda y versátil, perfecta para combinar con cualquier estilo."},
   
-  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "img/lampara01.jpg",
+  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "img/lampara01.jpg",stock: 7,
   description: "Lámpara de diseño minimalista para darle un toque moderno a tu hogar."},
   
-  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "img/cojin01.jpg",
+  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "img/cojin01.jpg",stock: 3,
   description: "Cojín decorativo cómodo y elegante para cualquier espacio del hogar."},
   
-  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg",
+  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg",stock: 2,
   description: "Bolso Essential práctico y versátil para acompañarte todos los días."},
 
-  { id: 7, name: "Zapatillas Kepler", category: "Calzado", price: 50.90, image: "products/zapataillakepler.png",
+  { id: 7, name: "Zapatillas Kepler", category: "Calzado", price: 50.90, image: "products/zapataillakepler.png",stock: 5,
   description: "Zapatillas Kepler de estilo moderno, unico, cómodas, lo ultimo en calzado",
   gallery: [
   "products/zapataillakepler01.png",
@@ -150,6 +150,13 @@ data-size="${size}">
 ${size}
 </button>`).join("")}
 </div></div>` : ""}
+<div class="product-option quantity-option">
+<h3>Cantidad</h3>
+<div class="quantity-control">
+<button type="button" class="quantity-btn quantity-minus">−</button>
+<span class="quantity-value">1</span>
+<button type="button" class="quantity-btn quantity-plus">+</button>
+</div></div>
 </div>
 </div>
 `;
@@ -201,6 +208,28 @@ if (productModal) {
     if (e.target === productModal) {
       productModal.hidden = true;
     }
+  });
+}
+// Control de cantidad con límite de stock
+if (productModalBody) {
+  productModalBody.addEventListener("click", (e) => {
+    const minusButton = e.target.closest(".quantity-minus");
+    const plusButton = e.target.closest(".quantity-plus");
+    const quantityValue =
+      productModalBody.querySelector(".quantity-value");
+    if (!quantityValue) return;
+    let quantity = parseInt(quantityValue.textContent, 10) || 1;
+    // Si presiona -
+    if (minusButton) {
+      quantity = Math.max(1, quantity - 1);
+    }
+    // Si presiona +
+    if (plusButton) {
+      if (quantity < product.stock) {
+        quantity += 1;
+      }
+    }
+    quantityValue.textContent = quantity;
   });
 }
 
