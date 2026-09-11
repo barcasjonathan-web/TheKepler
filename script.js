@@ -155,11 +155,11 @@ ${size}
 <div class="product-option quantity-option">
 <h3>Cantidad</h3>
 <div class="quantity-control">
+<p class="quantity-limit-message"></p>
 <button type="button" class="quantity-btn quantity-minus">−</button>
 <span class="quantity-value">1</span>
 <button type="button" class="quantity-btn quantity-plus">+</button>
 </div>
-<p class="quantity-limit-message"></p>
 </div>
 </div>
 </div>
@@ -227,24 +227,22 @@ if (productModalBody) {
     let quantity = parseInt(quantityValue.textContent, 10) || 1;
     // Botón -
     if (minusButton) {
-      quantity = Math.max(1, quantity - 1);
-      if (limitMessage) {
-        limitMessage.textContent = "";}  }
+      quantity = Math.max(1, quantity - 1);}
     // Botón +
     if (plusButton) {
       if (quantity < currentProduct.stock) {
         quantity++;
-        if (limitMessage) {
-          limitMessage.textContent = ""; }
-      } else {
-        // Ya llegó al límite
-        if (limitMessage) {
-          limitMessage.textContent =
-            "Has llegado al límite de unidades disponibles.";  
-        }
       }
     }
     quantityValue.textContent = quantity;
+    if (limitMessage) {
+      if (quantity >= currentProduct.stock) {
+        limitMessage.textContent =
+          "⚠ Has llegado al límite de unidades disponibles.";
+      } else {
+        limitMessage.textContent = "";
+      }
+    }
   });
 }
 
