@@ -115,9 +115,9 @@ a{text-decoration:none;color:inherit}
   cursor: pointer;}
 .color-option.selected,
 .size-option.selected {
-  background: black;
-  color: white;
-  border-color: black;}
+  background-color: black !important;
+  color: white !important;
+  border-color: black !important;}
 .color-option:hover,
 .size-option:hover {
   border-color: black;}
