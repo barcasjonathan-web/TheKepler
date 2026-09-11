@@ -348,6 +348,7 @@ if (categoryFilter) {
   renderCart();
  }
 function removeFromCart(index) {
+  alert("SE EJECUTÓ REMOVE: " + index);
   if (index < 0 || index >= cart.length) return;
   // Quitar una sola unidad
   cart[index].qty -= 1;
