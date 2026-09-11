@@ -65,6 +65,53 @@ grid.addEventListener("click", (e) => {
   const productId = Number(card.dataset.id);
   abrirProducto(productId);
 });
+function abrirProducto(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+  const productModal = document.getElementById("productModal");
+  const productModalBody = document.getElementById("productModalBody");
+  if (!productModal || !productModalBody) return;
+  productModalBody.innerHTML = `
+    <div class="product-detail">
+      <div class="product-detail-image">
+        <img src="${product.image}" alt="${product.name}">
+      </div>
+      <div class="product-detail-info">
+        <span class="category">
+          ${product.category}
+        </span>
+        <h2>${product.name}</h2>
+        <div class="product-detail-price">
+          ${money(product.price)}
+        </div>
+        <div class="product-detail-rating">
+          ★★★★★
+        </div>
+        <h3>Descripción</h3>
+        <p>
+          Descubre todos los detalles de este producto.
+        </p>
+      </div>
+    </div>
+  `;
+  productModal.hidden = false;
+}
+const closeProductModal =
+  document.getElementById("closeProductModal");
+const productModal =
+  document.getElementById("productModal");
+if (closeProductModal && productModal) {
+  closeProductModal.addEventListener("click", () => {
+    productModal.hidden = true;
+  });
+}
+if (productModal) {
+  productModal.addEventListener("click", (e) => {
+    if (e.target === productModal) {
+      productModal.hidden = true;
+    }
+  });
+}
 
 function toggleLike(id) {
   const numId = parseInt(id, 10);
