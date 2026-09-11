@@ -302,29 +302,47 @@ const loginModal = document.getElementById("loginModal");
 const profilePanel = document.getElementById("profilePanel");
 // Actualizar texto del botón según la sesión
 async function actualizarBotonUsuario() {
+
   if (!loginBtn) return;
+
   const { data: { session } } =
     await supabaseClient.auth.getSession();
+
   if (!session) {
-    loginBtn.textContent = "SESIÓN";
     loginBtn.className = "";
-    loginBtn.style.background = "black";
     loginBtn.innerHTML = "SESIÓN";
+    loginBtn.style.background = "black";
     return;
   }
+
   const user = session.user;
+
   const nombre =
     user.user_metadata.name || "Usuario";
-  const inicial =
-    nombre.charAt(0).toUpperCase();
+
   const avatarUrl =
     user.user_metadata.avatar_url;
+
   loginBtn.className = "user-avatar";
-  loginBtn.textContent = "";
+
   if (avatarUrl) {
-    loginBtn.innerHTML =
-      `<img src="${avatarUrl}?t=${Date.now()}" alt="Foto de perfil">`;
+
+    loginBtn.innerHTML = "";
+
+    const img = document.createElement("img");
+
+    img.src = avatarUrl + "?t=" + Date.now();
+    img.alt = "Foto de perfil";
+
+    loginBtn.appendChild(img);
+
+    loginBtn.style.background = "transparent";
+
   } else {
+
+    const inicial =
+      nombre.charAt(0).toUpperCase();
+
     const colores = [
       "#3498db",
       "#9b59b6",
@@ -332,8 +350,11 @@ async function actualizarBotonUsuario() {
       "#16a085",
       "#e74c3c"
     ];
+
     const color =
       colores[Math.floor(Math.random() * colores.length)];
+
+    loginBtn.innerHTML = "";
     loginBtn.style.background = color;
     loginBtn.textContent = inicial;
   }
