@@ -349,21 +349,26 @@ if (categoryFilter) {
  }
 
 function removeFromCart(id, color = null, size = null) {
-  const item = cart.find(item =>
-    item.id === Number(id) &&
-    (item.color || null) === color &&
-    (item.size || null) === size
+  const index = cart.findIndex(item =>
+    Number(item.id) === Number(id) &&
+    String(item.color || "") === String(color || "") &&
+    String(item.size || "") === String(size || "")
   );
-  if (!item) return;
-  // Quitar solamente una unidad
-  item.qty -= 1;
-  // Si llega a 0, eliminar esa línea
-  if (item.qty <= 0) {
-    cart = cart.filter(cartItem =>
-      !(
-        cartItem.id === Number(id) &&
-        (cartItem.color || null) === color &&
-        (cartItem.size || null) === size    )    );  }
+  if (index === -1) {
+    console.log("No se encontró el producto:", {
+      id,
+      color,
+      size,
+      cart
+    });
+    return;
+  }
+  // Quitar UNA unidad
+  cart[index].qty -= 1;
+  // Si ya no quedan unidades, eliminar la línea
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
