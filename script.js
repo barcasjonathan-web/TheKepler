@@ -179,7 +179,7 @@ ${product.variants && product.variants.length > 0 ? `
     .map((color, index) => `
 
       <button
-      class="color-option ${index === 0 ? "selected" : ""}"
+      class="color-option"
       data-color="${color}">
         ${color}
       </button>
@@ -204,7 +204,7 @@ ${product.variants && product.variants.length > 0 ? `
     .map((size, index) => `
 
       <button
-      class="size-option ${index === 0 ? "selected" : ""}"
+      class="size-option"
       data-size="${size}">
         ${size}
       </button>
