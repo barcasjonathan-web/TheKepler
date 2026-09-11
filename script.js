@@ -1,23 +1,51 @@
 const products = [
-  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta01.jpg",stock: 9,
-  description: "Camiseta Kepler de diseño moderno y cómodo para el día a día."},
+  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta01.jpg",
+  description: "Camiseta Kepler de diseño moderno y cómodo para el día a día.",
+  variants: [
+  { color: "Blanco", size: "m", stock: 3 },
+  { color: "purpura", size: "xl", stock: 2 },
+  { color: "Gris", size: "l", stock: 1 },
+  { color: "Blanco", size: "xl", stock: 3 }
+]},
   
-  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatos01.jpg",stock:3,
-  description: "Zapatillas Urban de estilo moderno, cómodas y perfectas para el uso diario."},
+  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatos01.jpg",
+  description: "Zapatillas Urban de estilo moderno, cómodas y perfectas para el uso diario.",
+  variants: [
+  { color: "Blanco", size: "42", stock: 4 },
+  { color: "Negro", size: "39", stock: 1 },
+  { color: "Gris", size: "41", stock: 3 }
+]},
 
-  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera01.jpg",stock: 1,
-  description: "Sudadera Classic cómoda y versátil, perfecta para combinar con cualquier estilo."},
+  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera01.jpg",
+  description: "Sudadera Classic cómoda y versátil, perfecta para combinar con cualquier estilo.",
+  variants: [
+  { color: "roja", size: "xl", stock: 3 },
+  { color: "azul", size: "xxx", stock: 1 },
+  { color: "rosada", size: "l", stock: 2 }
+]},
   
-  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "img/lampara01.jpg",stock: 7,
-  description: "Lámpara de diseño minimalista para darle un toque moderno a tu hogar."},
+  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "img/lampara01.jpg",
+  description: "Lámpara de diseño minimalista para darle un toque moderno a tu hogar.",
+  variants: [
+  { color: "Blanco", stock: 4 }
+]},
   
-  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "img/cojin01.jpg",stock: 3,
-  description: "Cojín decorativo cómodo y elegante para cualquier espacio del hogar."},
+  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "img/cojin01.jpg",
+  description: "Cojín decorativo cómodo y elegante para cualquier espacio del hogar.",
+  variants: [
+  { color: "Blanco", stock: 2 },
+  { color: "Negro", stock: 1 }
+]},
   
-  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg",stock: 2,
-  description: "Bolso Essential práctico y versátil para acompañarte todos los días."},
+  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg",
+  description: "Bolso Essential práctico y versátil para acompañarte todos los días.",
+  variants: [
+  { color: "Blanco", stock: 2 },
+  { color: "Negro", stock: 2 },
+  { color: "Gris", stock: 1 }
+]},
 
-  { id: 7, name: "Zapatillas Kepler", category: "Calzado", price: 50.90, image: "products/zapataillakepler.png",stock: 5,
+  { id: 7, name: "Zapatillas Kepler", category: "Calzado", price: 50.90, image: "products/zapataillakepler.png",
   description: "Zapatillas Kepler de estilo moderno, unico, cómodas, lo ultimo en calzado",
   gallery: [
   "products/zapataillakepler01.png",
@@ -27,11 +55,11 @@ const products = [
   "products/zapataillakepler05.png"],
    colors: ["Negro", "Blanco", "Gris"],
    sizes: ["39", "40", "41", "42", "43", "44"],
-  variantStock: {
-  "Blanco-40": 2,
-  "Negro-39": 2,
-  "Gris-44": 1
-  }}
+  variants: [
+  { color: "Blanco", size: "40", stock: 2 },
+  { color: "Negro", size: "39", stock: 2 },
+  { color: "Gris", size: "44", stock: 1 }]
+  }
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -127,6 +155,7 @@ function abrirProducto(productId) {
   </div>
   <div class="product-detail-info">
   <span class="category">
+
   ${product.category}</span>
   <h2>${product.name}</h2>
   <div class="product-detail-price">
@@ -137,29 +166,23 @@ function abrirProducto(productId) {
   </div>
   <h3>Descripción</h3>
   <p>${product.description}</p>
-  ${product.colors && product.colors.length > 0 ? `
-  <div class="product-option">
-  <h3>Color</h3>
-  <div class="color-options">
-  ${product.colors.map((color, index) => `
-  <button
-  class="color-option ${index === 0 ? "selected" : ""}"
-  data-color="${color}" >
-  ${color}
-  </button> `).join("")}
-  </div></div>` : ""}
-
-${product.sizes && product.sizes.length > 0 ? `
-<div class="product-option">
-<h3>Talla</h3>
-<div class="size-options">
-${product.sizes.map((size, index) => `
-<button
-class="size-option ${index === 0 ? "selected" : ""}"
-data-size="${size}">
-${size}
-</button>`).join("")}
-</div></div>` : ""}
+ ${product.category}</span>
+<h2>${product.name}</h2>
+<div class="product-detail-price">
+${money(product.price)}
+</div>
+<div class="product-detail-rating">
+★★★★★
+</div>
+<h3>Descripción</h3>
+<p>${product.description}</p>
+// AQUÍ va el nuevo bloque de variants
+<div class="product-option quantity-option">
+  ...
+</div>
+<button type="button" class="add-product-to-cart">
+  Añadir al carrito
+</button>
 <div class="product-option quantity-option">
 <h3>Cantidad</h3>
 <div class="quantity-control">
@@ -176,6 +199,7 @@ ${size}
 </div>
 `;
   productModal.hidden = false;
+  actualizarOpcionesDisponibles();
 }
 function actualizarLimiteCantidad() {
   if (!currentProduct || !productModalBody) return;
@@ -237,25 +261,73 @@ if (productModalBody) {
       thumbnail.dataset.image;
   });
 }
-// Seleccionar color
+
+function actualizarOpcionesDisponibles() {
+  if (!currentProduct?.variants || !productModalBody) return;
+
+  const selectedColor =
+    productModalBody.querySelector(".color-option.selected")?.dataset.color || null;
+
+  const selectedSize =
+    productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
+
+  productModalBody.querySelectorAll(".color-option").forEach(button => {
+    const color = button.dataset.color;
+
+    const disponible = currentProduct.variants.some(variant =>
+      variant.color === color &&
+      variant.stock > 0 &&
+      (!selectedSize || variant.size === selectedSize)
+    );
+
+    button.disabled = !disponible;
+  });
+
+  productModalBody.querySelectorAll(".size-option").forEach(button => {
+    const size = button.dataset.size;
+
+    const disponible = currentProduct.variants.some(variant =>
+      variant.size === size &&
+      variant.stock > 0 &&
+      (!selectedColor || variant.color === selectedColor)
+    );
+
+    button.disabled = !disponible;
+  });
+}
+
+// Seleccionar color y talla
 if (productModalBody) {
   productModalBody.addEventListener("click", (e) => {
+
     const colorButton = e.target.closest(".color-option");
-    if (colorButton) {
+
+    if (colorButton && !colorButton.disabled) {
       productModalBody
         .querySelectorAll(".color-option")
         .forEach(btn => btn.classList.remove("selected"));
+
       colorButton.classList.add("selected");
+
+      actualizarOpcionesDisponibles();
+      actualizarLimiteCantidad();
     }
+
     const sizeButton = e.target.closest(".size-option");
-    if (sizeButton) {
+
+    if (sizeButton && !sizeButton.disabled) {
       productModalBody
         .querySelectorAll(".size-option")
         .forEach(btn => btn.classList.remove("selected"));
-      sizeButton.classList.add("selected");   
+
+      sizeButton.classList.add("selected");
+
+      actualizarOpcionesDisponibles();
+      actualizarLimiteCantidad();
     }
   });
 }
+
 const closeProductModal =
   document.getElementById("closeProductModal");
 const productModal =
