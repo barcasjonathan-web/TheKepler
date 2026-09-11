@@ -18,8 +18,13 @@ const products = [
   description: "Bolso Essential práctico y versátil para acompañarte todos los días."},
 
   { id: 7, name: "Zapatillas Kepler", category: "Calzado", price: 50.90, image: "products/zapataillakepler.png",
-  description: "Zapatillas Kepler de estilo moderno, unico, cómodas, lo ultimo en calzado"},
-  
+  description: "Zapatillas Kepler de estilo moderno, unico, cómodas, lo ultimo en calzado",
+  gallery: [
+  "products/zapataillakepler01.png",
+  "products/zapataillakepler02.png",
+  "products/zapataillakepler03.png",
+  "products/zapataillakepler04.png",
+  "products/zapataillakepler05.png"]}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
