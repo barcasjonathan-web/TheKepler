@@ -69,7 +69,7 @@ function renderProducts(category = "Todos") {
           alt="Me gusta" class="heart-icon">
       </button>
    </div>
-  <button class="add-full" data-id="${p.id}">Añadir al carrito</button>
+  <button class="add-full" data-id="${p.id}">Ver Producto →</button>
 </div>
 </article>
 `).join('');
@@ -80,10 +80,13 @@ grid.addEventListener("click", (e) => {
   if (e.target.closest(".like-btn")) {
     return;
   }
-  // Si se pulsa añadir al carrito, no abrir el producto
-  if (e.target.closest(".add-full")) {
-    return;
-  }
+  // Si se pulsa el botón del producto, abrir el producto
+const addButton = e.target.closest(".add-full");
+if (addButton) {
+  const productId = Number(addButton.dataset.id);
+  abrirProducto(productId);
+  return;
+}
   const card = e.target.closest(".product-card");
   if (!card) return;
   const productId = Number(card.dataset.id);
@@ -161,6 +164,9 @@ ${size}
 <button type="button" class="quantity-btn quantity-plus">+</button>
 </div>
 </div>
+<button type="button" class="add-product-to-cart">
+  Añadir al carrito
+</button>
 </div>
 </div>
 `;
@@ -245,6 +251,39 @@ if (productModalBody) {
     }
   });
 }
+  // Añadir producto desde el panel
+if (productModalBody) {
+  productModalBody.addEventListener("click", (e) => {
+    const addButton = e.target.closest(".add-product-to-cart");
+    if (!addButton || !currentProduct) return;
+    // Cantidad
+    const quantityElement =
+      productModalBody.querySelector(".quantity-value");
+    const quantity =
+      parseInt(quantityElement?.textContent, 10) || 1;
+    // Color
+    const selectedColor =
+      productModalBody.querySelector(".color-option.selected");
+    const color = selectedColor
+      ? selectedColor.dataset.color
+      : null;
+    // Talla
+    const selectedSize =
+      productModalBody.querySelector(".size-option.selected");
+    const size = selectedSize
+      ? selectedSize.dataset.size
+      : null;
+    // Añadir al carrito
+    addToCart(
+      currentProduct.id,
+      quantity,
+      color,
+      size
+    );
+    renderCart();
+  });
+}
+
 
 function toggleLike(id) {
   const numId = parseInt(id, 10);
@@ -277,24 +316,32 @@ if (categoryFilter) {
     renderCart();               // refresca el carrito si hace falta
   });
 }
-function addToCart(id) {
+function addToCart(id, quantity = 1, color = null, size = null) {
   const product = products.find(p => p.id === Number(id));
   if (!product) return;
-
-  const existing = cart.find(item => item.id === product.id);
+  // Buscar si ya existe exactamente la misma combinación
+  // de producto + color + talla
+  const existing = cart.find(item =>
+    item.id === product.id &&
+    item.color === color &&
+    item.size === size );
   if (existing) {
-    existing.qty += 1;
+    existing.qty += quantity;
   } else {
-    cart.push({ id: product.id, qty: 1, price: product.price, name: product.name });
-  }
-
-  const totalQty = cart.reduce((s, it) => s + it.qty, 0);
-  const totalPrice = cart.reduce((s, it) => s + it.qty * it.price, 0);
-
-  cartCount.textContent = totalQty;
-  cartTotal.textContent = money(totalPrice);
+    const newItem = {
+      id: product.id,
+      name: product.name,
+      qty: quantity,
+      price: product.price };
+    // Solo guardar color si existe
+    if (color) {
+      newItem.color = color; }
+    // Solo guardar talla si existe
+    if (size) {
+      newItem.size = size; }
+    cart.push(newItem); }
   localStorage.setItem("cart", JSON.stringify(cart));
-  
+  renderCart();
 }
 
 function removeFromCart(id) {
@@ -319,7 +366,17 @@ function renderCart() {
     <div class="cart-item">
       <div>
         <strong>${item.name}</strong><br>
-        <small>${item.qty} × ${money(item.price)} = ${money(item.price * item.qty)}</small>
+        <small>
+        ${item.qty} × ${money(item.price)} = ${money(item.price * item.qty)}
+        </small>
+        ${item.color ? `
+        <br>
+        <small>Color: ${item.color}</small>
+        ` : ""}
+        ${item.size ? `
+        <br>
+        <small>Talla: ${item.size}</small>
+        ` : ""}
         
       </div>
       <button class="remove-btn" onclick="removeFromCart(${item.id})">Quitar</button>
