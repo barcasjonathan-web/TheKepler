@@ -1300,7 +1300,7 @@ if (!reviewOverlay) {
   reviewOverlay.style.position = "fixed";
   reviewOverlay.style.inset = "0";
   reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
-  reviewOverlay.style.zIndex = "100000";
+  reviewOverlay.style.zIndex = "99998";
 
   document.body.appendChild(reviewOverlay);
 }
