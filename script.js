@@ -1302,7 +1302,10 @@ if (!reviewOverlay) {
   reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
   reviewOverlay.style.zIndex = "99998";
 
-  document.body.appendChild(reviewOverlay);
+  const productModal = document.querySelector(".product-modal");
+
+if (productModal) {
+  productModal.appendChild(reviewOverlay);
 }
 
   reviewBox.style.padding = "20px";
