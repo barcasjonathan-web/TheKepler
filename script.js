@@ -238,6 +238,8 @@ function actualizarLimiteCantidad() {
     productModalBody.querySelector(".quantity-value");
   const limitMessage =
     productModalBody.querySelector(".quantity-limit-message");
+  const plusButton =
+  productModalBody.querySelector(".quantity-plus");
   if (!quantityValue) return;
   const color =
     productModalBody.querySelector(".color-option.selected")?.dataset.color || null;
@@ -270,7 +272,13 @@ let stockDisponible = varianteSeleccionada
   } else {
     quantity = 1;  }
   quantityValue.textContent = quantity;
-  if (limitMessage) {
+
+if (plusButton) {
+  plusButton.style.display =
+    disponible > 0 && quantity < disponible ? "" : "none";
+}
+
+if (limitMessage) {
     if (stockDisponible !== null && disponible <= 0) {
       limitMessage.textContent =
         "⚠ No quedan unidades disponibles para esta combinación.";
