@@ -165,7 +165,6 @@ function abrirProducto(productId) {
   </div>
   <h3>Descripción</h3>
   <p>${product.description}</p>
-// AQUÍ va el nuevo bloque de variants
 ${product.variants && product.variants.length > 0 ? `
   ${[...new Set(
     product.variants
@@ -295,26 +294,57 @@ function actualizarOpcionesDisponibles() {
   const selectedSize =
     productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
 
+  // -----------------------------
+  // COLORES
+  // -----------------------------
+
   productModalBody.querySelectorAll(".color-option").forEach(button => {
     const color = button.dataset.color;
 
-    const disponible = currentProduct.variants.some(variant =>
-      variant.color === color &&
-      variant.stock > 0 &&
-      (!selectedSize || variant.size === selectedSize)
-    );
+    const disponible = currentProduct.variants.some(variant => {
+      if (variant.stock <= 0) return false;
+
+      // Si no hay talla seleccionada,
+      // todos los colores con stock están disponibles.
+      if (!selectedSize) {
+        return variant.color === color;
+      }
+
+      // Si hay talla seleccionada,
+      // mostramos los colores que existen con esa talla.
+      return (
+        variant.color === color &&
+        variant.size === selectedSize
+      );
+    });
 
     button.disabled = !disponible;
   });
 
+
+  // -----------------------------
+  // TALLAS
+  // -----------------------------
+
   productModalBody.querySelectorAll(".size-option").forEach(button => {
     const size = button.dataset.size;
 
-    const disponible = currentProduct.variants.some(variant =>
-      variant.size === size &&
-      variant.stock > 0 &&
-      (!selectedColor || variant.color === selectedColor)
-    );
+    const disponible = currentProduct.variants.some(variant => {
+      if (variant.stock <= 0) return false;
+
+      // Si no hay color seleccionado,
+      // todas las tallas con stock están disponibles.
+      if (!selectedColor) {
+        return variant.size === size;
+      }
+
+      // Si hay color seleccionado,
+      // mostramos las tallas que existen con ese color.
+      return (
+        variant.size === size &&
+        variant.color === selectedColor
+      );
+    });
 
     button.disabled = !disponible;
   });
@@ -326,7 +356,12 @@ if (productModalBody) {
 
     const colorButton = e.target.closest(".color-option");
 
-    if (colorButton && !colorButton.disabled) {
+    if (colorButton) {
+
+      // Un color siempre debe poder cambiarse
+      // si tiene stock disponible.
+      if (colorButton.disabled) return;
+
       productModalBody
         .querySelectorAll(".color-option")
         .forEach(btn => btn.classList.remove("selected"));
@@ -335,11 +370,19 @@ if (productModalBody) {
 
       actualizarOpcionesDisponibles();
       actualizarLimiteCantidad();
+
+      return;
     }
+
 
     const sizeButton = e.target.closest(".size-option");
 
-    if (sizeButton && !sizeButton.disabled) {
+    if (sizeButton) {
+
+      // Una talla siempre debe poder cambiarse
+      // si tiene stock disponible.
+      if (sizeButton.disabled) return;
+
       productModalBody
         .querySelectorAll(".size-option")
         .forEach(btn => btn.classList.remove("selected"));
@@ -348,7 +391,10 @@ if (productModalBody) {
 
       actualizarOpcionesDisponibles();
       actualizarLimiteCantidad();
+
+      return;
     }
+
   });
 }
 
