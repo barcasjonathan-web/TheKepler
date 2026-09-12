@@ -914,8 +914,14 @@ whatsappBtn.addEventListener("click", () => {
   reservationForm.hidden = false;
 
   const preview = cart.map(item =>
-    `<p>${item.name} x${item.qty} = ${money(item.price * item.qty)}</p>`
-  ).join("");
+  `<p>
+    ${item.name}
+    ${item.color ? `- Color: ${item.color}` : ""}
+    ${item.size ? `- Talla: ${item.size}` : ""}
+    - Cantidad: ${item.qty}
+    = ${money(item.price * item.qty)}
+  </p>`
+).join("");
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   
@@ -938,7 +944,11 @@ confirmReservation.addEventListener("click", () => {
   const phone = "53691544"; // tu número
 
   const lines = cart.map(item =>
-  `- ${item.name} x${item.qty} = ${money(item.price * item.qty)}`
+  `- ${item.name}` +
+  `${item.color ? ` | Color: ${item.color}` : ""}` +
+  `${item.size ? ` | Talla: ${item.size}` : ""}` +
+  ` | Cantidad: ${item.qty}` +
+  ` | ${money(item.price * item.qty)}`
 );
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
