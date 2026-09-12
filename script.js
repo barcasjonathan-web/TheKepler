@@ -164,9 +164,6 @@ async function abrirProducto(productId) {
   <span class="rating-stars">
     ☆☆☆☆☆
   </span>
-  <span class="rating-text">
-    Sé el primero en valorar
-  </span>
 </div>
 <div id="reviewBox" class="review-box" hidden>
 
