@@ -161,7 +161,12 @@ function abrirProducto(productId) {
   ${money(product.price)}
   </div>
   <div class="product-detail-rating" id="productRating">
-  Cargando valoración...
+  <span class="rating-stars">
+    ☆☆☆☆☆
+  </span>
+  <span class="rating-text">
+    Sé el primero en valorar
+  </span>
 </div>
   <h3>Descripción</h3>
   <p>${product.description}</p>
@@ -238,6 +243,9 @@ ${product.variants && product.variants.length > 0 ? `
   productModal.hidden = false;
   cargarResenas(product.id);
   const primeraVariante = product.variants?.find(v => v.stock > 0);
+  const yaTieneResena = await comprobarResenaUsuario(product.id);
+
+console.log("¿Ya comentó este usuario?", yaTieneResena);
 
 if (primeraVariante) {
   if (primeraVariante.color) {
@@ -257,6 +265,31 @@ if (primeraVariante) {
   actualizarLimiteCantidad();
   actualizarOpcionesDisponibles();
   actualizarBotonAnadirCarrito();
+}
+
+async function comprobarResenaUsuario(productId) {
+
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  // Si no hay usuario conectado
+  if (!user) {
+    return false;
+  }
+
+  const { data, error } = await supabaseClient
+    .from("reviews")
+    .select("id")
+    .eq("product_id", productId)
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Error comprobando reseña:", error);
+    return false;
+  }
+
+  // Si encontró una reseña devuelve true
+  return !!data;
 }
 
 async function cargarResenas(productId) {
