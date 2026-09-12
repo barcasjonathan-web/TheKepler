@@ -168,6 +168,27 @@ async function abrirProducto(productId) {
     Sé el primero en valorar
   </span>
 </div>
+
+<div id="reviewBox" class="review-box" hidden>
+
+  <button id="closeReviewBox">✕</button>
+
+  <div class="review-stars">
+    ☆ ☆ ☆ ☆ ☆
+  </div>
+
+  <textarea 
+    id="reviewText"
+    maxlength="300"
+    placeholder="Escribe tu opinión..."
+  ></textarea>
+
+  <button id="sendReview">
+    Publicar reseña
+  </button>
+
+</div>
+
   <h3>Descripción</h3>
   <p>${product.description}</p>
   <div class="product-reviews-section">
