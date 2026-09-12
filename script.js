@@ -1138,6 +1138,15 @@ document.addEventListener("click", (e) => {
   if (!reviewBox) return;
 
   reviewBox.hidden = false;
+  reviewBox.style.display = "block";
+reviewBox.style.position = "fixed";
+reviewBox.style.top = "50%";
+reviewBox.style.left = "50%";
+reviewBox.style.transform = "translate(-50%, -50%)";
+reviewBox.style.background = "white";
+reviewBox.style.zIndex = "99999";
+reviewBox.style.padding = "20px";
+reviewBox.style.borderRadius = "20px";
 
 });
 
