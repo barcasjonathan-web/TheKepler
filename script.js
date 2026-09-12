@@ -1309,6 +1309,13 @@ document.addEventListener("click", (e) => {
     reviewComments.style.minHeight = "0";
     reviewComments.style.overflowY = "auto";
   }
+  if (reviewComments) {
+  reviewComments.addEventListener("scroll", () => {
+    if (reviewComments.scrollTop < 0) {
+      reviewComments.scrollTop = 0;
+    }
+  });
+    }
 
 });
 
