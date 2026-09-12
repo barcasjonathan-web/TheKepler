@@ -1270,16 +1270,7 @@ document.addEventListener("click", (e) => {
 
   if (!reviewBox) return;
 
-  reviewBox.hidden = false;
-  reviewBox.style.display = "block";
-reviewBox.style.position = "fixed";
-reviewBox.style.top = "50%";
-reviewBox.style.left = "50%";
-reviewBox.style.transform = "translate(-50%, -50%)";
-reviewBox.style.background = "white";
-reviewBox.style.zIndex = "99999";
-reviewBox.style.padding = "20px";
-reviewBox.style.borderRadius = "20px";
+  
 
 });
 
@@ -1293,6 +1284,44 @@ document.addEventListener("click", (e) => {
     reviewBox.hidden = true;
     reviewBox.style.display = "none";
   }
+  reviewBox.hidden = false;
+
+reviewBox.style.display = "flex";
+reviewBox.style.flexDirection = "column";
+
+reviewBox.style.position = "fixed";
+
+reviewBox.style.width = "80vw";
+reviewBox.style.height = "80vh";
+
+reviewBox.style.left = "50%";
+reviewBox.style.bottom = "0";
+reviewBox.style.top = "auto";
+
+reviewBox.style.transform = "translateX(-50%)";
+
+reviewBox.style.background = "white";
+reviewBox.style.zIndex = "99999";
+
+reviewBox.style.padding = "20px";
+reviewBox.style.boxSizing = "border-box";
+
+reviewBox.style.borderRadius = "20px 20px 0 0";
+
+reviewBox.style.overflow = "hidden";
+
+const reviewForm = reviewBox.querySelector(".review-form");
+const reviewComments = reviewBox.querySelector(".review-comments");
+
+if (reviewForm) {
+  reviewForm.style.flexShrink = "0";
+}
+
+if (reviewComments) {
+  reviewComments.style.flex = "1";
+  reviewComments.style.minHeight = "0";
+  reviewComments.style.overflowY = "auto";
+}
 
 });
 
