@@ -1115,8 +1115,12 @@ cancelReservation.addEventListener("click", () => {
 // --- Sistema de selección de estrellas ---
 document.addEventListener("click", async (e) => {
 
-  const starBox = e.target.closest("#reviewBox .review-stars");
-  if (!starBox) return;
+  // Detectar exactamente la estrella pulsada
+  const clickedStar = e.target.closest("#reviewBox .review-stars span");
+
+  if (!clickedStar) return;
+
+  const starBox = clickedStar.parentElement;
 
   // Comprobar si el usuario está conectado
   const { data: { user } } = await supabaseClient.auth.getUser();
@@ -1127,20 +1131,20 @@ document.addEventListener("click", async (e) => {
   }
 
   // Saber qué estrella se pulsó
-  const clickedIndex = Array.from(starBox.children).indexOf(e.target);
+  const clickedIndex = Array.from(starBox.children).indexOf(clickedStar);
 
   if (clickedIndex === -1) return;
 
   const rating = clickedIndex + 1;
 
-  // Guardar la valoración seleccionada
+  // Guardar valoración
   const reviewBox = document.getElementById("reviewBox");
 
   if (reviewBox) {
     reviewBox.dataset.rating = rating;
   }
 
-  // Pintar las estrellas
+  // Cambiar visualmente las estrellas
   Array.from(starBox.children).forEach((star, index) => {
     star.textContent = index < rating ? "★" : "☆";
   });
