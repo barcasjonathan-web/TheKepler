@@ -1290,7 +1290,7 @@ document.addEventListener("click", (e) => {
   reviewBox.style.transform = "translateX(-50%)";
 
   reviewBox.style.background = "white";
-  reviewBox.style.zIndex = "99999";
+  reviewBox.style.zIndex = "99998";
   let reviewOverlay = document.getElementById("reviewOverlay");
 
 if (!reviewOverlay) {
@@ -1300,13 +1300,9 @@ if (!reviewOverlay) {
   reviewOverlay.style.position = "fixed";
   reviewOverlay.style.inset = "0";
   reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
-  reviewOverlay.style.zIndex = "99998";
+  reviewOverlay.style.zIndex = "99999";
 
-  const productModal = document.querySelector(".product-modal");
-
-if (productModal) {
-  productModal.appendChild(reviewOverlay);
-}
+  document.body.appendChild(reviewOverlay);
 
   reviewBox.style.padding = "20px";
   reviewBox.style.boxSizing = "border-box";
