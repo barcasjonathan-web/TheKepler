@@ -243,9 +243,14 @@ function actualizarLimiteCantidad() {
     productModalBody.querySelector(".color-option.selected")?.dataset.color || null;
   const size =
     productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
-  let stockDisponible = currentProduct.stock || 0;
+  const varianteSeleccionada = currentProduct.variants.find(variant =>
+  (variant.color || null) === color &&
+  (variant.size || null) === size
+);
 
-  
+let stockDisponible = varianteSeleccionada
+  ? varianteSeleccionada.stock
+  : 0;
   
   const yaEnCarrito = cart
     .filter(item =>
