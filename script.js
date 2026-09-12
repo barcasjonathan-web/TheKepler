@@ -125,7 +125,7 @@ if (addButton) {
 });
 
 
-function abrirProducto(productId) {
+async function abrirProducto(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
   currentProduct = product;
