@@ -228,6 +228,24 @@ ${product.variants && product.variants.length > 0 ? `
 </div>
 `;
   productModal.hidden = false;
+  const primeraVariante = product.variants?.find(v => v.stock > 0);
+
+if (primeraVariante) {
+  if (primeraVariante.color) {
+    const colorButton = productModalBody.querySelector(
+      `.color-option[data-color="${primeraVariante.color}"]`
+    );
+    colorButton?.classList.add("selected");
+  }
+
+  if (primeraVariante.size) {
+    const sizeButton = productModalBody.querySelector(
+      `.size-option[data-size="${primeraVariante.size}"]`
+    );
+    sizeButton?.classList.add("selected");
+  }
+}
+  actualizarLimiteCantidad();
   actualizarOpcionesDisponibles();
   actualizarBotonAnadirCarrito();
 }
