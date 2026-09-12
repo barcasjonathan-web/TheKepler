@@ -174,8 +174,12 @@ async function abrirProducto(productId) {
   <button id="closeReviewBox">✕</button>
 
   <div class="review-stars">
-    ☆ ☆ ☆ ☆ ☆
-  </div>
+  <span data-star="1">☆</span>
+  <span data-star="2">☆</span>
+  <span data-star="3">☆</span>
+  <span data-star="4">☆</span>
+  <span data-star="5">☆</span>
+</div>
 
   <textarea 
     id="reviewText"
@@ -265,8 +269,12 @@ ${product.variants && product.variants.length > 0 ? `
   cargarResenas(product.id);
   const primeraVariante = product.variants?.find(v => v.stock > 0);
   const yaTieneResena = await comprobarResenaUsuario(product.id);
+  const reviewBox = document.getElementById("reviewBox");
+  const reviewStars = reviewBox?.querySelector(".review-stars");
 
-console.log("¿Ya comentó este usuario?", yaTieneResena);
+if (reviewBox && reviewStars) {
+  reviewStars.innerHTML = "☆ ☆ ☆ ☆ ☆";
+}
 
 if (primeraVariante) {
   if (primeraVariante.color) {
@@ -1103,7 +1111,52 @@ cancelReservation.addEventListener("click", () => {
   reservationForm.hidden = true;
   customerName.value = "";
 });
-  
+
+// --- Sistema de selección de estrellas ---
+document.addEventListener("click", (e) => {
+
+  const starBox = e.target.closest(".review-stars");
+
+  if (!starBox) return;
+
+  const stars = ["☆", "☆", "☆", "☆", "☆"];
+
+  const clickedIndex =
+    Array.from(starBox.children).indexOf(e.target);
+
+});
+
+// --- Abrir panel de reseña al tocar estrellas ---
+document.addEventListener("click", (e) => {
+
+  const star = e.target.closest(".review-stars span");
+
+  if (!star) return;
+
+  const reviewBox = document.getElementById("reviewBox");
+
+  if (!reviewBox) return;
+
+  reviewBox.hidden = false;
+
+  const valor =
+    Number(star.dataset.star);
+
+  const allStars =
+    reviewBox.querySelectorAll(".review-stars span");
+
+  allStars.forEach((s, index) => {
+
+    if (index < valor) {
+      s.textContent = "★";
+    } else {
+      s.textContent = "☆";
+    }
+
+  });
+
+});
+
 renderProducts(currentCategory);
 renderCart();
   // --- Conexión con Supabase ---
