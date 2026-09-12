@@ -1113,19 +1113,39 @@ cancelReservation.addEventListener("click", () => {
 });
 
 // --- Sistema de selección de estrellas ---
-document.addEventListener("click", (e) => {
+document.addEventListener("click", async (e) => {
 
-  const starBox = e.target.closest(".review-stars");
-
+  const starBox = e.target.closest("#reviewBox .review-stars");
   if (!starBox) return;
 
-  const stars = ["☆", "☆", "☆", "☆", "☆"];
+  // Comprobar si el usuario está conectado
+  const { data: { user } } = await supabaseClient.auth.getUser();
 
-  const clickedIndex =
-    Array.from(starBox.children).indexOf(e.target);
+  if (!user) {
+    alert("Debes iniciar sesión para poder valorar este producto.");
+    return;
+  }
+
+  // Saber qué estrella se pulsó
+  const clickedIndex = Array.from(starBox.children).indexOf(e.target);
+
+  if (clickedIndex === -1) return;
+
+  const rating = clickedIndex + 1;
+
+  // Guardar la valoración seleccionada
+  const reviewBox = document.getElementById("reviewBox");
+
+  if (reviewBox) {
+    reviewBox.dataset.rating = rating;
+  }
+
+  // Pintar las estrellas
+  Array.from(starBox.children).forEach((star, index) => {
+    star.textContent = index < rating ? "★" : "☆";
+  });
 
 });
-
 // --- Abrir panel de reseña al tocar estrellas ---
 document.addEventListener("click", (e) => {
 
