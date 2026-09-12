@@ -1291,6 +1291,19 @@ document.addEventListener("click", (e) => {
 
   reviewBox.style.background = "white";
   reviewBox.style.zIndex = "99999";
+  let reviewOverlay = document.getElementById("reviewOverlay");
+
+if (!reviewOverlay) {
+  reviewOverlay = document.createElement("div");
+  reviewOverlay.id = "reviewOverlay";
+
+  reviewOverlay.style.position = "fixed";
+  reviewOverlay.style.inset = "0";
+  reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
+  reviewOverlay.style.zIndex = "99998";
+
+  document.body.appendChild(reviewOverlay);
+}
 
   reviewBox.style.padding = "20px";
   reviewBox.style.boxSizing = "border-box";
@@ -1319,6 +1332,30 @@ requestAnimationFrame(() => {
 });
 
 });
+// --- Cerrar panel al tocar fuera ---
+document.addEventListener("click", (e) => {
+
+  if (e.target.id !== "reviewOverlay") return;
+
+  const reviewBox = document.getElementById("reviewBox");
+
+  if (!reviewBox) return;
+
+  reviewBox.style.transition = "transform 0.35s ease";
+  reviewBox.style.transform = "translate(-50%, 100%)";
+
+  setTimeout(() => {
+    reviewBox.hidden = true;
+    reviewBox.style.display = "none";
+    reviewBox.style.transition = "";
+
+    const reviewOverlay = document.getElementById("reviewOverlay");
+
+    if (reviewOverlay) {
+      reviewOverlay.remove();
+    }
+  }, 350);
+});
 
 document.addEventListener("click", (e) => {
 
@@ -1334,6 +1371,11 @@ setTimeout(() => {
   reviewBox.hidden = true;
   reviewBox.style.display = "none";
   reviewBox.style.transition = "";
+  const reviewOverlay = document.getElementById("reviewOverlay");
+
+if (reviewOverlay) {
+  reviewOverlay.remove();
+}
 }, 350);
   }
 
