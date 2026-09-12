@@ -181,22 +181,44 @@ font-weight: 500;}
 #closeReviewBox {
   position: absolute;
   top: 15px;
+   left: 15px;
   right: 15px;
-  width: 42px;
-  height: 36px;
+  width: calc(100% - 30px);
+  height: 40px;
   border: none;
   border-radius: 10px;
   background: #000;
   color: #fff;
-  font-size: 24px;
+  font-size: 26px;
   line-height: 1;
   cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
+   padding: 0;
 
   z-index: 10;
+}
+#productRating .rating-stars {
+  font-size: 30px;
+}
+#reviewBox .review-stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 42px;
+
+  padding-top: 30px;
+  padding-bottom: 35px;
+}
+
+#reviewBox .review-stars span {
+  font-size: 42px;
+  cursor: pointer;
+  line-height: 1;
 }
 
 
