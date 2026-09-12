@@ -220,15 +220,19 @@ font-weight: 500;}
   cursor: pointer;
   line-height: 1;
 }
+.review-input-box {
+  position: relative;
+  width: 100%;
+}
 #reviewText {
   width: 100%;
-  min-height: 100px;
+  min-height: 110px;
   box-sizing: border-box;
 
   border: 1px solid #ddd;
   border-radius: 18px;
 
-  padding: 15px 18px;
+  padding: 15px 55px 15px 18px;
 
   font-size: 16px;
   font-family: inherit;
@@ -242,7 +246,6 @@ font-weight: 500;}
 #reviewText:focus {
   border-color: #bbb;
   background: #fff;
-}
 #sendReview {
   width: 48px;
   height: 48px;
@@ -272,6 +275,32 @@ font-weight: 500;}
   margin: 25px 0 20px;
   flex-shrink: 0;
 }
+   #sendReview {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #000;
+  color: #fff;
+
+  font-size: 18px;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+   }
 
 
 /* Ventanas flotantes: modal y perfil */
