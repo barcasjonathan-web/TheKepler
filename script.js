@@ -1129,31 +1129,15 @@ document.addEventListener("click", (e) => {
 // --- Abrir panel de reseña al tocar estrellas ---
 document.addEventListener("click", (e) => {
 
-  const star = e.target.closest(".review-stars span");
+  const ratingStars = e.target.closest("#productRating .rating-stars");
 
-  if (!star) return;
+  if (!ratingStars) return;
 
   const reviewBox = document.getElementById("reviewBox");
 
   if (!reviewBox) return;
 
   reviewBox.hidden = false;
-
-  const valor =
-    Number(star.dataset.star);
-
-  const allStars =
-    reviewBox.querySelectorAll(".review-stars span");
-
-  allStars.forEach((s, index) => {
-
-    if (index < valor) {
-      s.textContent = "★";
-    } else {
-      s.textContent = "☆";
-    }
-
-  });
 
 });
 
