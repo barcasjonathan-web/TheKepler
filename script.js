@@ -170,7 +170,7 @@ async function abrirProducto(productId) {
 </div>
 <div id="reviewBox" class="review-box" hidden>
 
-  <button id="closeReviewBox">✕</button>
+  <button id="closeReviewBox">⌄</button>
 
   <!-- PARTE SUPERIOR: VOTAR Y ESCRIBIR -->
   <div class="review-form">
