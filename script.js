@@ -182,13 +182,10 @@ async function abrirProducto(productId) {
       <span data-star="5">☆</span>
     </div>
 
-    <textarea 
-      id="reviewText"
-      maxlength="300"
-      placeholder="Escribe tu opinión..."
-    ></textarea>
-
-    <button id="sendReview">→</button>
+    <div class="review-input-box">
+  <textarea id="reviewText" maxlength="300" placeholder="Escribe tu opinión..."></textarea>
+  <button id="sendReview" aria-label="Enviar">→</button>
+</div>
 
   </div>
   <div class="review-divider"></div>
