@@ -307,13 +307,12 @@ if (productModalBody) {
 
     if (colorButton) {
 
-      // Un color siempre debe poder cambiarse
-      // si tiene stock disponible.
-      if (colorButton.disabled) return;
-
       productModalBody
         .querySelectorAll(".color-option")
-        .forEach(btn => btn.classList.remove("selected"));
+        .forEach(btn => {
+          btn.classList.remove("selected");
+          btn.disabled = false;
+        });
 
       colorButton.classList.add("selected");
 
@@ -328,13 +327,12 @@ if (productModalBody) {
 
     if (sizeButton) {
 
-      // Una talla siempre debe poder cambiarse
-      // si tiene stock disponible.
-      if (sizeButton.disabled) return;
-
       productModalBody
         .querySelectorAll(".size-option")
-        .forEach(btn => btn.classList.remove("selected"));
+        .forEach(btn => {
+          btn.classList.remove("selected");
+          btn.disabled = false;
+        });
 
       sizeButton.classList.add("selected");
 
