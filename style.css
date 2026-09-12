@@ -1032,7 +1032,7 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   text-align: center;
 }
 
-.category {
+.categories .category {
   position: relative;
   color: #fff;
   border-radius: 12px;
@@ -1044,27 +1044,27 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 
 /* Overlay oscuro */
-.category::before {
+.categories .category::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.25);
 }
 
-.category h3 { 
+.categories .category h3 { 
   font-size: 0.6rem; 
   font-weight: bold;
 }
-.category p {
+.categories .category p {
   font-size: 0.45rem;
   font-weight: 400;
 }
 
 /* Contenido encima del overlay */
-.category h3,
-.category p,
-.category a,
-.category .cat-icon {
+.categories .category h3,
+.categories .category p,
+.categories .category a,
+.categories .category .cat-icon {
   position: relative;
   z-index: 2;
   margin: 6px 0;
