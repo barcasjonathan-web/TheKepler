@@ -168,40 +168,52 @@ async function abrirProducto(productId) {
     Sé el primero en valorar
   </span>
 </div>
-
 <div id="reviewBox" class="review-box" hidden>
 
   <button id="closeReviewBox">✕</button>
 
-  <div class="review-stars">
-  <span data-star="1">☆</span>
-  <span data-star="2">☆</span>
-  <span data-star="3">☆</span>
-  <span data-star="4">☆</span>
-  <span data-star="5">☆</span>
-</div>
+  <!-- PARTE SUPERIOR: VOTAR Y ESCRIBIR -->
+  <div class="review-form">
 
-  <textarea 
-    id="reviewText"
-    maxlength="300"
-    placeholder="Escribe tu opinión..."
-  ></textarea>
+    <h3>Valora este producto</h3>
 
-  <button id="sendReview">
-    Publicar reseña
-  </button>
+    <div class="review-stars">
+      <span data-star="1">☆</span>
+      <span data-star="2">☆</span>
+      <span data-star="3">☆</span>
+      <span data-star="4">☆</span>
+      <span data-star="5">☆</span>
+    </div>
 
-</div>
+    <textarea 
+      id="reviewText"
+      maxlength="300"
+      placeholder="Escribe tu opinión..."
+    ></textarea>
 
-  <h3>Descripción</h3>
-  <p>${product.description}</p>
-  <div class="product-reviews-section">
-  <h3>Comentarios</h3>
+    <button id="sendReview">
+      Publicar reseña
+    </button>
 
-  <div id="reviewsList">
-    Cargando comentarios...
   </div>
+
+  <!-- PARTE INFERIOR: COMENTARIOS -->
+  <div class="review-comments">
+
+    <h3>Comentarios</h3>
+
+    <div id="reviewsList">
+      Cargando comentarios...
+    </div>
+
+  </div>
+
 </div>
+
+<h3>Descripción</h3>
+<p>${product.description}</p>
+
+
   
 ${product.variants && product.variants.length > 0 ? `
   ${[...new Set(
