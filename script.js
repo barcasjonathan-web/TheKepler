@@ -1263,6 +1263,7 @@ document.addEventListener("click", async (e) => {
 });
 // --- Abrir panel de reseña al tocar estrellas ---
 // --- Abrir panel de reseña al tocar estrellas ---
+// --- Abrir panel de reseña al tocar estrellas ---
 document.addEventListener("click", (e) => {
 
   const ratingStars = e.target.closest("#productRating .rating-stars");
@@ -1273,6 +1274,29 @@ document.addEventListener("click", (e) => {
 
   if (!reviewBox) return;
 
+  // Crear overlay si todavía no existe
+  let reviewOverlay = document.getElementById("reviewOverlay");
+
+  if (!reviewOverlay) {
+
+    reviewOverlay = document.createElement("div");
+
+    reviewOverlay.id = "reviewOverlay";
+
+    reviewOverlay.style.position = "absolute";
+    reviewOverlay.style.inset = "0";
+    reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
+    reviewOverlay.style.zIndex = "99998";
+
+    const productModalContent =
+      reviewBox.closest(".product-modal-content");
+
+    if (productModalContent) {
+      productModalContent.appendChild(reviewOverlay);
+    }
+  }
+
+  // Mostrar panel
   reviewBox.hidden = false;
 
   reviewBox.style.display = "flex";
@@ -1287,22 +1311,12 @@ document.addEventListener("click", (e) => {
   reviewBox.style.bottom = "0";
   reviewBox.style.top = "auto";
 
-  reviewBox.style.transform = "translateX(-50%)";
+  reviewBox.style.transform = "translate(-50%, 100%)";
 
   reviewBox.style.background = "white";
-  reviewBox.style.zIndex = "99998";
-  let reviewOverlay = document.getElementById("reviewOverlay");
 
-if (!reviewOverlay) {
-  reviewOverlay = document.createElement("div");
-  reviewOverlay.id = "reviewOverlay";
-
-  reviewOverlay.style.position = "fixed";
-  reviewOverlay.style.inset = "0";
-  reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
-  reviewOverlay.style.zIndex = "99999";
-
-  document.body.appendChild(reviewOverlay);
+  // El panel debe estar por encima del overlay
+  reviewBox.style.zIndex = "99999";
 
   reviewBox.style.padding = "20px";
   reviewBox.style.boxSizing = "border-box";
@@ -1311,7 +1325,10 @@ if (!reviewOverlay) {
 
   reviewBox.style.overflow = "hidden";
 
+  // Formulario fijo arriba
   const reviewForm = reviewBox.querySelector(".review-form");
+
+  // Comentarios con scroll
   const reviewComments = reviewBox.querySelector(".review-comments");
 
   if (reviewForm) {
@@ -1323,14 +1340,18 @@ if (!reviewOverlay) {
     reviewComments.style.minHeight = "0";
     reviewComments.style.overflowY = "auto";
   }
-  reviewBox.style.transform = "translate(-50%, 100%)";
 
-requestAnimationFrame(() => {
-  reviewBox.style.transition = "transform 0.35s ease";
-  reviewBox.style.transform = "translate(-50%, 0)";
+  // Animación de entrada
+  requestAnimationFrame(() => {
+
+    reviewBox.style.transition = "transform 0.35s ease";
+
+    reviewBox.style.transform = "translate(-50%, 0)";
+
+  });
+
 });
 
-});
 // --- Cerrar panel al tocar fuera ---
 document.addEventListener("click", (e) => {
 
