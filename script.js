@@ -123,6 +123,8 @@ if (addButton) {
   const productId = Number(card.dataset.id);
   abrirProducto(productId);
 });
+
+
 function abrirProducto(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
@@ -234,6 +236,8 @@ ${product.variants && product.variants.length > 0 ? `
   productModal.hidden = false;
   actualizarOpcionesDisponibles();
 }
+
+
 function actualizarLimiteCantidad() {
   if (!currentProduct || !productModalBody) return;
   const quantityValue =
