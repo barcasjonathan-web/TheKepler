@@ -1311,6 +1311,12 @@ document.addEventListener("click", (e) => {
     reviewComments.style.minHeight = "0";
     reviewComments.style.overflowY = "auto";
   }
+  reviewBox.style.transform = "translate(-50%, 100%)";
+
+requestAnimationFrame(() => {
+  reviewBox.style.transition = "transform 0.35s ease";
+  reviewBox.style.transform = "translate(-50%, 0)";
+});
 
 });
 
@@ -1321,8 +1327,14 @@ document.addEventListener("click", (e) => {
   const reviewBox = document.getElementById("reviewBox");
 
   if (reviewBox) {
-    reviewBox.hidden = true;
-    reviewBox.style.display = "none";
+    reviewBox.style.transition = "transform 0.35s ease";
+reviewBox.style.transform = "translate(-50%, 100%)";
+
+setTimeout(() => {
+  reviewBox.hidden = true;
+  reviewBox.style.display = "none";
+  reviewBox.style.transition = "";
+}, 350);
   }
 
 });
