@@ -286,69 +286,18 @@ if (productModalBody) {
 }
 
 function actualizarOpcionesDisponibles() {
-  if (!currentProduct?.variants || !productModalBody) return;
-
-  const selectedColor =
-    productModalBody.querySelector(".color-option.selected")?.dataset.color || null;
-
-  const selectedSize =
-    productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
-
-  // -----------------------------
-  // COLORES
-  // -----------------------------
-
-  productModalBody.querySelectorAll(".color-option").forEach(button => {
-    const color = button.dataset.color;
-
-    const disponible = currentProduct.variants.some(variant => {
-      if (variant.stock <= 0) return false;
-
-      // Si no hay talla seleccionada,
-      // todos los colores con stock están disponibles.
-      if (!selectedSize) {
-        return variant.color === color;
-      }
-
-      // Si hay talla seleccionada,
-      // mostramos los colores que existen con esa talla.
-      return (
-        variant.color === color &&
-        variant.size === selectedSize
-      );
+  // Ningún color ni talla se bloquea.
+  // Todos los botones permanecen disponibles
+  // para que el usuario pueda cambiar libremente
+  // de una opción a otra.
+  productModalBody
+    .querySelectorAll(".color-option, .size-option")
+    .forEach(button => {
+      button.disabled = false;
     });
-
-    button.disabled = !disponible;
-  });
-
-
-  // -----------------------------
-  // TALLAS
-  // -----------------------------
-
-  productModalBody.querySelectorAll(".size-option").forEach(button => {
-    const size = button.dataset.size;
-
-    const disponible = currentProduct.variants.some(variant => {
-      if (variant.stock <= 0) return false;
-
-      // Si no hay color seleccionado,
-      // todas las tallas con stock están disponibles.
-      if (!selectedColor) {
-        return variant.size === size;
-      }
-
-      // Si hay color seleccionado,
-      // mostramos las tallas que existen con ese color.
-      return (
-        variant.size === size &&
-        variant.color === selectedColor
-      );
-    });
-
-    button.disabled = !disponible;
-  });
 }
+  
+ 
 
 // Seleccionar color y talla
 if (productModalBody) {
