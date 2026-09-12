@@ -229,6 +229,7 @@ ${product.variants && product.variants.length > 0 ? `
 `;
   productModal.hidden = false;
   actualizarOpcionesDisponibles();
+  actualizarBotonAnadirCarrito();
 }
 
 
@@ -287,6 +288,59 @@ if (limitMessage) {
         "⚠ Has llegado al límite de unidades disponibles.";
     } else {
       limitMessage.textContent = "";    }  }}
+
+function actualizarBotonAnadirCarrito() {
+  if (!currentProduct || !productModalBody) return;
+
+  const addButton =
+    productModalBody.querySelector(".add-product-to-cart");
+
+  if (!addButton) return;
+
+  const stockTotal = (currentProduct.variants || [])
+    .reduce((total, variant) => total + (variant.stock || 0), 0);
+
+  const enCarrito = cart
+    .filter(item => item.id === currentProduct.id)
+    .reduce((total, item) => total + item.qty, 0);
+  const color =
+  productModalBody.querySelector(".color-option.selected")?.dataset.color || null;
+
+const size =
+  productModalBody.querySelector(".size-option.selected")?.dataset.size || null;
+
+const varianteSeleccionada = (currentProduct.variants || []).find(variant =>
+  (variant.color || null) === color &&
+  (variant.size || null) === size
+);
+
+const usadoDeVariante = cart
+  .filter(item =>
+    item.id === currentProduct.id &&
+    (item.color || null) === color &&
+    (item.size || null) === size
+  )
+  .reduce((total, item) => total + item.qty, 0);
+
+const stockVariante = varianteSeleccionada
+  ? varianteSeleccionada.stock
+  : null;
+
+const disponibleVariante =
+  stockVariante === null
+    ? null
+    : Math.max(0, stockVariante - usadoDeVariante);
+
+  if (
+  enCarrito >= stockTotal ||
+  (disponibleVariante !== null && disponibleVariante <= 0)
+) {
+  addButton.style.display = "none";
+} else {
+  addButton.style.display = "";
+  }
+}
+
 // Cambiar imagen principal desde la galería
 if (productModalBody) {
   productModalBody.addEventListener("click", (e) => {
@@ -542,6 +596,7 @@ if (productModalBody) {
 
       actualizarOpcionesDisponibles();
       actualizarLimiteCantidad();
+      actualizarBotonAnadirCarrito();
 
       return;
     }
@@ -632,6 +687,7 @@ if (productModalBody) {
 
       actualizarOpcionesDisponibles();
       actualizarLimiteCantidad();
+      actualizarBotonAnadirCarrito();
 
       return;
     }
@@ -782,6 +838,7 @@ if (categoryFilter) {
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
+   actualizarBotonAnadirCarrito();
  }
 function removeFromCart(index) {
   if (index < 0 || index >= cart.length) return;
