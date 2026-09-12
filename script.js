@@ -273,7 +273,14 @@ ${product.variants && product.variants.length > 0 ? `
   const reviewStars = reviewBox?.querySelector(".review-stars");
 
 if (reviewBox && reviewStars) {
-  reviewStars.innerHTML = "☆ ☆ ☆ ☆ ☆";
+  reviewStars.innerHTML = `
+    <span data-star="1">☆</span>
+    <span data-star="2">☆</span>
+    <span data-star="3">☆</span>
+    <span data-star="4">☆</span>
+    <span data-star="5">☆</span>
+  `;
+  reviewBox.dataset.rating = "";
 }
 
 if (primeraVariante) {
