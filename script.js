@@ -294,6 +294,7 @@ function actualizarOpcionesDisponibles() {
     .querySelectorAll(".color-option, .size-option")
     .forEach(button => {
       button.disabled = false;
+      button.removeAttribute("disabled");
     });
 }
   
@@ -312,8 +313,11 @@ if (productModalBody) {
         .forEach(btn => {
           btn.classList.remove("selected");
           btn.disabled = false;
+          btn.removeAttribute("disabled");
         });
 
+      colorButton.disabled = false;
+      colorButton.removeAttribute("disabled");
       colorButton.classList.add("selected");
 
       actualizarOpcionesDisponibles();
@@ -332,8 +336,11 @@ if (productModalBody) {
         .forEach(btn => {
           btn.classList.remove("selected");
           btn.disabled = false;
+          btn.removeAttribute("disabled");
         });
 
+      sizeButton.disabled = false;
+      sizeButton.removeAttribute("disabled");
       sizeButton.classList.add("selected");
 
       actualizarOpcionesDisponibles();
