@@ -160,11 +160,19 @@ function abrirProducto(productId) {
   <div class="product-detail-price">
   ${money(product.price)}
   </div>
-  <div class="product-detail-rating">
-  ★★★★★
-  </div>
+  <div class="product-detail-rating" id="productRating">
+  Cargando valoración...
+</div>
   <h3>Descripción</h3>
   <p>${product.description}</p>
+  <div class="product-reviews-section">
+  <h3>Comentarios</h3>
+
+  <div id="reviewsList">
+    Cargando comentarios...
+  </div>
+</div>
+  
 ${product.variants && product.variants.length > 0 ? `
   ${[...new Set(
     product.variants
@@ -228,6 +236,7 @@ ${product.variants && product.variants.length > 0 ? `
 </div>
 `;
   productModal.hidden = false;
+  cargarResenas(product.id);
   const primeraVariante = product.variants?.find(v => v.stock > 0);
 
 if (primeraVariante) {
@@ -250,6 +259,58 @@ if (primeraVariante) {
   actualizarBotonAnadirCarrito();
 }
 
+async function cargarResenas(productId) {
+  const reviewsList = document.getElementById("reviewsList");
+
+  if (!reviewsList) return;
+
+  const { data, error } = await supabaseClient
+    .from("reviews")
+    .select("*")
+    .eq("product_id", productId)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Error cargando reseñas:", error);
+    reviewsList.textContent = "No se pudieron cargar las reseñas.";
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    reviewsList.textContent = "Todavía no hay reseñas.";
+    return;
+  }
+
+  reviewsList.innerHTML = data.map(review => `
+    <div class="review-item">
+      <div class="review-header">
+
+        <div class="review-user">
+
+          ${
+            review.avatar_url
+              ? `<img src="${review.avatar_url}" alt="Foto de perfil">`
+              : `<div class="review-avatar-letter">
+                  ${(review.user_name || "U").charAt(0).toUpperCase()}
+                </div>`
+          }
+
+          <span>${review.user_name}</span>
+
+        </div>
+
+        <div class="review-stars">
+          ${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}
+        </div>
+
+      </div>
+
+      <p class="review-comment">
+        ${review.comment}
+      </p>
+    </div>
+  `).join("");
+}
 
 function actualizarLimiteCantidad() {
   if (!currentProduct || !productModalBody) return;
