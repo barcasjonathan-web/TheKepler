@@ -957,8 +957,13 @@ confirmReservation.addEventListener("click", () => {
     `Hola Kepler, mi nombre es ${name}.\n\nQuiero hacer este pedido:\n\n${lines.join("\n")}\n\nTotal: ${money(total)}`;
   
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
-  reservationForm.hidden = true;
-  customerName.value = "";
+
+cart = [];
+localStorage.setItem("cart", JSON.stringify(cart));
+renderCart();
+
+reservationForm.hidden = true;
+customerName.value = "";
 });
 
 cancelReservation.addEventListener("click", () => {
