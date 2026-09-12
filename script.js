@@ -250,7 +250,7 @@ function actualizarLimiteCantidad() {
 
 let stockDisponible = varianteSeleccionada
   ? varianteSeleccionada.stock
-  : 0;
+  : null;
   
   const yaEnCarrito = cart
     .filter(item =>
@@ -259,7 +259,10 @@ let stockDisponible = varianteSeleccionada
       (item.size || null) === size
     )
     .reduce((sum, item) => sum + item.qty, 0);
-  const disponible = Math.max(0, stockDisponible - yaEnCarrito);
+  const disponible =
+  stockDisponible === null
+    ? 0
+    : Math.max(0, stockDisponible - yaEnCarrito);
   let quantity =
     parseInt(quantityValue.textContent, 10) || 1;
   if (disponible > 0) {
@@ -268,7 +271,7 @@ let stockDisponible = varianteSeleccionada
     quantity = 1;  }
   quantityValue.textContent = quantity;
   if (limitMessage) {
-    if (disponible <= 0) {
+    if (stockDisponible !== null && disponible <= 0) {
       limitMessage.textContent =
         "⚠ No quedan unidades disponibles para esta combinación.";
     } else if (quantity >= disponible) {
@@ -676,8 +679,8 @@ if (productModalBody) {
     if (minusButton) {
       quantity = Math.max(1, quantity - 1);    }
     if (plusButton) {
-      if (quantity < 10) {
-    quantity++;
+      if (plusButton) {
+  quantity++;
       }
     }
     quantityValue.textContent = quantity;
