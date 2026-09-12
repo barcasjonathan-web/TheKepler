@@ -391,7 +391,7 @@ async function cargarResenas(productId) {
       </p>
     </div>
   `).join("")+ `
-  <div style="height: 1000px;"></div;
+  <div style="height: 1000px;"></div>`;
 }
 
 // --- Publicar reseña ---
