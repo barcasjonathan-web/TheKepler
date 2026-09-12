@@ -167,56 +167,51 @@ function abrirProducto(productId) {
   <p>${product.description}</p>
 // AQUÍ va el nuevo bloque de variants
 ${product.variants && product.variants.length > 0 ? `
-
-<div class="product-option">
-
-  <h3>Color</h3>
-
-  <div class="color-options">
-
-    ${[...new Set(product.variants
+  ${[...new Set(
+    product.variants
       .filter(v => v.color)
       .map(v => v.color)
-    )]
-    .map((color, index) => `
-
-      <button
-      class="color-option"
-      data-color="${color}">
-        ${color}
-      </button>
-
-    `).join("")}
-
-  </div>
-
-</div>
-
-
-<div class="product-option">
-
-  <h3>Talla</h3>
-
-  <div class="size-options">
-
-    ${[...new Set(product.variants
+  )].length > 0 ? `
+    <div class="product-option">
+      <h3>Color</h3>
+      <div class="color-options">
+        ${[...new Set(
+          product.variants
+            .filter(v => v.color)
+            .map(v => v.color)
+        )]
+        .map(color => `
+          <button
+            type="button"
+            class="color-option"
+            data-color="${color}">
+            ${color}
+          </button>
+        `).join("")}
+      </div>
+    </div>
+  ` : ""}
+  ${[...new Set(
+    product.variants
       .filter(v => v.size)
       .map(v => v.size)
-    )]
-    .map((size, index) => `
-
-      <button
-      class="size-option"
-      data-size="${size}">
-        ${size}
-      </button>
-
-    `).join("")}
-
-  </div>
-
-</div>
-
+  )].length > 0 ? `
+    <div class="product-option">
+      <h3>Talla</h3>
+      <div class="size-options">
+        ${[...new Set(
+          product.variants
+            .filter(v => v.size)
+            .map(v => v.size)       )]
+        .map(size => `
+          <button
+            type="button"
+            class="size-option"
+            data-size="${size}">
+            ${size}
+          </button>        `).join("")}
+      </div>    </div>
+  ` : ""}
 ` : ""}
 <div class="product-option quantity-option">
 <h3>Cantidad</h3>
