@@ -188,7 +188,7 @@ async function abrirProducto(productId) {
       placeholder="Escribe tu opinión..."
     ></textarea>
 
-    <button id="sendReview" aria-label="Publicar reseña">→</button>
+    <button id="sendReview">→</button>
 
   </div>
   <div class="review-divider"></div>
