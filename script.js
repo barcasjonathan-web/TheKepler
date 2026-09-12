@@ -1150,6 +1150,19 @@ reviewBox.style.borderRadius = "20px";
 
 });
 
+document.addEventListener("click", (e) => {
+
+  if (e.target.id !== "closeReviewBox") return;
+
+  const reviewBox = document.getElementById("reviewBox");
+
+  if (reviewBox) {
+    reviewBox.hidden = true;
+    reviewBox.style.display = "none";
+  }
+
+});
+
 renderProducts(currentCategory);
 renderCart();
   // --- Conexión con Supabase ---
