@@ -156,6 +156,11 @@ font-weight: 500;}
   display: flex;
   align-items: center;
   gap: 12px;}
+.color-option.incompatible,
+.size-option.incompatible {
+  opacity: 0.4;
+  filter: grayscale(100%);
+}
 
 
 /* Ventanas flotantes: modal y perfil */
