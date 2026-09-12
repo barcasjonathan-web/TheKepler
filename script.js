@@ -381,6 +381,96 @@ async function cargarResenas(productId) {
   `).join("");
 }
 
+// --- Publicar reseña ---
+document.addEventListener("click", async (e) => {
+
+  if (e.target.id !== "sendReview") return;
+
+  // Comprobar usuario conectado
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    alert("Debes iniciar sesión para publicar una reseña.");
+    return;
+  }
+
+  // Comprobar que tenemos un producto abierto
+  if (!currentProduct) {
+    alert("No se ha podido identificar el producto.");
+    return;
+  }
+
+  const reviewBox = document.getElementById("reviewBox");
+  const reviewText = document.getElementById("reviewText");
+
+  if (!reviewBox || !reviewText) return;
+
+  // Obtener valoración seleccionada
+  const rating = Number(reviewBox.dataset.rating);
+
+  if (!rating || rating < 1 || rating > 5) {
+    alert("Selecciona una valoración de 1 a 5 estrellas.");
+    return;
+  }
+
+  // Obtener comentario
+  const comment = reviewText.value.trim();
+
+  if (!comment) {
+    alert("Escribe tu opinión antes de publicar.");
+    reviewText.focus();
+    return;
+  }
+
+  // Comprobar si este usuario ya publicó una reseña
+  const yaTieneResena = await comprobarResenaUsuario(currentProduct.id);
+
+  if (yaTieneResena) {
+    alert("Ya has publicado una reseña para este producto.");
+    return;
+  }
+
+  // Datos del usuario
+  const nombre = user.user_metadata.name || "";
+  const apellido = user.user_metadata.surname || "";
+  const userName = `${nombre} ${apellido}`.trim() || "Usuario";
+  const avatarUrl = user.user_metadata.avatar_url || null;
+
+  // Guardar reseña en Supabase
+  const { error } = await supabaseClient
+    .from("reviews")
+    .insert({
+      product_id: currentProduct.id,
+      user_id: user.id,
+      user_name: userName,
+      avatar_url: avatarUrl,
+      rating: rating,
+      comment: comment
+    });
+
+  if (error) {
+    console.error("Error publicando reseña:", error);
+    alert("No se pudo publicar la reseña: " + error.message);
+    return;
+  }
+
+  // Limpiar formulario
+  reviewText.value = "";
+  reviewBox.dataset.rating = "";
+
+  const stars = reviewBox.querySelectorAll(".review-stars span");
+
+  stars.forEach(star => {
+    star.textContent = "☆";
+  });
+
+  // Recargar comentarios
+  await cargarResenas(currentProduct.id);
+
+  alert("¡Reseña publicada correctamente!");
+
+});
+
 function actualizarLimiteCantidad() {
   if (!currentProduct || !productModalBody) return;
   const quantityValue =
