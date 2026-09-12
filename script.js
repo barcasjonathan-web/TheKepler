@@ -390,8 +390,7 @@ async function cargarResenas(productId) {
         ${review.comment}
       </p>
     </div>
-  `).join("")+ `
-  <div style="height: 1000px;"></div>`;
+  `).join("");
 }
 
 // --- Publicar reseña ---
