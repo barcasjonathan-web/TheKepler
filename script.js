@@ -79,14 +79,21 @@ const confirmReservation = document.getElementById("confirmReservation");
 const cancelReservation = document.getElementById("cancelReservation");
 const currentCategory = document.body.dataset.category || "Todos";
 
+let scrollLocks = 0;
 
 function bloquearScroll() {
+  scrollLocks++;
   document.body.classList.add("no-scroll");
 }
 
 function desbloquearScroll() {
-  document.body.classList.remove("no-scroll");
+  scrollLocks = Math.max(0, scrollLocks - 1);
+
+  if (scrollLocks === 0) {
+    document.body.classList.remove("no-scroll");
+  }
 }
+
 function money(value) {
   return value.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
 }
@@ -279,6 +286,7 @@ ${product.variants && product.variants.length > 0 ? `
 </div>
 `;
   productModal.hidden = false;
+  bloquearScroll();
   cargarResenas(product.id);
   const primeraVariante = product.variants?.find(v => v.stock > 0);
   const yaTieneResena = await comprobarResenaUsuario(product.id);
