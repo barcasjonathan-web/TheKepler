@@ -1250,11 +1250,13 @@ document.addEventListener("click", async (e) => {
   if (!clickedStar) return;
 
   const starBox = clickedStar.parentElement;
+  starBox.classList.add("loading");
 
   // Comprobar si el usuario está conectado
   const { data: { user } } = await supabaseClient.auth.getUser();
 
   if (!user) {
+    starBox.classList.remove("loading");
     alert("Debes iniciar sesión para poder valorar este producto.");
     return;
   }
@@ -1262,7 +1264,10 @@ document.addEventListener("click", async (e) => {
   // Saber qué estrella se pulsó
   const clickedIndex = Array.from(starBox.children).indexOf(clickedStar);
 
-  if (clickedIndex === -1) return;
+  if (clickedIndex === -1)  {
+  starBox.classList.remove("loading");
+  return;
+  }
 
   const rating = clickedIndex + 1;
 
@@ -1277,6 +1282,7 @@ document.addEventListener("click", async (e) => {
   Array.from(starBox.children).forEach((star, index) => {
     star.textContent = index < rating ? "★" : "☆";
   });
+  starBox.classList.remove("loading");
 
 });
 // --- Abrir panel de reseña al tocar estrellas ---
