@@ -1449,6 +1449,21 @@ if (loginForm) {
 
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
+    const loginSubmitBtn = document.getElementById("loginSubmitBtn");
+const loginBtnText = loginSubmitBtn?.querySelector(".login-btn-text");
+const loginSpinner = loginSubmitBtn?.querySelector(".login-spinner");
+
+if (loginSubmitBtn) {
+  loginSubmitBtn.disabled = true;
+}
+
+if (loginBtnText) {
+  loginBtnText.textContent = "Entrando...";
+}
+
+if (loginSpinner) {
+  loginSpinner.hidden = false;
+}
 
     const { data, error } = await supabaseClient.auth.signInWithPassword({
       email: email,
