@@ -1190,10 +1190,14 @@ function openCart() {
 }
 
 function closeCart() {
+  const estabaAbierto = cartPanel.classList.contains("open");
+  
   cartPanel.classList.remove("open");
   overlay.classList.remove("show");
   cartPanel.setAttribute("aria-hidden", "true");
-  desbloquearScroll();
+  if (estabaAbierto) {
+    desbloquearScroll();
+  }
 }
 
 document.getElementById("cartBtn").addEventListener("click", openCart);
@@ -1346,8 +1350,11 @@ document.addEventListener("click", (e) => {
   }
 
   // Mostrar panel
-  reviewBox.hidden = false;
+  if (reviewBox.hidden) {
   bloquearScroll();
+  }
+  reviewBox.hidden = false;
+  
 
 const productModalContent =
   reviewBox.closest(".product-modal-content");
@@ -1795,11 +1802,11 @@ if (logoutSpinner) {
 }
     // Cerrar panel de perfil
     const profilePanel = document.getElementById("profilePanel");
-    if (profilePanel) {
-      profilePanel.hidden = true;
-      profilePanel.style.display = "none";
+    if (profilePanel && !profilePanel.hidden) {
+  profilePanel.hidden = true;
+  profilePanel.style.display = "none";
+  desbloquearScroll();
     }
-    desbloquearScroll();
     // Cambiar botón principal
     const loginBtn = document.getElementById("loginBtn");
     if (loginBtn) {
