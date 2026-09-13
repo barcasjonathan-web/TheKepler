@@ -999,8 +999,34 @@ const productModal =
 if (closeProductModal && productModal) {
 
   closeProductModal.addEventListener("click", () => {
-    productModal.hidden = true;
-    desbloquearScroll();
+
+    const reviewBox = document.getElementById("reviewBox");
+
+    if (reviewBox && !reviewBox.hidden) {
+      reviewBox.hidden = true;
+
+      const productModalContent =
+        reviewBox.closest(".product-modal-content");
+
+      if (productModalContent) {
+        productModalContent.classList.remove("lock-scroll");
+      }
+
+      const reviewOverlay =
+        document.getElementById("reviewOverlay");
+
+      if (reviewOverlay) {
+        reviewOverlay.remove();
+      }
+
+      desbloquearScroll();
+    }
+
+    if (!productModal.hidden) {
+      productModal.hidden = true;
+      desbloquearScroll();
+    }
+
   });
 
 }
@@ -1629,6 +1655,7 @@ if (loginSpinner) {
 
     if (loginModal) {
       loginModal.style.display = "none";
+      loginModal.hidden = true;
       desbloquearScroll();
     }
     
