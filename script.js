@@ -79,6 +79,14 @@ const confirmReservation = document.getElementById("confirmReservation");
 const cancelReservation = document.getElementById("cancelReservation");
 const currentCategory = document.body.dataset.category || "Todos";
 
+
+function bloquearScroll() {
+  document.body.classList.add("no-scroll");
+}
+
+function desbloquearScroll() {
+  document.body.classList.remove("no-scroll");
+}
 function money(value) {
   return value.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
 }
@@ -1322,6 +1330,7 @@ document.addEventListener("click", (e) => {
 
   // Mostrar panel
   reviewBox.hidden = false;
+  bloquearScroll();
 
   reviewBox.style.display = "flex";
   reviewBox.style.flexDirection = "column";
@@ -1390,6 +1399,7 @@ document.addEventListener("click", (e) => {
 
   setTimeout(() => {
     reviewBox.hidden = true;
+    desbloquearScroll();
     reviewBox.style.display = "none";
     reviewBox.style.transition = "";
 
@@ -1413,6 +1423,7 @@ reviewBox.style.transform = "translate(-50%, 100%)";
 
 setTimeout(() => {
   reviewBox.hidden = true;
+  desbloquearScroll();
   reviewBox.style.display = "none";
   reviewBox.style.transition = "";
   const reviewOverlay = document.getElementById("reviewOverlay");
