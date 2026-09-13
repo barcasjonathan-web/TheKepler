@@ -356,35 +356,34 @@ async function cargarResenas(productId) {
   }
 
   reviewsList.innerHTML = data.map(review => `
-    <div class="review-item">
-      <div class="review-header">
-
-        <div class="review-user">
-
-          ${
-            review.avatar_url
-              ? `<img src="${review.avatar_url}" alt="Foto de perfil">`
-              : `<div class="review-avatar-letter">
-                  ${(review.user_name || "U").charAt(0).toUpperCase()}
-                </div>`
-          }
-
-          <span>${review.user_name}</span>
-
+  <div class="review-item">
+    <div class="review-header">
+      <div class="review-user">
+        ${
+          review.avatar_url
+            ? `<img src="${review.avatar_url}" alt="Foto de perfil">`
+            : `<div class="review-avatar-letter">
+                ${(review.user_name || "U").charAt(0).toUpperCase()}
+              </div>`
+        }
+        <div class="review-user-content">
+          <div class="review-user-top">
+            <strong class="review-user-name">
+              ${review.user_name || "Usuario"}
+            </strong>
+            <div class="review-stars">
+              ${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}
+            </div>
+          </div>
+          <p class="review-comment">
+            ${review.comment}
+          </p>
         </div>
-
-        <div class="review-stars">
-          ${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}
-        </div>
-
       </div>
-
-      <p class="review-comment">
-        ${review.comment}
-      </p>
     </div>
-  `).join("")+ `
-  <div style="height: 4000px;"></div>
+  </div>
+`).join("") + `
+  <div style="height: 40px;"></div>
 `;
 }
 
