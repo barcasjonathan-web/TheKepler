@@ -68,7 +68,10 @@
     <input type="text" id="regSurname" placeholder="Apellido" required>
     <input type="email" id="regEmail" placeholder="Email" required>
     <input type="password" id="regPassword" placeholder="Contraseña" required>
-    <button type="submit">Registrarse</button>
+    <button type="submit" id="registerSubmitBtn">
+  <span class="register-btn-text">Registrarse</span>
+  <span class="register-spinner" hidden></span>
+    </button>
   </form>
 
   <!-- Login -->
@@ -89,6 +92,8 @@
   <div class="avatar-container">
     <div id="profileAvatar" class="profile-avatar"></div>
     <button id="changePhotoBtn" class="camera-btn">
+  <span class="photo-spinner" hidden></span>
+    </button>
     </button>
       
     
@@ -101,7 +106,10 @@
   <p id="profileName"></p>
   <p id="profileSurname"></p>
   <p id="profileEmail"></p>
-  <button id="logoutBtn">Cerrar sesión</button>
+  <button id="logoutBtn">
+  <span class="logout-btn-text">Cerrar sesión</span>
+  <span class="logout-spinner" hidden></span>
+  </button>
 </div>
     
 <!-- ⭐ MENÚ MÓVIL ⭐ -->
