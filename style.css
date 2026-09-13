@@ -211,28 +211,35 @@ font-weight: 500;}
   font-size: 42px;
   padding-top: 30px;
   padding-bottom: 35px;
+   position: relative;
 }
 
 #reviewBox .review-form .review-stars span {
-  font-size: 42px;
-  cursor: pointer;
-  line-height: 1;
+  opacity: 0.25;
 }
 /* Cargando al seleccionar estrellas */
 #reviewBox .review-form .review-stars.loading {
   pointer-events: none;
-  opacity: 0.6;
 }
 
 #reviewBox .review-form .review-stars.loading::after {
   content: "";
-  width: 14px;
-  height: 14px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 22px;
+  height: 22px;
+
+  transform: translate(-50%, -50%);
+
+  border: 3px solid rgba(0, 0, 0, 0.2);
   border-top-color: #000;
   border-radius: 50%;
+
   animation: reviewStarsSpinner 0.7s linear infinite;
-  margin-left: 8px;
+
+  z-index: 2;
 }
 
 @keyframes reviewStarsSpinner {
