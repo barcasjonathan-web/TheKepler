@@ -285,8 +285,11 @@ ${product.variants && product.variants.length > 0 ? `
 </div>
 </div>
 `;
-  productModal.hidden = false;
+  if (productModal.hidden) {
   bloquearScroll();
+}
+
+productModal.hidden = false;
   cargarResenas(product.id);
   const primeraVariante = product.variants?.find(v => v.stock > 0);
   const yaTieneResena = await comprobarResenaUsuario(product.id);
@@ -1178,7 +1181,9 @@ function renderCart() {
 }
 
 function openCart() {
+    if (!cartPanel.classList.contains("open")) {
     bloquearScroll();
+    }
   cartPanel.classList.add("open");
   overlay.classList.add("show");
   cartPanel.setAttribute("aria-hidden", "false");
