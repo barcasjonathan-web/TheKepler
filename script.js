@@ -997,6 +997,7 @@ if (closeProductModal && productModal) {
 
   closeProductModal.addEventListener("click", () => {
     productModal.hidden = true;
+    desbloquearScroll();
   });
 
 }
@@ -1630,16 +1631,21 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const loginModal = document.getElementById("loginModal");
     const profilePanel = document.getElementById("profilePanel");
+    let ventanaCerrada = false;
     // Cerrar Login
-    if (loginModal) {
+    if (loginModal && !loginModal.hidden) {
       loginModal.style.display = "none";
       loginModal.hidden = true;
+      ventanaCerrada = true;
     }
-    desbloquearScroll();
     // Cerrar Perfil
-    if (profilePanel) {
+    if (profilePanel && !profilePanel.hidden) {
       profilePanel.style.display = "none";
       profilePanel.hidden = true;
+      ventanaCerrada = true;
+    }
+    if (ventanaCerrada) {
+      desbloquearScroll();
     }
   });
 });
@@ -1715,18 +1721,22 @@ if (loginBtn) {
     if (session) {
       // Usuario conectado → abrir Perfil
       if (profilePanel) {
+        if (profilePanel.hidden) {
+      bloquearScroll();
+        }
         profilePanel.hidden = false;
         profilePanel.style.display = "block";
       }
-      bloquearScroll();
       cargarPerfil();
     } else {
       // Usuario no conectado → abrir Login
       if (loginModal) {
+        if (loginModal.hidden) {
+      bloquearScroll();
+        }
         loginModal.hidden = false;
         loginModal.style.display = "block";
       }
-      bloquearScroll();
     }
   });
 }
