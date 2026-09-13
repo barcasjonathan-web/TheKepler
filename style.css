@@ -215,6 +215,10 @@ font-weight: 500;}
 }
 
 #reviewBox .review-form .review-stars span {
+  opacity: 1;
+   color: #000;
+}
+#reviewBox .review-form .review-stars.loading span {
   opacity: 0.25;
 }
 /* Cargando al seleccionar estrellas */
@@ -244,7 +248,7 @@ font-weight: 500;}
 
 @keyframes reviewStarsSpinner {
   to {
-    transform: rotate(360deg);
+    transform:translate(-50%, -50%)  rotate(360deg);
   }
 }
 .review-input-box {
