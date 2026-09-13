@@ -1419,6 +1419,21 @@ if (registerForm) {
     const surname = document.getElementById("regSurname").value;
     const email = document.getElementById("regEmail").value;
     const password = document.getElementById("regPassword").value;
+    const registerSubmitBtn = document.getElementById("registerSubmitBtn");
+const registerBtnText = registerSubmitBtn?.querySelector(".register-btn-text");
+const registerSpinner = registerSubmitBtn?.querySelector(".register-spinner");
+
+if (registerSubmitBtn) {
+  registerSubmitBtn.disabled = true;
+}
+
+if (registerBtnText) {
+  registerBtnText.textContent = "Registrando...";
+}
+
+if (registerSpinner) {
+  registerSpinner.hidden = false;
+}
 
     const { error } = await supabaseClient.auth.signUp({
       email: email,
@@ -1432,9 +1447,31 @@ if (registerForm) {
     });
 
     if (error) {
+      if (registerSubmitBtn) {
+  registerSubmitBtn.disabled = false;
+}
+
+if (registerBtnText) {
+  registerBtnText.textContent = "Registrarse";
+}
+
+if (registerSpinner) {
+  registerSpinner.hidden = true;
+}
       alert(error.message);
       return;
     }
+    if (registerSubmitBtn) {
+  registerSubmitBtn.disabled = false;
+}
+
+if (registerBtnText) {
+  registerBtnText.textContent = "Registrarse";
+}
+
+if (registerSpinner) {
+  registerSpinner.hidden = true;
+}
 
     alert("Registro realizado correctamente. Revisa tu correo para confirmar tu cuenta.");
     registerForm.reset();
@@ -1624,14 +1661,44 @@ const logoutBtn = document.getElementById("logoutBtn");
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async function () {
+    const logoutBtnText = logoutBtn.querySelector(".logout-btn-text");
+const logoutSpinner = logoutBtn.querySelector(".logout-spinner");
+
+logoutBtn.disabled = true;
+
+if (logoutBtnText) {
+  logoutBtnText.textContent = "Cerrando...";
+}
+
+if (logoutSpinner) {
+  logoutSpinner.hidden = false;
+}
     console.log("Botón Cerrar sesión pulsado");
     const { error } = await supabaseClient.auth.signOut();
     if (error) {
+      logoutBtn.disabled = false;
+
+if (logoutBtnText) {
+  logoutBtnText.textContent = "Cerrar sesión";
+}
+
+if (logoutSpinner) {
+  logoutSpinner.hidden = true;
+}
       console.error("Error al cerrar sesión:", error);
       alert("No se pudo cerrar sesión: " + error.message);
       return;
     }
     console.log("Sesión cerrada correctamente");
+    logoutBtn.disabled = false;
+
+if (logoutBtnText) {
+  logoutBtnText.textContent = "Cerrar sesión";
+}
+
+if (logoutSpinner) {
+  logoutSpinner.hidden = true;
+}
     // Cerrar panel de perfil
     const profilePanel = document.getElementById("profilePanel");
     if (profilePanel) {
@@ -1698,6 +1765,17 @@ if (changePhotoBtn && profilePhotoInput) {
   });
 }
 async function subirFotoPerfil(file) {
+  const photoSpinner = changePhotoBtn?.querySelector(".photo-spinner");
+
+const terminarCargaFoto = () => {
+  if (changePhotoBtn) {
+    changePhotoBtn.disabled = false;
+  }
+
+  if (photoSpinner) {
+    photoSpinner.hidden = true;
+  }
+};
   if (!file) return;
   // Solo JPG y PNG
   if (
@@ -1740,6 +1818,7 @@ async function subirFotoPerfil(file) {
     // Convertir a JPG comprimido
     canvas.toBlob(async (blob) => {
       if (!blob) {
+        terminarCargaFoto();
         alert("No se pudo procesar la imagen.");
         return;
       }
@@ -1754,6 +1833,7 @@ async function subirFotoPerfil(file) {
             contentType: "image/jpeg"
           });
       if (uploadError) {
+        terminarCargaFoto();
         console.error("Error al subir la foto:", uploadError);
         alert(
           "No se pudo subir la foto: " +
@@ -1784,6 +1864,7 @@ const { data: updatedUser, error: updateError } =
   });
 
 if (updateError) {
+  terminarCargaFoto();
   console.error("Error guardando avatar:", updateError);
   alert("La foto se subió, pero no se pudo guardar en tu perfil.");
   return;
@@ -1796,14 +1877,14 @@ if (loginBtn) {
     `<img src="${photoUrl}?t=${Date.now()}" alt="Foto de perfil">`;
   loginBtn.style.background = "transparent";
 }
-
+terminarCargaFoto();
 alert("Foto de perfil actualizada correctamente.");
-      alert("Foto de perfil actualizada correctamente.");
     }, "image/jpeg", 0.85);
     // Liberar memoria
     URL.revokeObjectURL(img.src);
   };
   img.onerror = () => {
+    terminarCargaFoto();
     alert("No se pudo procesar la imagen.");
   };
   // Cargar archivo seleccionado
@@ -1812,6 +1893,15 @@ alert("Foto de perfil actualizada correctamente.");
 // Cuando selecciona un archivo
 if (profilePhotoInput) {
   profilePhotoInput.addEventListener("change", async () => {
+    const photoSpinner = changePhotoBtn?.querySelector(".photo-spinner");
+
+if (changePhotoBtn) {
+  changePhotoBtn.disabled = true;
+}
+
+if (photoSpinner) {
+  photoSpinner.hidden = false;
+}
     const file = profilePhotoInput.files[0];
     await subirFotoPerfil(file);
     profilePhotoInput.value = "";  });
