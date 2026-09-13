@@ -1471,9 +1471,31 @@ if (loginSpinner) {
     });
 
     if (error) {
+        if (loginSubmitBtn) {
+    loginSubmitBtn.disabled = false;
+  }
+
+  if (loginBtnText) {
+    loginBtnText.textContent = "Entrar";
+  }
+
+  if (loginSpinner) {
+    loginSpinner.hidden = true;
+  }
       alert(error.message);
       return;
     }
+    if (loginSubmitBtn) {
+  loginSubmitBtn.disabled = false;
+}
+
+if (loginBtnText) {
+  loginBtnText.textContent = "Entrar";
+}
+
+if (loginSpinner) {
+  loginSpinner.hidden = true;
+}
 
     alert("Inicio de sesión correcto");
     actualizarBotonUsuario();
