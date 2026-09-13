@@ -1008,6 +1008,7 @@ if (productModal) {
 
     if (e.target === productModal) {
       productModal.hidden = true;
+      desbloquearScroll();
     }
 
   });
@@ -1176,6 +1177,7 @@ function renderCart() {
 }
 
 function openCart() {
+    bloquearScroll();
   cartPanel.classList.add("open");
   overlay.classList.add("show");
   cartPanel.setAttribute("aria-hidden", "false");
@@ -1185,6 +1187,7 @@ function closeCart() {
   cartPanel.classList.remove("open");
   overlay.classList.remove("show");
   cartPanel.setAttribute("aria-hidden", "true");
+  desbloquearScroll();
 }
 
 document.getElementById("cartBtn").addEventListener("click", openCart);
@@ -1340,6 +1343,13 @@ document.addEventListener("click", (e) => {
   reviewBox.hidden = false;
   bloquearScroll();
 
+const productModalContent =
+  reviewBox.closest(".product-modal-content");
+
+if (productModalContent) {
+  productModalContent.classList.add("lock-scroll");
+}
+
   reviewBox.style.display = "flex";
   reviewBox.style.flexDirection = "column";
 
@@ -1407,7 +1417,14 @@ document.addEventListener("click", (e) => {
 
   setTimeout(() => {
     reviewBox.hidden = true;
+    const productModalContent =
+  reviewBox.closest(".product-modal-content");
+
+if (productModalContent) {
+  productModalContent.classList.remove("lock-scroll");
+}
     desbloquearScroll();
+    
     reviewBox.style.display = "none";
     reviewBox.style.transition = "";
 
@@ -1431,6 +1448,12 @@ reviewBox.style.transform = "translate(-50%, 100%)";
 
 setTimeout(() => {
   reviewBox.hidden = true;
+  const productModalContent =
+  reviewBox.closest(".product-modal-content");
+
+if (productModalContent) {
+  productModalContent.classList.remove("lock-scroll");
+}
   desbloquearScroll();
   reviewBox.style.display = "none";
   reviewBox.style.transition = "";
@@ -1593,7 +1616,9 @@ if (loginSpinner) {
 
     if (loginModal) {
       loginModal.style.display = "none";
+      desbloquearScroll();
     }
+    
 
     console.log("Usuario conectado:", data.user);
   });
@@ -1610,6 +1635,7 @@ closeButtons.forEach((button) => {
       loginModal.style.display = "none";
       loginModal.hidden = true;
     }
+    desbloquearScroll();
     // Cerrar Perfil
     if (profilePanel) {
       profilePanel.style.display = "none";
@@ -1692,6 +1718,7 @@ if (loginBtn) {
         profilePanel.hidden = false;
         profilePanel.style.display = "block";
       }
+      bloquearScroll();
       cargarPerfil();
     } else {
       // Usuario no conectado → abrir Login
@@ -1699,6 +1726,7 @@ if (loginBtn) {
         loginModal.hidden = false;
         loginModal.style.display = "block";
       }
+      bloquearScroll();
     }
   });
 }
@@ -1756,6 +1784,7 @@ if (logoutSpinner) {
       profilePanel.hidden = true;
       profilePanel.style.display = "none";
     }
+    desbloquearScroll();
     // Cambiar botón principal
     const loginBtn = document.getElementById("loginBtn");
     if (loginBtn) {
