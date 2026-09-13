@@ -203,19 +203,17 @@ font-weight: 500;}
 #productRating .rating-stars {
   font-size: 30px;
 }
-#reviewBox .review-stars {
+#reviewBox .review-form .review-stars {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
-
   font-size: 42px;
-
   padding-top: 30px;
   padding-bottom: 35px;
 }
 
-#reviewBox .review-stars span {
+#reviewBox .review-form .review-stars span {
   font-size: 42px;
   cursor: pointer;
   line-height: 1;
@@ -1204,6 +1202,100 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 .hogar { background: url("img/hogarbg.png") center/cover no-repeat; }
 .accesorios { background: url("img/masbg.png") center/cover no-repeat; }
 
+/* =========================================
+   COMENTARIOS DE RESEÑAS
+   ========================================= */
+
+#reviewsList {
+  width: 100%;
+}
+
+.review-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.review-header {
+  width: 100%;
+}
+
+.review-user {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 12px;
+}
+
+/* Foto de perfil */
+.review-user > img,
+.review-avatar-letter {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Letra cuando no hay foto */
+.review-avatar-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5e5e5;
+  color: #000;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Zona derecha de foto */
+.review-user-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Nombre + estrellas */
+.review-user-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+/* Nombre */
+.review-user-name {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Estrellas del comentario */
+.review-user-top .review-stars {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1px;
+  font-size: 15px;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Comentario */
+.review-comment {
+  margin: 5px 0 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #222;
+  word-break: break-word;
+}
 /* ===== Responsive ===== */
 
 @media (max-width: 900px) {
