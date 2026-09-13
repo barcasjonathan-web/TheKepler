@@ -218,6 +218,28 @@ font-weight: 500;}
   cursor: pointer;
   line-height: 1;
 }
+/* Cargando al seleccionar estrellas */
+#reviewBox .review-form .review-stars.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+#reviewBox .review-form .review-stars.loading::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: reviewStarsSpinner 0.7s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes reviewStarsSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .review-input-box {
   position: relative;
   width: 100%;
