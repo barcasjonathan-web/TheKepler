@@ -279,6 +279,27 @@ font-weight: 500;}
 
   cursor: pointer;
    }
+/* Cargando al publicar reseña */
+#sendReview.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+#sendReview.loading::after {
+  content: "";
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: reviewSpinner 0.7s linear infinite;
+}
+
+@keyframes reviewSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 
 /* Ventanas flotantes: modal y perfil */
