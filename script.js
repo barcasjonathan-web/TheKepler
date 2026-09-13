@@ -390,18 +390,26 @@ async function cargarResenas(productId) {
 // --- Publicar reseña ---
 document.addEventListener("click", async (e) => {
 
-  if (e.target.id !== "sendReview") return;
+  const sendReviewBtn = e.target.closest("#sendReview");
+if (!sendReviewBtn) return;
+
+  sendReviewBtn.classList.add("loading");
+sendReviewBtn.disabled = true;
 
   // Comprobar usuario conectado
   const { data: { user } } = await supabaseClient.auth.getUser();
 
   if (!user) {
+    sendReviewBtn.classList.remove("loading");
+  sendReviewBtn.disabled = false;
     alert("Debes iniciar sesión para publicar una reseña.");
     return;
   }
 
   // Comprobar que tenemos un producto abierto
   if (!currentProduct) {
+    sendReviewBtn.classList.remove("loading");
+  sendReviewBtn.disabled = false;
     alert("No se ha podido identificar el producto.");
     return;
   }
@@ -409,12 +417,18 @@ document.addEventListener("click", async (e) => {
   const reviewBox = document.getElementById("reviewBox");
   const reviewText = document.getElementById("reviewText");
 
-  if (!reviewBox || !reviewText) return;
+  if (!reviewBox || !reviewText) {
+  sendReviewBtn.classList.remove("loading");
+  sendReviewBtn.disabled = false;
+  return;
+  }
 
   // Obtener valoración seleccionada
   const rating = Number(reviewBox.dataset.rating);
 
   if (!rating || rating < 1 || rating > 5) {
+    sendReviewBtn.classList.remove("loading");
+  sendReviewBtn.disabled = false;
     alert("Selecciona una valoración de 1 a 5 estrellas.");
     return;
   }
@@ -423,6 +437,8 @@ document.addEventListener("click", async (e) => {
   const comment = reviewText.value.trim();
 
   if (!comment) {
+    sendReviewBtn.classList.remove("loading");
+  sendReviewBtn.disabled = false;
     alert("Escribe tu opinión antes de publicar.");
     reviewText.focus();
     return;
@@ -432,6 +448,8 @@ document.addEventListener("click", async (e) => {
   const yaTieneResena = await comprobarResenaUsuario(currentProduct.id);
 
   if (yaTieneResena) {
+    sendReviewBtn.classList.remove("loading");
+  sendReviewBtn.disabled = false;
     alert("Ya has publicado una reseña para este producto.");
     return;
   }
@@ -455,7 +473,12 @@ document.addEventListener("click", async (e) => {
     });
 
   if (error) {
+    
     console.error("Error publicando reseña:", error);
+
+    sendReviewBtn.classList.remove("loading");
+  sendReviewBtn.disabled = false;
+    
     alert("No se pudo publicar la reseña: " + error.message);
     return;
   }
@@ -472,6 +495,9 @@ document.addEventListener("click", async (e) => {
 
   // Recargar comentarios
   await cargarResenas(currentProduct.id);
+
+sendReviewBtn.classList.remove("loading");
+sendReviewBtn.disabled = false;
 
   alert("¡Reseña publicada correctamente!");
 
