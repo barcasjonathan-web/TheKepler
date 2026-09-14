@@ -368,7 +368,25 @@ async function cargarResenas(productId) {
     reviewsList.textContent = "No se pudieron cargar las reseñas.";
     return;
   }
+const productRating = document.querySelector("#productRating .rating-stars");
 
+if (productRating) {
+  if (!data || data.length === 0) {
+    productRating.textContent = "☆☆☆☆☆";
+  } else {
+    const promedio =
+      data.reduce((total, review) => total + Number(review.rating), 0) /
+      data.length;
+
+    const promedioRedondeado = Math.round(promedio * 10) / 10;
+    const estrellasLlenas = Math.floor(promedio);
+    const estrellasVacias = 5 - estrellasLlenas;
+
+    productRating.innerHTML =
+      `${promedioRedondeado} ` +
+      `${"★".repeat(estrellasLlenas)}${"☆".repeat(estrellasVacias)}`;
+  }
+}
   if (!data || data.length === 0) {
     reviewsList.textContent = "Todavía no hay reseñas.";
     return;
