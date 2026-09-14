@@ -1491,7 +1491,21 @@ font-size:20px;
    .mobile-search-btn {
  display:flex !important;
 }
+.mobile-search {
+      position: relative;
+      width: 100%;
+  }
 
+  #mobileSearchResults {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 300px;
+      overflow-y: auto;
+      background: white;
+      z-index: 9999;
+      }
 .header-center #loginBtn {
  display:none;
 }
