@@ -1239,9 +1239,13 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   gap: 22px;
   transition: 0.3s;
   z-index: 999;
+   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
-
-.mobile-menu a {
+body.menu-open {
+    overflow: hidden;
+}
+.mobile-menu {
   font-size: 1.2rem;
   font-weight: 700;
   color: #111;
