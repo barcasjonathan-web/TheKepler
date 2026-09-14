@@ -1478,6 +1478,10 @@ margin-right: 5px;
   width: 48px;
   height: 48px;
    }
+   .header-right {
+    gap: 8px;
+    padding-right: 5px;
+   }
   .categories { grid-template-columns: 1fr; }
   .footer-content {
     flex-direction: column;
