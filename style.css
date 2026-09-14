@@ -434,12 +434,13 @@ font-weight: 500;}
   background: black;
   color: white;
   border: none;
-  padding: 10px 22px;
+  padding: 8px 16px;
   border-radius: 25px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
+   min-width: 88px;
 }
 
 #loginBtn:hover {
