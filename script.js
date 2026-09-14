@@ -80,6 +80,99 @@ const cancelReservation = document.getElementById("cancelReservation");
 const currentCategory = document.body.dataset.category || "Todos";
 
 let scrollLocks = 0;
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
+
+
+searchInput.addEventListener("input", buscarProductos);
+
+
+function buscarProductos() {
+
+    const texto = searchInput.value
+        .toLowerCase()
+        .trim();
+
+
+    searchResults.innerHTML = "";
+
+
+    if (texto === "") {
+
+        searchResults.style.display = "none";
+        return;
+
+    }
+
+
+    const resultados = products.filter(producto => {
+
+        const nombre = producto.name.toLowerCase();
+
+        const descripcion = producto.description.toLowerCase();
+
+
+        return (
+            nombre.includes(texto) ||
+            descripcion.includes(texto)
+        );
+
+    });
+
+
+    if (resultados.length === 0) {
+
+        searchResults.innerHTML = `
+            <div class="no-results">
+                No hay resultados
+            </div>
+        `;
+
+        searchResults.style.display = "block";
+        return;
+
+    }
+
+
+    resultados.forEach(producto => {
+
+        const item = document.createElement("div");
+
+        item.className = "search-item";
+
+        item.textContent = producto.name;
+
+
+        item.onclick = () => {
+
+            abrirProducto(producto.id);
+
+            searchResults.style.display = "none";
+
+            searchInput.value = "";
+
+        };
+
+
+        searchResults.appendChild(item);
+
+    });
+
+
+    const final = document.createElement("div");
+
+    final.className = "end-results";
+
+    final.textContent = "No hay más resultados";
+
+
+    searchResults.appendChild(final);
+
+
+    searchResults.style.display = "block";
+
+}
+
 
 function bloquearScroll() {
   scrollLocks++;
