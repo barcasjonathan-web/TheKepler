@@ -1401,9 +1401,6 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 /* ===== Responsive ===== */
 @media (min-width:601px){
 
-.mobile-search-btn{
- display:none !important;
-}
 
 .search-box{
  display:block;
