@@ -1099,6 +1099,37 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   transform: translateY(-50%);
   opacity: 0.7;
 }
+#searchResults {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ddd;
+    z-index: 9999;
+    display: none;
+}
+
+
+.search-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.search-item:hover {
+    background: #eee;
+}
+
+
+.no-results,
+.end-results {
+    padding: 10px;
+    text-align: center;
+}
+
 
 .header-center {
    position: absolute;
