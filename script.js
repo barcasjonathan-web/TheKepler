@@ -77,7 +77,7 @@ const reservationForm = document.getElementById("reservationForm");
 const customerName = document.getElementById("customerName");
 const confirmReservation = document.getElementById("confirmReservation");
 const cancelReservation = document.getElementById("cancelReservation");
-const currentCategory = document.body.dataset.category || "Todos";
+let currentCategory = document.body.dataset.category || "Todos";
 
 let scrollLocks = 0;
 const searchInput = document.getElementById("searchInput");
@@ -1320,7 +1320,7 @@ function toggleLike(id) {
   const numId = parseInt(id, 10);
   likes[id] = !likes[id]; // alterna true/false
   localStorage.setItem("likes", JSON.stringify(likes));
-  renderProducts(currentCategory); // refresca la vista
+  renderFeaturedProducts(currentCategory); // refresca la vista
 }
 
 // Delegación de eventos para el corazón
