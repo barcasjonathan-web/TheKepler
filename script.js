@@ -1367,7 +1367,11 @@ document.addEventListener("click", (e) => {
     reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
     reviewOverlay.style.zIndex = "99998";
 
-    document.body.appendChild(reviewOverlay);
+    const productModal = document.getElementById("productModal");
+
+if (productModal) {
+  productModal.appendChild(reviewOverlay);
+}
   }
 
   // Mostrar panel
@@ -1375,9 +1379,6 @@ document.addEventListener("click", (e) => {
   bloquearScroll();
   }
   reviewBox.hidden = false;
-  
-
-document.body.appendChild(reviewOverlay);
 
   reviewBox.style.display = "flex";
   reviewBox.style.flexDirection = "column";
