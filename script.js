@@ -1797,6 +1797,13 @@ if (loginBtn) {
     }
   });
 }
+const loginBtnMobile = document.getElementById("loginBtnMobile");
+
+if (loginBtnMobile) {
+  loginBtnMobile.addEventListener("click", () => {
+    loginBtn.click();
+  });
+}
 // Detectar Login / Logout automáticamente
 supabaseClient.auth.onAuthStateChange((event, session) => {
   actualizarBotonUsuario();
