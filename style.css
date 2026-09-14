@@ -1078,6 +1078,8 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 
 .header-center {
+   display: flex;
+  align-items: center;
   flex: 1;
   text-align: center;
 }
@@ -1381,6 +1383,11 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 
 @media (max-width: 600px) {
+   .header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+   }
    .cart-icon {
   right: 65px;
   top: 120px;
@@ -1531,6 +1538,9 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   border-top-color: #000;
   border-radius: 50%;
   animation: loginSpinner 0.7s linear infinite;
+}
+#loginBtn {
+  display: none;
 }
 
 #loginSubmitBtn {
