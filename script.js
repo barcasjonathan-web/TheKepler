@@ -83,9 +83,19 @@ let scrollLocks = 0;
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 
+if (mobileSearchInput) {
 
+    mobileSearchInput.addEventListener("input", () => {
+
+        buscarProductos(
+            mobileSearchInput,
+            mobileSearchResults
+        );
+
+    });
+
+}
 searchInput.addEventListener("input", buscarProductos);
-
 
 function buscarProductos() {
 
