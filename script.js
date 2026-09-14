@@ -1367,12 +1367,7 @@ document.addEventListener("click", (e) => {
     reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
     reviewOverlay.style.zIndex = "99998";
 
-    const productModalContent =
-      reviewBox.closest(".product-modal-content");
-
-    if (productModalContent) {
-      productModalContent.appendChild(reviewOverlay);
-    }
+    document.body.appendChild(reviewOverlay);
   }
 
   // Mostrar panel
