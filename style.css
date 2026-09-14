@@ -448,8 +448,8 @@ font-weight: 500;}
   cursor: pointer;
   transition: 0.3s ease;
    min-width: 88px;
-   margin-left: 25px;
-   margin-right: 25px;
+   margin-left: 20px;
+    margin-right: auto;
    flex-shrink: 0;
     white-space: nowrap;
 }
@@ -1105,9 +1105,7 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
    left: 50%;
    transform: translateX(-50%);
 
-   display: flex;
-   align-items: center;
-   justify-content: center;
+   
 }
 
 .header-logo {
@@ -1115,6 +1113,7 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 
 .header-right {
+   margin-left: auto;
    display: flex;
    align-items: center;
    gap: 25px;
