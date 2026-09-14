@@ -485,6 +485,8 @@ font-weight: 500;}
 }
 
 .user-avatar img {
+   margin-left: 25px;
+   margin-right: 25px;
   width: 100% !important;
   height: 100% !important;
 
