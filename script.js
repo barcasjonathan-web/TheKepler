@@ -1335,7 +1335,9 @@ const categoryFilter = document.getElementById("categoryFilter");
 if (categoryFilter) {
   categoryFilter.addEventListener("change", (e) => {
     const selected = e.target.value;
-    renderFeaturedProducts(selected);   // muestra solo la categoría elegida
+    currentCategory = selected;
+
+  renderFeaturedProducts(selected);// muestra solo la categoría elegida
     renderCart();               // refresca el carrito si hace falta
   });
 }
@@ -1732,8 +1734,7 @@ if (reviewOverlay) {
 
 
 
-renderProducts(currentCategory);
-renderCart();
+
   // --- Conexión con Supabase ---
 const SUPABASE_URL = "https://nsoiiuzuqstjmicotruf.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_8p928Sjxq2K7yhFscTx41w_ocI76h4i";
@@ -1744,6 +1745,8 @@ const supabaseClient = createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
+renderFeaturedProducts(currentCategory);
+renderCart();
 
 // --- Registro con Supabase ---
 const registerForm = document.getElementById("registerForm");
