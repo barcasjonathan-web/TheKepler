@@ -450,6 +450,8 @@ font-weight: 500;}
    min-width: 88px;
    margin-left: 25px;
    margin-right: 25px;
+   flex-shrink: 0;
+    white-space: nowrap;
 }
 
 #loginBtn:hover {
@@ -1067,15 +1069,17 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 
 .header-left {
-  flex: 1;
-   display: flex;
-  align-items: center;
-   padding-right: 40px;
+  display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: nowrap;
 }
 
 .search-box {
   position: relative;
-  max-width: 260px;
+   width: 165px;
+   flex-shrink: 0;
    margin-left: 30px;
    margin-right: 30px;
 }
