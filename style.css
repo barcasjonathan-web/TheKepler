@@ -9,7 +9,7 @@ a{text-decoration:none;color:inherit}
 body.no-scroll {
   overflow: hidden;
 }
-.lock-scroll {
+.product-modal-content.lock-scroll {
   overflow: hidden !important;
 }
 .product-modal {
