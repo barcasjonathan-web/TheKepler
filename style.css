@@ -1057,6 +1057,7 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   align-items: center;
   background: #fff;
   border-bottom: 1px solid #e5e5e5;
+   position: relative;
 }
 
 .header-left {
@@ -1085,13 +1086,17 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 
 .header-center {
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+
    display: flex;
-  align-items: center;
-  text-align: center;
+   align-items: center;
+   justify-content: center;
 }
 
 .header-logo {
-  height: 42px;
+  height: 50px;
 }
 
 .header-right {
