@@ -165,6 +165,58 @@ function money(value) {
   return value.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
 }
 
+async function obtenerRankingProductos() {
+
+  const { data, error } = await supabaseClient
+    .from("reviews")
+    .select("product_id, rating");
+
+
+  if (error) {
+    console.error("Error cargando ranking:", error);
+    return [];
+  }
+
+
+  const ranking = {};
+
+
+  data.forEach(review => {
+
+    if (!ranking[review.product_id]) {
+      ranking[review.product_id] = [];
+    }
+
+    ranking[review.product_id].push(
+      Number(review.rating)
+    );
+
+  });
+
+
+  const productosRanking = products.map(producto => {
+
+    const estrellas = ranking[producto.id] || [];
+
+
+    const promedio = estrellas.length
+      ? estrellas.reduce((a,b)=>a+b,0) / estrellas.length
+      : 0;
+
+
+    return {
+      ...producto,
+      ranking: promedio
+    };
+
+  });
+
+
+  return productosRanking;
+
+}
+
+
 function renderProducts(category = "Todos") {
   const list = category === "Todos" ? products : products.filter(p => p.category === category);
   grid.innerHTML = list.map(p => `
@@ -187,6 +239,83 @@ function renderProducts(category = "Todos") {
 </article>
 `).join('');
 }
+
+async function renderFeaturedProducts(category = "Todos") {
+
+  const productos = await obtenerRankingProductos();
+
+
+  let lista = productos;
+
+
+  if (category !== "Todos") {
+
+    lista = productos.filter(
+      p => p.category === category
+    );
+
+  }
+
+
+  lista = lista
+    .sort((a,b)=> b.ranking - a.ranking)
+    .slice(0,6);
+
+
+
+  grid.innerHTML = lista.map(p => `
+
+    <article class="product-card" data-id="${p.id}">
+
+      <div class="image-wrapper">
+
+        <img src="${p.image}" alt="${p.name}">
+
+        <span class="category">
+          ${p.category}
+        </span>
+
+      </div>
+
+
+      <div class="product-info">
+
+        <h3 class="product-name">
+          ${p.name}
+        </h3>
+
+
+        <div class="product-meta">
+
+          <div class="price">
+            ${money(p.price)}
+          </div>
+
+
+          <button class="like-btn" data-id="${p.id}">
+
+            <img 
+            src="img/${likes[p.id] ? 'like.png' : 'unlike.png'}"
+            class="heart-icon">
+
+          </button>
+
+        </div>
+
+
+        <button class="add-full" data-id="${p.id}">
+          Ver Producto →
+        </button>
+
+
+      </div>
+
+    </article>
+
+  `).join("");
+
+}
+
 // --- Abrir producto individual ---
 grid.addEventListener("click", (e) => {
   // Si se pulsa el botón de like, no abrir el producto
@@ -1206,7 +1335,7 @@ const categoryFilter = document.getElementById("categoryFilter");
 if (categoryFilter) {
   categoryFilter.addEventListener("change", (e) => {
     const selected = e.target.value;
-    renderProducts(selected);   // muestra solo la categoría elegida
+    renderFeaturedProducts(selected);   // muestra solo la categoría elegida
     renderCart();               // refresca el carrito si hace falta
   });
 }
