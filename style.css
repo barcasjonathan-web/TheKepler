@@ -7,7 +7,7 @@ a{text-decoration:none;color:inherit}
    MODAL DE PRODUCTO
    ========================= */
 .mobile-search-btn {
-  display: none;
+  display: none !important;
 }
 body.no-scroll {
   overflow: hidden;
@@ -1379,7 +1379,21 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   word-break: break-word;
 }
 /* ===== Responsive ===== */
+@media (min-width:601px){
 
+.mobile-search-btn{
+ display:none !important;
+}
+
+.search-box{
+ display:block;
+}
+
+#loginBtn{
+ display:flex;
+}
+
+}
 @media (max-width: 900px) {
    
   .search-box { max-width: 160px; }
@@ -1410,6 +1424,14 @@ font-size:20px;
    .search-box {
   display:none;
    }
+   .mobile-search-btn {
+ display:flex !important;
+}
+
+.header-center #loginBtn {
+ display:none;
+}
+   
    .header-center {
   position: absolute;
   left: 50%;
