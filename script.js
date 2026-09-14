@@ -1382,12 +1382,7 @@ document.addEventListener("click", (e) => {
   reviewBox.hidden = false;
   
 
-const productModalContent =
-  reviewBox.closest(".product-modal-content");
-
-if (productModalContent) {
-  productModalContent.classList.add("lock-scroll");
-}
+document.body.appendChild(reviewOverlay);
 
   reviewBox.style.display = "flex";
   reviewBox.style.flexDirection = "column";
