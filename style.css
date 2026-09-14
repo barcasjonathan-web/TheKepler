@@ -1076,6 +1076,8 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 .search-box {
   position: relative;
   max-width: 260px;
+   margin-left: 30px;
+   margin-right: 30px;
 }
 
 .search-box input {
