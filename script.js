@@ -82,104 +82,68 @@ const currentCategory = document.body.dataset.category || "Todos";
 let scrollLocks = 0;
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
+const mobileSearchInput = document.getElementById("mobileSearchInput");
+const mobileSearchResults = document.getElementById("mobileSearchResults");
 
+if (searchInput) {
+    searchInput.addEventListener("input", () => {
+        buscarProductos(
+            searchInput,
+            searchResults
+        );
+    });
+}
 if (mobileSearchInput) {
-
     mobileSearchInput.addEventListener("input", () => {
-
         buscarProductos(
             mobileSearchInput,
             mobileSearchResults
         );
-
     });
-
 }
-searchInput.addEventListener("input", buscarProductos);
 
-function buscarProductos() {
-
-    const texto = searchInput.value
+function buscarProductos(input, resultsBox) {
+    const texto = input.value
         .toLowerCase()
         .trim();
-
-
-    searchResults.innerHTML = "";
-
-
+    resultsBox.innerHTML = "";
     if (texto === "") {
-
-        searchResults.style.display = "none";
+        resultsBox.style.display = "none";
         return;
-
     }
-
-
     const resultados = products.filter(producto => {
-
         const nombre = producto.name.toLowerCase();
-
         const descripcion = producto.description.toLowerCase();
-
-
         return (
             nombre.includes(texto) ||
             descripcion.includes(texto)
         );
-
     });
-
-
     if (resultados.length === 0) {
-
-        searchResults.innerHTML = `
+        resultsBox.innerHTML = `
             <div class="no-results">
                 No hay resultados
             </div>
         `;
-
-        searchResults.style.display = "block";
+        resultsBox.style.display = "block";
         return;
-
     }
-
-
     resultados.forEach(producto => {
-
         const item = document.createElement("div");
-
         item.className = "search-item";
-
         item.textContent = producto.name;
-
-
         item.onclick = () => {
-
             abrirProducto(producto.id);
-
-            searchResults.style.display = "none";
-
-            searchInput.value = "";
-
+            resultsBox.style.display = "none";
+            input.value = "";
         };
-
-
-        searchResults.appendChild(item);
-
+        resultsBox.appendChild(item);
     });
-
-
     const final = document.createElement("div");
-
     final.className = "end-results";
-
     final.textContent = "No hay más resultados";
-
-
-    searchResults.appendChild(final);
-
-
-    searchResults.style.display = "block";
+    resultsBox.appendChild(final);
+    resultsBox.style.display = "block";
 
 }
 
