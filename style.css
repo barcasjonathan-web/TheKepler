@@ -1111,13 +1111,9 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 
 .header-right {
-   gap: 40px;
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-   padding-left: 0px;
-   padding-right: 10px;
+   display: flex;
+   align-items: center;
+   gap: 25px;
 }
 
 .header-menu {
