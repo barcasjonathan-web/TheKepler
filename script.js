@@ -1224,6 +1224,14 @@ function renderCart() {
   `).join("");
 }
 
+function actualizarBotonesHeader(carritoAbierto = false) {
+  const cartBtn = document.getElementById("cartBtn");
+
+  if (cartBtn) {
+    cartBtn.style.display = carritoAbierto ? "none" : "";
+  }
+}
+
 function openCart() {
     if (!cartPanel.classList.contains("open")) {
     bloquearScroll();
@@ -1231,6 +1239,7 @@ function openCart() {
   cartPanel.classList.add("open");
   overlay.classList.add("show");
   cartPanel.setAttribute("aria-hidden", "false");
+  actualizarBotonesHeader(true);
 }
 
 function closeCart() {
@@ -1242,6 +1251,7 @@ function closeCart() {
   if (estabaAbierto) {
     desbloquearScroll();
   }
+  actualizarBotonesHeader(false);
 }
 
 document.getElementById("cartBtn").addEventListener("click", openCart);
