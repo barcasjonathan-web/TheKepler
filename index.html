@@ -290,8 +290,12 @@
   const closeMobileBtn = document.getElementById("closeMobileBtn");
 
   function toggleMenu() {
-    mobileMenu.classList.toggle("open");
-    menuOverlay.classList.toggle("show");
+    const menuAbierto = mobileMenu.classList.toggle("open");
+  menuOverlay.classList.toggle("show");
+
+  // Ocultar carrito cuando el menú está abierto
+  actualizarBotonesHeader(menuAbierto);
+
   }
 
   hamburgerBtn.addEventListener("click", toggleMenu);
