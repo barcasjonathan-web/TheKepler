@@ -1379,6 +1379,15 @@ if (productModal) {
   bloquearScroll();
   }
   reviewBox.hidden = false;
+  const productModalContent =
+  reviewBox.closest(".product-modal-content");
+
+if (productModalContent) {
+  productModalContent.style.zIndex = "99999";
+}
+  if (productModalContent) {
+  productModalContent.classList.add("lock-scroll");
+  }
 
   reviewBox.style.display = "flex";
   reviewBox.style.flexDirection = "column";
