@@ -1362,7 +1362,7 @@ document.addEventListener("click", (e) => {
 
     reviewOverlay.id = "reviewOverlay";
 
-    reviewOverlay.style.position = "absolute";
+    reviewOverlay.style.position = "fixed";
     reviewOverlay.style.inset = "0";
     reviewOverlay.style.background = "rgba(0, 0, 0, 0.45)";
     reviewOverlay.style.zIndex = "99998";
@@ -1482,8 +1482,8 @@ reviewBox.style.transform = "translate(-50%, 100%)";
 
 setTimeout(() => {
   reviewBox.hidden = true;
-  const productModalContent =
-  reviewBox.closest(".product-modal-content");
+  
+  const productModalContent = reviewBox.closest(".product-modal-content");
 
 if (productModalContent) {
   productModalContent.classList.remove("lock-scroll");
