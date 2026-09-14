@@ -448,6 +448,8 @@ font-weight: 500;}
   cursor: pointer;
   transition: 0.3s ease;
    min-width: 88px;
+   margin-left: 25px;
+   margin-right: 25px;
 }
 
 #loginBtn:hover {
@@ -455,6 +457,8 @@ font-weight: 500;}
   transform: translateY(-1px);
 }
 .user-avatar {
+   margin-left: 25px;
+   margin-right: 25px;
   width: 42px !important;
   height: 42px !important;
 
