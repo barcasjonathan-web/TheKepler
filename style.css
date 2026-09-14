@@ -431,6 +431,7 @@ font-weight: 500;}
    BOTONES
    ================================ */
 #loginBtn {
+   display: flex;
   background: black;
   color: white;
   border: none;
