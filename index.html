@@ -301,6 +301,11 @@
   function toggleMenu() {
     const menuAbierto = mobileMenu.classList.toggle("open");
   menuOverlay.classList.toggle("show");
+    // Bloquear scroll de la página principal
+    document.body.classList.toggle(
+        "menu-open",
+        menuAbierto
+    );
 
   // Ocultar carrito cuando el menú está abierto
   actualizarBotonesHeader(menuAbierto);
