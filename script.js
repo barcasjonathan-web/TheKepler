@@ -1710,6 +1710,7 @@ closeButtons.forEach((button) => {
 const loginBtn = document.getElementById("loginBtn");
 const loginModal = document.getElementById("loginModal");
 const profilePanel = document.getElementById("profilePanel");
+const loginBtnMobile = document.getElementById("loginBtnMobile");
 // Actualizar texto del botón según la sesión
 async function actualizarBotonUsuario() {
 
@@ -1722,6 +1723,9 @@ async function actualizarBotonUsuario() {
     loginBtn.className = "";
     loginBtn.innerHTML = "SESIÓN";
     loginBtn.style.background = "black";
+    if (loginBtnMobile) {
+  loginBtnMobile.innerHTML = "SESIÓN";
+    }
     return;
   }
 
@@ -1745,6 +1749,10 @@ async function actualizarBotonUsuario() {
     img.alt = "Foto de perfil";
 
     loginBtn.appendChild(img);
+    if (loginBtnMobile) {
+  loginBtnMobile.innerHTML = "Mi perfil";
+    }
+    
 
     loginBtn.style.background = "transparent";
 
@@ -1767,6 +1775,9 @@ async function actualizarBotonUsuario() {
     loginBtn.innerHTML = "";
     loginBtn.style.background = color;
     loginBtn.textContent = inicial;
+    if (loginBtnMobile) {
+  loginBtnMobile.innerHTML = "Mi perfil";
+    }
   }
 }
 // Comprobar sesión al cargar la página
