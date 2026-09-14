@@ -1117,6 +1117,7 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   justify-content: flex-end;
   align-items: center;
    padding-left: 0px;
+   padding-right: 40px;
 }
 
 .header-menu {
