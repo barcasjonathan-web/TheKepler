@@ -197,19 +197,6 @@ function renderProducts(list) {
 `).join('');
 }
 
-//---Funcion para obtener los 6 mejores productos
-async function getHomeProducts() {
-  const productos = await obtenerRankingProductos();
-  let lista = productos;
-  if (category !== "Todos") {
-    lista = productos.filter(
-      p => p.category === category);  }
-  lista = lista
-    .sort((a,b)=> b.ranking - a.ranking)
-    .slice(0,6);
-  return lista;
-}
-
 
 function loadCategoryProducts(category){
   const lista = category === "Todos"
