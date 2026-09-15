@@ -1,6 +1,6 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#f5f5f5;background:#0a0a0a}
+body{margin:0;font-family:"Helvetica Neue",Arial,sans-serif;;color:##eee7dc;background:#080808}
 a{text-decoration:none;color:inherit}
 /*===== Seccion=====*/
 /* =========================
@@ -21,7 +21,7 @@ body.no-scroll {
 .product-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.80);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,8 +33,9 @@ body.no-scroll {
   position: relative;
   width: min(900px, 100%);
   max-height: 90vh;
-  background: white;
-  border-radius: 20px;
+  background:#111;
+border:1px solid #c8a96a;
+border-radius:5px;
   padding: 30px;
   overflow-y: auto;
   box-sizing: border-box;
@@ -47,8 +48,9 @@ z-index: 10000;}
   height: 35px;
   border: none;
   border-radius: 50%;
-  background: black;
-  color: white;
+  background:#080808;
+color:#c8a96a;
+border:1px solid #c8a96a;
   font-size: 18px;
   cursor: pointer;
   z-index: 2;}
