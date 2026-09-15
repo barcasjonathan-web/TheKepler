@@ -174,6 +174,18 @@ async function loadHomeProducts(){
     .slice(0,6);
   renderProducts(mejoresProductos);}
 
+
+async function loadFeaturedProducts(category){
+  let lista = products;
+  if(category !== "Todos"){
+    lista = products.filter(
+      p => p.category === category  );}
+  lista = lista
+    .sort((a,b)=> b.ranking - a.ranking)
+    .slice(0,6);
+  renderProducts(lista);}
+
+
 function renderProducts(list) {
   currentProductsList = list;
    grid.innerHTML = list.map(p => `
