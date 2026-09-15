@@ -1532,8 +1532,10 @@ if (productModalContent) {
 
   reviewBox.style.transform = "translate(-50%, 100%)";
 
-  reviewBox.style.background = "white";
+  reviewBox.style.background = "#0b0b0b";
+  reviewBox.style.border = "1px solid #c8a96a";
 
+  reviewBox.style.boxShadow = "0 0 30px rgba(200,169,106,0.25)";
   // El panel debe estar por encima del overlay
   reviewBox.style.zIndex = "99999";
 
