@@ -839,16 +839,26 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 .add-full {
   margin-top: auto;
   width: 100%;
-  padding: 12px 14px;
-  background: #111;
-  color: #fff;
-  border: 0;
-  border-radius: 8px;
-  font-weight: 800;
+  padding: 13px 14px;
+  background: transparent;
+  color: #c8a96a;
+  border: 1px solid rgba(200, 169, 106, 0.55);
+  border-radius: 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.18s ease, transform 0.12s ease;
+  transition: background 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease;
 }
-.add-full:hover { background: #222; transform: translateY(-2px); }
+
+.add-full:hover {
+  background: #c8a96a;
+  color: #080808;
+  border-color: #c8a96a;
+}
 
 .like-btn {
   background: #000;          /* círculo negro */
