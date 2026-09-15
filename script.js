@@ -128,20 +128,18 @@ function buscarProductos(input, resultsBox) {
 
 function bloquearScroll() {
   scrollLocks++;
-  document.body.classList.add("no-scroll");
-}
+  document.body.classList.add("no-scroll");}
+
 
 function desbloquearScroll() {
   scrollLocks = Math.max(0, scrollLocks - 1);
-
   if (scrollLocks === 0) {
-    document.body.classList.remove("no-scroll");
-  }
-}
+    document.body.classList.remove("no-scroll"); }}
+
 
 function money(value) {
-  return value.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
-}
+  return value.toLocaleString("es-ES", { style: "currency", currency: "EUR" });}
+
 
 async function obtenerRankingProductos() {
   const { data, error } = await supabaseClient
@@ -167,6 +165,13 @@ async function obtenerRankingProductos() {
   return productosRanking;
 }
 
+
+async function loadHomeProducts(){
+  const productos = await obtenerRankingProductos();
+  const mejoresProductos = productos
+    .sort((a,b)=> b.ranking - a.ranking)
+    .slice(0,6);
+  renderProducts(mejoresProductos);}
 
 function renderProducts(list) {
    grid.innerHTML = list.map(p => `
@@ -1644,11 +1649,8 @@ renderCart();
 
 // --- Registro con Supabase ---
 const registerForm = document.getElementById("registerForm");
-
 if (registerForm) {
-  registerForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
+  registerForm.addEventListener("submit", async (e) => {e.preventDefault();
     const name = document.getElementById("regName").value;
     const surname = document.getElementById("regSurname").value;
     const email = document.getElementById("regEmail").value;
@@ -1656,61 +1658,24 @@ if (registerForm) {
     const registerSubmitBtn = document.getElementById("registerSubmitBtn");
 const registerBtnText = registerSubmitBtn?.querySelector(".register-btn-text");
 const registerSpinner = registerSubmitBtn?.querySelector(".register-spinner");
-
-if (registerSubmitBtn) {
-  registerSubmitBtn.disabled = true;
-}
-
-if (registerBtnText) {
-  registerBtnText.textContent = "Registrando...";
-}
-
-if (registerSpinner) {
-  registerSpinner.hidden = false;
-}
-
+if (registerSubmitBtn) {  registerSubmitBtn.disabled = true;}
+if (registerBtnText) {registerBtnText.textContent = "Registrando...";}
+if (registerSpinner) {  registerSpinner.hidden = false;}
     const { error } = await supabaseClient.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: {
-          name: name,
-          surname: surname
-        }
-      }
-    });
-
+      email: email, password: password, options: { data: { name: name, surname: surname  } }});
     if (error) {
-      if (registerSubmitBtn) {
-  registerSubmitBtn.disabled = false;
-}
-
-if (registerBtnText) {
-  registerBtnText.textContent = "Registrarse";
-}
-
-if (registerSpinner) {
-  registerSpinner.hidden = true;
-}
+      if (registerSubmitBtn) {  registerSubmitBtn.disabled = false;}
+if (registerBtnText) { registerBtnText.textContent = "Registrarse";}
+if (registerSpinner) {  registerSpinner.hidden = true;}
       alert(error.message);
-      return;
-    }
-    if (registerSubmitBtn) {
-  registerSubmitBtn.disabled = false;
-}
-
-if (registerBtnText) {
-  registerBtnText.textContent = "Registrarse";
-}
-
-if (registerSpinner) {
-  registerSpinner.hidden = true;
-}
-
+      return;  }
+if (registerSubmitBtn) {  registerSubmitBtn.disabled = false;}
+if (registerBtnText) { registerBtnText.textContent = "Registrarse";}
+if (registerSpinner) {  registerSpinner.hidden = true;}
     alert("Registro realizado correctamente. Revisa tu correo para confirmar tu cuenta.");
-    registerForm.reset();
-  });
-}
+    registerForm.reset(); });}
+
+
 // --- Login con Supabase ---
 const loginForm = document.getElementById("loginForm");
 
