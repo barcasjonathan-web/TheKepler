@@ -737,17 +737,18 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   align-items: start;
 }
 .product-card {
-  background: #fff;
-  border-radius: 12px;
+  background: #111;
+  border: 1px solid rgba(200, 169, 106, 0.35);
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: none;
+  transition: transform 0.35s ease, border-color 0.35s ease;
   display: flex;
   flex-direction: column;
 }
 .product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  border-color: #c8a96a;
 }
 .image-wrapper {
   position: relative;
