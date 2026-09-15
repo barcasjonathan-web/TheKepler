@@ -200,26 +200,52 @@ letter-spacing:1px;
 }
 #closeReviewBox {
   position: absolute;
-  top: 15px;
-   left: 15px;
-  right: 15px;
-  width: calc(100% - 30px);
-  height: 40px;
-  border: none;
-  border-radius: 10px;
-  background: #000;
-  color: #fff;
-  font-size: 26px;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 70px;
+  height: 34px;
+
+  border: 1px solid #c8a96a;
+  border-radius: 0;
+
+  background: #080808;
+  color: #c8a96a;
+
+  font-size: 20px;
   line-height: 1;
+  font-weight: 400;
+
   cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
-   padding: 0;
 
+  padding: 0;
   z-index: 10;
+
+  transition: background 0.25s ease,
+              color 0.25s ease;
 }
+
+#closeReviewBox:hover {
+  background: #c8a96a;
+  color: #080808;
+}
+#reviewBox .review-form h3 {
+  margin: 45px 0 0;
+  text-align: center;
+
+  color: #eee7dc;
+
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 #productRating .rating-stars {
   font-size: 30px;
 }
