@@ -1482,7 +1482,7 @@ body.menu-open {
   width: 100%;
   box-sizing: border-box;
   padding: 16px 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid rgba(200, 169, 106, 0.18);
 }
 
 .review-header {
@@ -1513,9 +1513,9 @@ body.menu-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e5e5e5;
-  color: #000;
-  font-weight: 600;
+  background: #1a1a1a;
+  color: #c8a96a;
+  font-weight: 500;
   font-size: 18px;
 }
 
@@ -1537,8 +1537,9 @@ body.menu-open {
 /* Nombre */
 .review-user-name {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
+   color: #eee7dc;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1552,6 +1553,7 @@ body.menu-open {
   gap: 1px;
   font-size: 15px;
   line-height: 1;
+   color: #c8a96a;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -1561,7 +1563,7 @@ body.menu-open {
   margin: 5px 0 0;
   font-size: 15px;
   line-height: 1.4;
-  color: #222;
+  color: #d6d0c7;
   word-break: break-word;
 }
 /* ===== Responsive ===== */
