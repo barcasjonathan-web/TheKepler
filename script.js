@@ -215,6 +215,15 @@ async function loadHomeProducts(){
   renderProducts(productos);}
 
 
+function loadCategoryProducts(category){
+  const lista = category === "Todos"
+    ? products
+    : products.filter(
+        p => p.category === category
+      );
+  renderProducts(lista);}
+
+
 // --- Abrir producto individual ---
 grid.addEventListener("click", (e) => {
   // Si se pulsa el botón de like, no abrir el producto
@@ -1219,7 +1228,7 @@ function toggleLike(id) {
   const numId = parseInt(id, 10);
   likes[id] = !likes[id]; // alterna true/false
   localStorage.setItem("likes", JSON.stringify(likes));
-  renderFeaturedProducts(currentCategory); // refresca la vista
+  renderProducts(document.querySelectorAll(".product-card") ); // refresca la vista
 }
 
 // Delegación de eventos para el corazón
@@ -1236,7 +1245,7 @@ if (categoryFilter) {
     const selected = e.target.value;
     currentCategory = selected;
 
-  renderFeaturedProducts(selected);// muestra solo la categoría elegida
+  loadCategoryProducts(selected);// muestra solo la categoría elegida
     renderCart();               // refresca el carrito si hace falta
   });
 }
@@ -1644,7 +1653,7 @@ const supabaseClient = createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
-renderFeaturedProducts(currentCategory);
+
 renderCart();
 
 // --- Registro con Supabase ---
