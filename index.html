@@ -288,7 +288,7 @@
 <script>
   // Refrescar productos y carrito al volver al foco
   window.addEventListener("focus", () => {
-    renderProducts("Todos");
+    loadHomeProducts();
     renderCart();
   });
 
