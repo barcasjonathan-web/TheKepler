@@ -63,6 +63,7 @@ const products = [
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let likes = JSON.parse(localStorage.getItem("likes")) || {};
 let currentProduct = null;
+let currentProductsList = [];
 const productModalBody = document.getElementById("productModalBody");
 
 const grid = document.getElementById("productGrid");
@@ -174,6 +175,7 @@ async function loadHomeProducts(){
   renderProducts(mejoresProductos);}
 
 function renderProducts(list) {
+  currentProductsList = list;
    grid.innerHTML = list.map(p => `
     <article class="product-card" data-id="${p.id}">
       <div class="image-wrapper">
@@ -207,12 +209,6 @@ async function getHomeProducts() {
     .slice(0,6);
   return lista;
 }
-
-
-//---Funcion que le dice a gethomeproducts estos son los 6 rank pintalos
-async function loadHomeProducts(){
-  const productos = await getHomeProducts();
-  renderProducts(productos);}
 
 
 function loadCategoryProducts(category){
@@ -1228,7 +1224,7 @@ function toggleLike(id) {
   const numId = parseInt(id, 10);
   likes[id] = !likes[id]; // alterna true/false
   localStorage.setItem("likes", JSON.stringify(likes));
-  renderProducts(document.querySelectorAll(".product-card") ); // refresca la vista
+  renderProducts(currentProductsList);// refresca la vista
 }
 
 // Delegación de eventos para el corazón
