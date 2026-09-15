@@ -87,64 +87,42 @@ const mobileSearchResults = document.getElementById("mobileSearchResults");
 
 if (searchInput) {
     searchInput.addEventListener("input", () => {
-        buscarProductos(
-            searchInput,
-            searchResults
-        );
-    });
-}
+        buscarProductos( searchInput, searchResults ); });}
+
 if (mobileSearchInput) {
     mobileSearchInput.addEventListener("input", () => {
-        buscarProductos(
-            mobileSearchInput,
-            mobileSearchResults
-        );
-    });
-}
+        buscarProductos( mobileSearchInput, mobileSearchResults ) });}
 
 function buscarProductos(input, resultsBox) {
-    const texto = input.value
-        .toLowerCase()
-        .trim();
+    const texto = input.value.toLowerCase().trim();
     resultsBox.innerHTML = "";
     if (texto === "") {
-        resultsBox.style.display = "none";
-        return;
-    }
-    const resultados = products.filter(producto => {
-        const nombre = producto.name.toLowerCase();
-        const descripcion = producto.description.toLowerCase();
-        return (
-            nombre.includes(texto) ||
-            descripcion.includes(texto)
-        );
-    });
-    if (resultados.length === 0) {
+      resultsBox.style.display = "none";
+      return;}
+   const resultados = products.filter(producto => {
+      const nombre = producto.name.toLowerCase();
+      const descripcion = producto.description.toLowerCase();
+      return (nombre.includes(texto) || descripcion.includes(texto));});
+  if (resultados.length === 0) {
         resultsBox.innerHTML = `
-            <div class="no-results">
-                No hay resultados
-            </div>
-        `;
+            <div class="no-results"> No hay resultados </div> `;
         resultsBox.style.display = "block";
-        return;
-    }
-    resultados.forEach(producto => {
-        const item = document.createElement("div");
-        item.className = "search-item";
-        item.textContent = producto.name;
-        item.onclick = () => {
-            abrirProducto(producto.id);
-            resultsBox.style.display = "none";
-            input.value = "";
-        };
-        resultsBox.appendChild(item);
-    });
-    const final = document.createElement("div");
-    final.className = "end-results";
-    final.textContent = "No hay más resultados";
-    resultsBox.appendChild(final);
-    resultsBox.style.display = "block";
-
+        return;}
+   resultados.forEach(producto => {
+     const item = document.createElement("div");
+     item.className = "search-item";
+     item.textContent = producto.name;
+     item.onclick = () => {
+        abrirProducto(producto.id);
+        resultsBox.style.display = "none";
+        input.value = "";};
+    resultsBox.appendChild(item);
+   });
+     const final = document.createElement("div");
+     final.className = "end-results";
+     final.textContent = "No hay más resultados";
+     resultsBox.appendChild(final);
+     resultsBox.style.display = "block";
 }
 
 
@@ -166,60 +144,32 @@ function money(value) {
 }
 
 async function obtenerRankingProductos() {
-
   const { data, error } = await supabaseClient
     .from("reviews")
     .select("product_id, rating");
-
-
   if (error) {
     console.error("Error cargando ranking:", error);
-    return [];
-  }
-
-
+    return [];  }
   const ranking = {};
-
-
   data.forEach(review => {
-
     if (!ranking[review.product_id]) {
-      ranking[review.product_id] = [];
-    }
-
+      ranking[review.product_id] = [];  }
     ranking[review.product_id].push(
-      Number(review.rating)
-    );
-
-  });
-
-
-  const productosRanking = products.map(producto => {
-
+      Number(review.rating) ); });
+ const productosRanking = products.map(producto => {
     const estrellas = ranking[producto.id] || [];
-
-
     const promedio = estrellas.length
       ? estrellas.reduce((a,b)=>a+b,0) / estrellas.length
       : 0;
-
-
     return {
       ...producto,
-      ranking: promedio
-    };
-
-  });
-
-
+      ranking: promedio  };  });
   return productosRanking;
-
 }
 
 
-function renderProducts(category = "Todos") {
-  const list = category === "Todos" ? products : products.filter(p => p.category === category);
-  grid.innerHTML = list.map(p => `
+function renderProducts(list) {
+   grid.innerHTML = list.map(p => `
     <article class="product-card" data-id="${p.id}">
       <div class="image-wrapper">
         <img src="${p.image}" alt="${p.name}">
@@ -240,81 +190,25 @@ function renderProducts(category = "Todos") {
 `).join('');
 }
 
-async function renderFeaturedProducts(category = "Todos") {
-
+//---Funcion para obtener los 6 mejores productos
+async function getHomeProducts() {
   const productos = await obtenerRankingProductos();
-
-
   let lista = productos;
-
-
   if (category !== "Todos") {
-
     lista = productos.filter(
-      p => p.category === category
-    );
-
-  }
-
-
+      p => p.category === category);  }
   lista = lista
     .sort((a,b)=> b.ranking - a.ranking)
     .slice(0,6);
-
-
-
-  grid.innerHTML = lista.map(p => `
-
-    <article class="product-card" data-id="${p.id}">
-
-      <div class="image-wrapper">
-
-        <img src="${p.image}" alt="${p.name}">
-
-        <span class="category">
-          ${p.category}
-        </span>
-
-      </div>
-
-
-      <div class="product-info">
-
-        <h3 class="product-name">
-          ${p.name}
-        </h3>
-
-
-        <div class="product-meta">
-
-          <div class="price">
-            ${money(p.price)}
-          </div>
-
-
-          <button class="like-btn" data-id="${p.id}">
-
-            <img 
-            src="img/${likes[p.id] ? 'like.png' : 'unlike.png'}"
-            class="heart-icon">
-
-          </button>
-
-        </div>
-
-
-        <button class="add-full" data-id="${p.id}">
-          Ver Producto →
-        </button>
-
-
-      </div>
-
-    </article>
-
-  `).join("");
-
+  return lista;
 }
+
+
+//---Funcion que le dice a gethomeproducts estos son los 6 rank pintalos
+async function loadHomeProducts(){
+  const productos = await getHomeProducts();
+  renderProducts(productos);}
+
 
 // --- Abrir producto individual ---
 grid.addEventListener("click", (e) => {
