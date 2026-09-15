@@ -788,18 +788,27 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 }
 
 .product-info {
-  padding: 14px;
+  padding: 18px 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   flex: 1;
 }
 
 .product-name {
-  font-size: 1.05rem;
+  font-size: 1rem;
   margin: 0;
-  font-weight: 700;
-  color: #111;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #eee7dc;
+  line-height: 1.4;
+}
+
+.product-meta .price {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #c8a96a;
 }
 
 .product-meta {
@@ -809,12 +818,6 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   gap: 8px;
 }
 
-/* Precio */
-.product-meta .price {
-  font-size: 1rem;
-  font-weight: 800;
-  color: #111;
-}
 
 /* Botón circular (icono) */
 .add-circle {
