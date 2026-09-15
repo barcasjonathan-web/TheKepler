@@ -137,7 +137,7 @@ border-radius:2px;
 .color-option.selected,
 .size-option.selected {
   background:#c8a96a!important;
-color:#000!important;
+color:#000!important;}
 .color-option:hover,
 .size-option:hover {
   border-color: black;}
