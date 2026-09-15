@@ -1240,7 +1240,7 @@ if (categoryFilter) {
     const selected = e.target.value;
     currentCategory = selected;
 
-  loadCategoryProducts(selected);// muestra solo la categoría elegida
+  loadFeaturedProducts(selected);// muestra solo la categoría elegida
     renderCart();               // refresca el carrito si hace falta
   });
 }
