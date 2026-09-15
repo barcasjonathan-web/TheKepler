@@ -1767,11 +1767,12 @@ font-size:20px;
     height: 18px;
   }
 
-  .add-full {
-    padding: 11px 8px;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-  }
+   .add-full {
+  padding: 10px 6px;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+   }
 
   .product-card .category {
     left: 8px;
