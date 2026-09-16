@@ -76,6 +76,10 @@ const overlay = document.getElementById("overlay");
 const whatsappBtn = document.getElementById("whatsappBtn");
 const reservationForm = document.getElementById("reservationForm");
 const customerName = document.getElementById("customerName");
+const homeDelivery = document.getElementById("homeDelivery");
+const addressBox = document.getElementById("addressBox");
+const customerAddress = document.getElementById("customerAddress");
+
 const confirmReservation = document.getElementById("confirmReservation");
 const cancelReservation = document.getElementById("cancelReservation");
 let currentCategory = document.body.dataset.category || "Todos";
@@ -1359,6 +1363,15 @@ document.getElementById("cartBtn").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
 overlay.addEventListener("click", closeCart);
 
+homeDelivery.addEventListener("change", () => {
+
+  addressBox.hidden = !homeDelivery.checked;
+
+  if (!homeDelivery.checked) {
+    customerAddress.value = "";
+  }
+
+});
 
 whatsappBtn.addEventListener("click", () => {
   if (!cart.length) {
@@ -1391,10 +1404,26 @@ confirmReservation.addEventListener("click", () => {
   const name = customerName.value.trim();
 
   if (!name) {
-    alert("Escribe tu nombre completo.");
+    alert("Escribe el nombre de la persona a recibir.");
     customerName.focus();
     return;
   }
+  let address = "";
+
+if (homeDelivery.checked) {
+
+ address = customerAddress.value.trim();
+
+ if (!address) {
+
+   alert("Escribe la dirección de entrega.");
+   customerAddress.focus();
+
+   return;
+
+ }
+
+  
   const phone = "53691544"; // tu número
 
   const lines = cart.map(item =>
@@ -1407,8 +1436,18 @@ confirmReservation.addEventListener("click", () => {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
+const deliveryText = homeDelivery.checked
+? `\nEntrega a domicilio:\n${address}`
+: "\nRecogida en tienda";
+  
   const message =
-    `Hola Kepler, mi nombre es ${name}.\n\nQuiero hacer este pedido:\n\n${lines.join("\n")}\n\nTotal: ${money(total)}`;
+`Hola Kepler, la persona que recibe es ${name}.${deliveryText}
+
+Quiero hacer este pedido:
+
+${lines.join("\n")}
+
+Total: ${money(total)}`;
   
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
 
@@ -1418,11 +1457,17 @@ renderCart();
 
 reservationForm.hidden = true;
 customerName.value = "";
+  homeDelivery.checked = false;
+customerAddress.value = "";
+addressBox.hidden = true;
 });
 
 cancelReservation.addEventListener("click", () => {
   reservationForm.hidden = true;
   customerName.value = "";
+  homeDelivery.checked = false;
+customerAddress.value = "";
+addressBox.hidden = true;
 });
 
 // --- Sistema de selección de estrellas ---
