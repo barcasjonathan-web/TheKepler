@@ -1228,14 +1228,14 @@ border-bottom:1px solid rgba(200,169,106,.35);
 
 
 .footer-whatsapp .wa-icon {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
    filter:
     invert(72%)
-    sepia(35%)
-    saturate(900%)
+    sepia(26%)
+    saturate(700%)
     hue-rotate(355deg)
-    brightness(95%);
+    brightness(105%);
 }
 
 .footer-whatsapp strong {
