@@ -382,7 +382,7 @@ ${product.variants && product.variants.length > 0 ? `
 <button type="button" class="quantity-btn quantity-plus">+</button>
 </div>
 </div>
-<button type="button" class="add-product-to-cart">
+<button type="button" class="add-product-to-cart"disabled>
   Añadir al carrito
 </button>
 </div>
@@ -1211,6 +1211,12 @@ if (productModalBody) {
     const size = selectedSize
       ? selectedSize.dataset.size
       : null;
+    const necesitaColor = currentProduct.variants?.some(v => v.color);
+    const necesitaSize = currentProduct.variants?.some(v => v.size);
+    if ((necesitaColor && !color) || (necesitaSize && !size)) {
+      alert("Selecciona las opciones del producto.");
+      return;
+    }
     // Añadir al carrito
     addToCart(
       currentProduct.id,
