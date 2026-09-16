@@ -1580,9 +1580,24 @@ box-shadow:
   font-weight: 600;
 }
 
+
+.top-symbol {
+  color:#c8a96a;
+  font-size:14px;
+  margin-right:6px;
+}
+
+.whatsapp-symbol {
+  font-size:16px;
+}
+
+.tb-center{
+   color:#c8a96a;
+   white-space: nowrap;
+}
 .tb-left,
-.tb-center,
 .tb-right {
+   color:#c8a96a;
   white-space: nowrap;
 }
 
