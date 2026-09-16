@@ -1368,10 +1368,7 @@ border:1px solid rgba(200,169,106,.5);
     hue-rotate(350deg)
     brightness(90%);
 }
-.cart-icon .icon-img {
-  filter:
-    invert(90%);
-}
+
 .cart-icon {
   position: fixed;
 
