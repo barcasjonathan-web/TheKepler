@@ -1440,33 +1440,69 @@ border:1px solid rgba(200,169,106,.5);
   right: -100%;
   width: 70%;
   height: 100vh;
-  background: #fff;
-  box-shadow: -10px 0 25px rgba(0,0,0,0.15);
+  background: #080808;
+
+  border-left: 1px solid rgba(200,169,106,.45);
+  box-shadow: -15px 0 35px rgba(0,0,0,.45);
   padding: 40px 22px;
   display: flex;
   flex-direction: column;
   gap: 22px;
-  transition: 0.3s;
+  transition: 0.3s ease;
   z-index: 999;
    overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+   box-sizing: border-box;
 }
 body.menu-open {
     overflow: hidden;
 }
 .mobile-menu {
   font-size: 1.2rem;
-  font-weight: 700;
-  color: #111;
+  font-weight: 500;
+  color: #eee7dc;
+}
+.mobile-menu a {
+  color: #eee7dc;
+  text-decoration: none;
+
+  font-size: .85rem;
+  font-weight: 500;
+
+  letter-spacing: .15em;
+  text-transform: uppercase;
+
+  transition: color .3s ease;
+}
+
+.mobile-menu a:hover {
+  color: #c8a96a;
 }
 
 .mobile-search input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px 14px;
+
+  box-sizing: border-box;
+
+  background: #111;
+  color: #eee7dc;
+
+  border: 1px solid rgba(200,169,106,.45);
+  border-radius: 0;
+
+  font-size: .85rem;
+
+  outline: none;
 }
 
+.mobile-search input::placeholder {
+  color: #777;
+}
+
+.mobile-search input:focus {
+  border-color: #c8a96a;
+}
 /* Mostrar menú cuando está abierto */
 .mobile-menu.open {
   right: 0;
@@ -1489,9 +1525,15 @@ body.menu-open {
   align-self: flex-end;
   background: transparent;
   border: none;
+   color: #c8a96a;
   font-size: 1.6rem;
+   font-weight: 400;
   cursor: pointer;
   margin-bottom: 20px;
+   transition: color .3s ease;
+}
+.close-mobile:hover {
+  color: #eee7dc;
 }
 
 /* ===== Sección Categorías ===== */
@@ -1794,16 +1836,36 @@ body.menu-open {
 }
 
 #loginBtnMobile{
- display:flex;
- width:100%;
- justify-content:center;
- background:#000;
- color:#fff;
- border:none;
- border-radius:20px;
- padding:12px;
- margin-top:20px;
- font-size:16px;
+ display: flex;
+
+  width: 100%;
+
+  justify-content: center;
+
+  background: transparent;
+  color: #c8a96a;
+
+  border: 1px solid rgba(200,169,106,.7);
+  border-radius: 0;
+
+  padding: 12px;
+
+  margin-top: 20px;
+
+  font-size: .75rem;
+  font-weight: 500;
+
+  letter-spacing: .15em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+}
+
+#loginBtnMobile:hover {
+  background: #c8a96a;
+  color: #080808;
 }
 
    
@@ -1839,38 +1901,50 @@ font-size:20px;
 
     padding: 14px;
 
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 
-    border-radius: 12px;
+  border-radius: 2px;
 
-    font-weight: 700;
+  border: 1px solid rgba(200,169,106,.3);
 
-    border: 1px solid #ddd;
+  font-weight: 500;
 
+  background: #111;
+  color: #eee7dc;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+}
+
+.mobile-search .search-item:hover {
+  background: #c8a96a;
+  color: #080808;
 }
    
   #mobileSearchResults {
       position: absolute;
 
-    top: calc(100% + 8px);
+  top: calc(100% + 8px);
+  left: 0;
 
-    left: 0;
+  width: 100%;
+  max-height: 45vh;
 
-    width: 100%;
+  overflow-y: auto;
 
-    max-height: 45vh;
+  background: #080808;
 
-    overflow-y: auto;
+  border: 1px solid rgba(200,169,106,.5);
+  border-radius: 2px;
 
-    background: white;
+  padding: 8px;
 
-    border-radius: 12px;
+  box-sizing: border-box;
 
-    padding: 8px;
+  z-index: 9999;
 
-    z-index: 9999;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
      
       }
 .header-center #loginBtn {
