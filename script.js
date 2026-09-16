@@ -1421,7 +1421,7 @@ if (homeDelivery.checked) {
 
    return;
 
- }
+ }}
 
   
   const phone = "53691544"; // tu número
