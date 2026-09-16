@@ -1169,10 +1169,12 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 
 
 .footer {
-  background: #000;
+  background: #080808;
   color: #fff;
   padding: 60px 6%;
   text-align: center;
+   border-top:1px solid rgba(200,169,106,.5);
+border-bottom:1px solid rgba(200,169,106,.35);
 }
 
 /* LOGO CENTRADO */
@@ -1203,10 +1205,10 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 .footer-about p {
   max-width: 420px;
   line-height: 1.6;
-  color: #ccc;
+  color:#aaa;
 }
 .footer-about .eyebrow {
-  color: #fff !important;
+  color:#c8a96a !important;
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -1226,17 +1228,23 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
 
 
 .footer-whatsapp .wa-icon {
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
+   filter:
+    invert(72%)
+    sepia(35%)
+    saturate(900%)
+    hue-rotate(355deg)
+    brightness(95%);
 }
 
 .footer-whatsapp strong {
   font-size: 1.1rem;
-  color: #fff;
+  color:#c8a96a;
 }
 
 .footer-whatsapp p {
-  color: #ccc;
+  color:#aaa;
   margin-top: 4px;
 }
 
@@ -1245,7 +1253,7 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   margin-top: 50px;
   font-size: 0.9rem;
   color: #aaa;
-  border-top: 1px solid #333;
+  border-top:1px solid rgba(200,169,106,.35);
   padding-top: 20px;
 }
 .cart-panel {
