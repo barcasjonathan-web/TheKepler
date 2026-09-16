@@ -723,6 +723,18 @@ const varianteSeleccionada = (currentProduct.variants || []).find(variant =>
   (variant.color || null) === color &&
   (variant.size || null) === size
 );
+  const necesitaColor = currentProduct.variants?.some(v => v.color);
+const necesitaSize = currentProduct.variants?.some(v => v.size);
+
+if (
+  (necesitaColor && !color) ||
+  (necesitaSize && !size)
+) {
+  addButton.disabled = true;
+  return;
+}
+
+addButton.disabled = false;
 
 const usadoDeVariante = cart
   .filter(item =>
