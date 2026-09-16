@@ -1366,10 +1366,10 @@ border:1px solid rgba(200,169,106,.5);
   width: 55px;
   height: 55px;
 
-  background: white;
+  background:#080808;
+  border:1px solid rgba(200,169,106,.6);
   border-radius: 50%;
 
-  border: 1px solid #ddd;
 
   display: flex;
   align-items: center;
@@ -1386,6 +1386,7 @@ border:1px solid rgba(200,169,106,.5);
   border: none;
   font-size: 1.6rem;
   cursor: pointer;
+   color: #c8a96a;
 }
 
 /* ===== Responsive ===== */
