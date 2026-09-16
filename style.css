@@ -1486,6 +1486,20 @@ body.menu-open {
 
   z-index: 1;
 }
+.category-card::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.15)
+    );
+}
+.category-card:hover::after {
+    opacity: 1;
+}
+
 
 .categories .category h3 { 
   position: relative;
