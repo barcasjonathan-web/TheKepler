@@ -1230,23 +1230,14 @@ border-bottom:1px solid rgba(200,169,106,.35);
 .footer-whatsapp .wa-icon {
   width: 42px;
   height: 42px;
-   background:#c8a96a;
-
-  object-fit:contain;
-
-  filter:none;
-
-  -webkit-mask-image:url("img/whatsapp.png");
-  mask-image:url("img/whatsapp.png");
-
-  -webkit-mask-repeat:no-repeat;
-  mask-repeat:no-repeat;
-
-  -webkit-mask-position:center;
-  mask-position:center;
-
-  -webkit-mask-size:contain;
-  mask-size:contain;
+   filter:
+   brightness(0)
+    saturate(100%)
+    invert(70%)
+    sepia(25%)
+    saturate(650%)
+    hue-rotate(5deg)
+    brightness(90%);
 }
 
 .footer-whatsapp strong {
