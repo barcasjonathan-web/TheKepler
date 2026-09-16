@@ -1391,6 +1391,35 @@ border:1px solid rgba(200,169,106,.5);
 
   cursor: pointer;
 }
+.cart-icon .icon-img {
+  filter:
+    invert(72%)
+    sepia(35%)
+    saturate(900%)
+    hue-rotate(355deg)
+    brightness(95%);
+}
+#cartCount {
+  position:absolute;
+
+  top:5px;
+  right:5px;
+
+  width:18px;
+  height:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#c8a96a;
+  color:#080808;
+
+  font-size:11px;
+  font-weight:700;
+
+  border-radius:50%;
+}
 
 .hamburger {
   display: none;
