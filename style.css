@@ -1416,7 +1416,11 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   transform: translate(-50%, -50%);
   background: #080808;
   color: #eee7dc;
-  border: 1px solid rgba(200,169,106,.65);
+  border: 1px solid #c8a96a;
+box-shadow:
+  0 0 15px rgba(200,169,106,.35),
+  0 0 35px rgba(200,169,106,.15),
+  0 0 70px rgba(200,169,106,.08);
   padding: 28px;
   border-radius: 2px;
   width: 90%;
@@ -1459,22 +1463,22 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   letter-spacing: .08em;
   text-transform: uppercase;
 }
-
+.reservation-form input,
 .reservation-form input[type="text"] {
   width: 100%;
   padding: 12px 14px;
   margin-bottom: 18px;
-  background: #111;
-  color: #eee7dc;
-  border: 1px solid rgba(200,169,106,.35);
-  border-radius: 0;
+  background: #111 !important;
+  color: #eee7dc !important;
+  border: 1px solid rgba(200,169,106,.45) !important;
+  border-radius: 0 !important;
   font-size: .85rem;
   box-sizing: border-box;
   outline: none;
 }
 
 .reservation-form input[type="text"]::placeholder {
-  color: #777;
+  color: #777 !important;
 }
 
 .reservation-form input[type="text"]:focus {
