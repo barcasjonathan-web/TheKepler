@@ -707,49 +707,67 @@ border-radius:4px;
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.55), rgba(0,0,0,0.15));
+  background: linear-gradient(
+      to right,
+      rgba(8,8,8,0.78),
+      rgba(8,8,8,0.30),
+      rgba(8,8,8,0.10)
+    );;
 }
 
 .hero-text {
   position: relative;
-  max-width: 480px;
+    max-width: 520px;
   z-index: 2;
 }
 
 .hero-eyebrow {
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  font-weight: 800;
-  margin-bottom: 12px;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #c8a96a;
+  text-transform: uppercase;
 }
 
 .hero-title {
-  font-size: clamp(2.8rem, 6vw, 4.8rem);
-  line-height: 1.05;
-  margin: 0 0 18px;
-  font-weight: 900;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1.02;
+  margin: 0 0 22px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #eee7dc;
 }
 
 .hero-desc {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin-bottom: 28px;
-  color: #eaeaea;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  color: #d6d0c7;
+  max-width: 430px;
 }
 
 .hero-btn {
   display: inline-block;
-  background: #fff;
-  color: #111;
-  padding: 14px 22px;
-  font-weight: 800;
-  border-radius: 4px;
-  transition: 0.2s;
+  background: transparent;
+  color: #c8a96a;
+  padding: 13px 24px;
+  border: 1px solid rgba(200, 169, 106, 0.75);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 0;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .hero-btn:hover {
-  background: #ddd;
-}
+  background: #c8a96a;
+  color: #080808;
+  border-color: #c8a96a;}
 
 
 .products-section{padding:90px 6%}
@@ -1613,6 +1631,33 @@ body.menu-open {
 }
 
 @media (max-width: 600px) {
+
+   .hero-new {
+  height: 520px;
+  padding-left: 7%;
+  padding-right: 7%;
+  align-items: flex-end;
+  padding-bottom: 60px;
+}
+
+.hero-text {
+  max-width: 100%;
+}
+
+.hero-title {
+  font-size: clamp(2.7rem, 12vw, 4rem);
+}
+
+.hero-desc {
+  font-size: 0.9rem;
+  max-width: 330px;
+}
+
+.hero-btn {
+  padding: 12px 20px;
+}
+
+   
    #loginBtn{
  display:none !important;
 }
