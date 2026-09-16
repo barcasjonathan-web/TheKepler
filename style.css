@@ -1577,6 +1577,12 @@ body.menu-open {
 .explore-btn:hover { background: #c8a96a;
   color: #080808;
   border-color: #c8a96a; }
+
+.category-card a:hover,
+.explore-btn:hover {
+    background:#c9a85c;
+    color:#000;
+}
  
 /* Fondos específicos */
 .moda { background: url("img/modabg.png") center/cover no-repeat; }
