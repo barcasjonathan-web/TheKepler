@@ -608,23 +608,13 @@ display: flex;
 .toggle-password {
   position: absolute;
   right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-
-  background: transparent !important;
-  border: none !important;
-padding: 0 !important;
+  top: 0;
+  margin: auto;
   width: 22px;
   height: 22px;
-
-  padding: 0;
+  background: transparent !important;
+  border: none !important;
   cursor: pointer;
-  border-radius: 0 !important;
-  outline: none;
-  box-shadow: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .toggle-password img {
@@ -632,11 +622,11 @@ padding: 0 !important;
   width:18px;
   height:18px;
   filter:
-    brightness(0)
+   brightness(0)
     saturate(100%)
-    invert(73%)
-    sepia(28%)
-    saturate(700%)
+    invert(70%)
+    sepia(25%)
+    saturate(650%)
     hue-rotate(5deg)
     brightness(90%);
   display:block;
