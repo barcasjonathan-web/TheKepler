@@ -1844,13 +1844,13 @@ document.querySelectorAll(".toggle-password").forEach(btn => {
     if (input.type === "password") {
 
       input.type = "text";
-      icon.src = "img/eye-off.png";
+      icon.src = "img/eye.png";
       icon.alt = "Ocultar contraseña";
 
     } else {
 
       input.type = "password";
-      icon.src = "img/eye.png";
+      icon.src = "img/eye-off.png";
       icon.alt = "Mostrar contraseña";
 
     }
