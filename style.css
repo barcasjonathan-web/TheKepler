@@ -611,9 +611,9 @@ display: flex;
   top: 50%;
   transform: translateY(-50%);
 
-  background: transparent;
-  border: none;
-
+  background: transparent !important;
+  border: none !important;
+padding: 0 !important;
   width: 22px;
   height: 22px;
 
@@ -625,6 +625,7 @@ display: flex;
 }
 
 .toggle-password img {
+  background: transparent !important;
   width:22px;
   height:22px;
   display:block;
@@ -664,7 +665,7 @@ display: flex;
   transition: .3s ease;
 }
 
-#registerForm button:hover {
+#registerForm > button:hover {
   background: #c8a96a;
   color: #080808;
   border-color: #c8a96a;
@@ -693,7 +694,7 @@ display: flex;
   transition: .3s ease;
 }
 
-#loginForm button:hover {
+#loginForm > button:hover {
   background: #c8a96a;
   color: #080808;
   border-color: #c8a96a;
