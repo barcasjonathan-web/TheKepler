@@ -1148,7 +1148,7 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   top: 14px;
   right: 14px;
 
-  background: rgba(0,0,0,0.45);
+  background: transparent;
   border: 1px solid rgba(200, 169, 106, 0.5);
   border-radius: 50%;
 
@@ -1164,15 +1164,12 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   z-index: 5;
 
   transition:
-    background 0.3s ease,
     border-color 0.3s ease,
     transform 0.3s ease;
   
 }
 
 .like-btn:hover {
-  background: rgba(200, 169, 106, 0.12);
-  border-color: #c8a96a;
   transform: scale(1.08);
 }
 
@@ -1182,11 +1179,11 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   filter:
     brightness(0)
     saturate(100%)
-    invert(70%)
-    sepia(25%)
-    saturate(650%)
-    hue-rotate(5deg)
-    brightness(90%);
+    invert(92%)
+    sepia(12%)
+    saturate(400%)
+    hue-rotate(350deg)
+    brightness(105%);
 }
 /* Ajustes visuales menores */
 .product-card .product-info small { color: #666; }
