@@ -654,7 +654,7 @@ display: flex;
 }
 
 
-#registerForm button {
+#registerForm > button {
   width: 100%;
 
   background: transparent;
@@ -683,7 +683,7 @@ display: flex;
 
 /* Botón login */
 
-#loginForm button {
+#loginForm > button {
   width: 100%;
 
   background: transparent;
