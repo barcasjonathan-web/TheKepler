@@ -1048,9 +1048,9 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   right: 14px;
   width: 34px;
   height: 34px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.45);
-  border: 1px solid rgba(200,169,106,0.5);
+  
+  background: transparent;
+  
   z-index: 5;
 }
 
@@ -1175,13 +1175,7 @@ select{padding:12px 16px;background:#fff;border:1px solid #bbb}
   width: 20px;
   height: 20px;
   filter:
-    brightness(0)
-    saturate(100%)
-    invert(92%)
-    sepia(12%)
-    saturate(400%)
-    hue-rotate(350deg)
-    brightness(105%);
+    brightness(100%);
 }
 /* Ajustes visuales menores */
 .product-card .product-info small { color: #666; }
