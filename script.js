@@ -192,25 +192,37 @@ async function loadFeaturedProducts(category){
 
 function renderProducts(list) {
   currentProductsList = list;
-   grid.innerHTML = list.map(p => `
+
+  grid.innerHTML = list.map(p => `
     <article class="product-card" data-id="${p.id}">
+      
       <div class="image-wrapper">
         <img src="${p.image}" alt="${p.name}">
+
+        <button class="like-btn" data-id="${p.id}">
+          <img src="img/${likes[p.id] ? 'like.png' : 'unlike.png'}" 
+          alt="Me gusta" class="heart-icon">
+        </button>
+
         <span class="category">${p.category}</span>
       </div>
+
       <div class="product-info">
-      <h3 class="product-name">${p.name}</h3>
-      <div class="product-meta">
-      <div class="price">${money(p.price)}</div>
-      <button class="like-btn" data-id="${p.id}">
-        <img src="img/${likes[p.id] ? 'like.png' : 'unlike.png'}" 
-          alt="Me gusta" class="heart-icon">
-      </button>
-   </div>
-  <button class="add-full" data-id="${p.id}">Ver Producto →</button>
-</div>
-</article>
-`).join('');
+        
+        <h3 class="product-name">${p.name}</h3>
+
+        <div class="product-meta">
+          <div class="price">${money(p.price)}</div>
+        </div>
+
+        <button class="add-full" data-id="${p.id}">
+          Ver Producto →
+        </button>
+
+      </div>
+
+    </article>
+  `).join('');
 }
 
 
