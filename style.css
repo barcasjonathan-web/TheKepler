@@ -619,11 +619,16 @@ display: flex;
 
   padding: 0;
   cursor: pointer;
+  border-radius: 0 !important;
+  outline: none;
+  box-shadow: none;
 }
 
 .toggle-password img {
   width: 100%;
   height: 100%;
+  display: block;
+  border: none;
 
   filter:
     brightness(0)
