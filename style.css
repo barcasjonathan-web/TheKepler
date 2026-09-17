@@ -636,7 +636,14 @@ display: flex;
 
   opacity: .75;
 }
-
+.password-field {
+  position: relative;
+  width: 100%;
+}
+.password-field input {
+  width: 100%;
+  padding-right: 45px;
+}
 .toggle-password:hover img {
   opacity: 1;
 }
