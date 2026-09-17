@@ -1831,6 +1831,35 @@ if (loginSpinner) {
   });
 }
 
+// --- Mostrar / ocultar contraseña ---
+document.querySelectorAll(".toggle-password").forEach(btn => {
+
+  btn.addEventListener("click", () => {
+
+    const input = document.getElementById(btn.dataset.target);
+    const icon = btn.querySelector("img");
+
+    if (!input || !icon) return;
+
+    if (input.type === "password") {
+
+      input.type = "text";
+      icon.src = "img/eye-off.png";
+      icon.alt = "Ocultar contraseña";
+
+    } else {
+
+      input.type = "password";
+      icon.src = "img/eye.png";
+      icon.alt = "Mostrar contraseña";
+
+    }
+
+  });
+
+});
+
+
 // --- Botones X para cerrar paneles ---
 const closeButtons = document.querySelectorAll(".close");
 closeButtons.forEach((button) => {
