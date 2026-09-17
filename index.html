@@ -73,7 +73,17 @@
     <input type="text" id="regName" placeholder="Nombre" required>
     <input type="text" id="regSurname" placeholder="Apellido" required>
     <input type="email" id="regEmail" placeholder="Email" required>
-    <input type="password" id="regPassword" placeholder="Contraseña" required>
+    <div class="password-field">
+  <input 
+  type="password" 
+  id="regPassword" 
+  placeholder="Contraseña" 
+  required>
+
+<button type="button" class="toggle-password" data-target="regPassword">
+  <img src="img/eye.png" alt="Mostrar contraseña">
+</button>
+    </div>
     <button type="submit" id="registerSubmitBtn">
   <span class="register-btn-text">Registrarse</span>
   <span class="register-spinner" hidden></span>
@@ -83,7 +93,17 @@
   <!-- Login -->
   <form id="loginForm">
     <input type="email" id="loginEmail" placeholder="Email" required>
-    <input type="password" id="loginPassword" placeholder="Contraseña" required>
+    <div class="password-field">
+  <input 
+  type="password" 
+  id="loginPassword" 
+  placeholder="Contraseña" 
+  required>
+
+  <button type="button" class="toggle-password" data-target="loginPassword">
+  <img src="img/eye-closed.png" alt="Mostrar contraseña">
+  </button>
+    </div>
     <button type="submit" id="loginSubmitBtn">
   <span class="login-btn-text">Entrar</span>
   <span class="login-spinner" hidden></span>
