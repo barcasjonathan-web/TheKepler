@@ -1862,10 +1862,6 @@ document.querySelectorAll(".toggle-password").forEach(btn => {
 // CAMBIAR ENTRE LOGIN Y REGISTRO
 // =========================================================
 
-const loginModal = document.getElementById("loginModal");
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-
 const showRegisterBtn = document.getElementById("showRegisterBtn");
 const showLoginBtn = document.getElementById("showLoginBtn");
 
