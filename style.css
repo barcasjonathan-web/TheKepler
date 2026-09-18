@@ -796,6 +796,96 @@ display: flex;
 .profile-panel .close:hover {
   color: #eee7dc;
 }
+/* =========================================================
+   LOGIN / REGISTRO - CAMBIO DE VISTA
+   ========================================================= */
+
+#loginModal #registerForm,
+#loginModal #loginForm {
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+/* MODO LOGIN */
+#loginModal.auth-login #registerForm {
+    display: none;
+}
+
+#loginModal.auth-login #loginForm {
+    display: block;
+}
+
+/* MODO REGISTRO */
+#loginModal.auth-register #loginForm {
+    display: none;
+}
+
+#loginModal.auth-register #registerForm {
+    display: block;
+}
+
+
+/* Botones pequeños para cambiar de modo */
+
+.auth-switch {
+    display: block;
+    
+    width: auto;
+    margin: 10px auto 0;
+    
+    padding: 4px 8px;
+    
+    background: transparent;
+    border: none;
+    
+    color: #c8a96a;
+    
+    font-size: .65rem;
+    font-weight: 500;
+    
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    
+    cursor: pointer;
+    
+    transition:
+        color .25s ease,
+        opacity .25s ease;
+}
+
+.auth-switch:hover {
+    color: #eee7dc;
+}
+
+
+/* El botón pequeño NO debe parecerse
+   al botón principal */
+
+#showRegisterBtn,
+#showLoginBtn {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   ANIMACIÓN DEL CAMBIO
+   ========================================================= */
+
+#loginModal.auth-changing {
+    overflow: hidden;
+    transition: height .35s ease;
+}
+
+#loginModal.auth-changing #loginForm,
+#loginModal.auth-changing #registerForm {
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+}
+
 
 /* ================================
    PANEL DE PERFIL
