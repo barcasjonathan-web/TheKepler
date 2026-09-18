@@ -1995,14 +1995,18 @@ closeButtons.forEach((button) => {
     let ventanaCerrada = false;
     // Cerrar Login
     if (loginModal && !loginModal.hidden) {
+      loginModal.classList.remove("show");
+      setTimeout(() => {
       loginModal.style.display = "none";
-      loginModal.hidden = true;
+      loginModal.hidden = true;}, 350);
       ventanaCerrada = true;
     }
     // Cerrar Perfil
     if (profilePanel && !profilePanel.hidden) {
+      profilePanel.classList.remove("show");
+      setTimeout(() => {
       profilePanel.style.display = "none";
-      profilePanel.hidden = true;
+      profilePanel.hidden = true;}, 350);
       ventanaCerrada = true;
     }
     if (ventanaCerrada) {
