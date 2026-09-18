@@ -1858,6 +1858,136 @@ document.querySelectorAll(".toggle-password").forEach(btn => {
   });
 
 });
+// =========================================================
+// CAMBIAR ENTRE LOGIN Y REGISTRO
+// =========================================================
+
+const loginModal = document.getElementById("loginModal");
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
+const showRegisterBtn = document.getElementById("showRegisterBtn");
+const showLoginBtn = document.getElementById("showLoginBtn");
+
+
+// ---------------------------------------------------------
+// Cambiar de LOGIN → REGISTRO
+// ---------------------------------------------------------
+
+if (showRegisterBtn) {
+    showRegisterBtn.addEventListener("click", () => {
+
+        cambiarModoAuth("register");
+
+    });
+}
+
+
+// ---------------------------------------------------------
+// Cambiar de REGISTRO → LOGIN
+// ---------------------------------------------------------
+
+if (showLoginBtn) {
+    showLoginBtn.addEventListener("click", () => {
+
+        cambiarModoAuth("login");
+
+    });
+}
+
+
+// ---------------------------------------------------------
+// Función principal
+// ---------------------------------------------------------
+
+function cambiarModoAuth(modo) {
+
+    if (!loginModal || !loginForm || !registerForm) return;
+
+    const formularioActual =
+        modo === "register" ? loginForm : registerForm;
+
+    const formularioNuevo =
+        modo === "register" ? registerForm : loginForm;
+
+
+    // Altura actual del modal
+    const alturaActual = loginModal.offsetHeight;
+
+    // Fijamos temporalmente la altura
+    loginModal.style.height = alturaActual + "px";
+
+    // Activamos animación
+    loginModal.classList.add("auth-changing");
+
+
+    // Ocultamos visualmente el formulario actual
+    formularioActual.style.opacity = "0";
+    formularioActual.style.transform = "translateY(-8px)";
+
+
+    setTimeout(() => {
+
+        // Cambiamos el modo
+        loginModal.classList.remove("auth-login", "auth-register");
+
+        loginModal.classList.add(
+            modo === "register"
+                ? "auth-register"
+                : "auth-login"
+        );
+
+
+        // Preparamos el nuevo formulario
+        formularioNuevo.style.opacity = "0";
+        formularioNuevo.style.transform = "translateY(8px)";
+
+
+        // Quitamos la altura fija para calcular
+        loginModal.style.height = "auto";
+
+
+        // Obtenemos la nueva altura
+        const nuevaAltura = loginModal.offsetHeight;
+
+
+        // Volvemos a la altura anterior
+        loginModal.style.height = alturaActual + "px";
+
+
+        // Forzamos al navegador a registrar el cambio
+        loginModal.offsetHeight;
+
+
+        // Animamos hacia la nueva altura
+        loginModal.style.height = nuevaAltura + "px";
+
+
+        setTimeout(() => {
+
+            formularioNuevo.style.opacity = "1";
+            formularioNuevo.style.transform = "translateY(0)";
+
+        }, 40);
+
+
+        // Limpiamos después de la animación
+        setTimeout(() => {
+
+            loginModal.style.height = "auto";
+            loginModal.classList.remove("auth-changing");
+
+            formularioActual.style.opacity = "";
+            formularioActual.style.transform = "";
+
+            formularioNuevo.style.opacity = "";
+            formularioNuevo.style.transform = "";
+
+        }, 380);
+
+    }, 220);
+}
+
 
 
 // --- Botones X para cerrar paneles ---
@@ -1982,6 +2112,10 @@ if (loginBtn) {
         }
         loginModal.hidden = false;
         loginModal.style.display = "block";
+        loginModal.classList.remove("auth-register");
+loginModal.classList.add("auth-login");
+
+loginModal.style.height = "auto";
       }
     }
   });
