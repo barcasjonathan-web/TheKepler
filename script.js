@@ -2098,6 +2098,9 @@ if (loginBtn) {
         }
         profilePanel.hidden = false;
         profilePanel.style.display = "block";
+        requestAnimationFrame(() => {
+  profilePanel.classList.add("show");
+});
       }
       cargarPerfil();
     } else {
@@ -2112,6 +2115,9 @@ if (loginBtn) {
 loginModal.classList.add("auth-login");
 
 loginModal.style.height = "auto";
+        requestAnimationFrame(() => {
+  loginModal.classList.add("show");
+});
       }
     }
   });
