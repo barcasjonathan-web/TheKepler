@@ -179,7 +179,7 @@ async function obtenerRankingProductos() {
     .from("reviews")
     .select("product_id, rating");
   if (error) {
-    console.error("Error cargando ranking:", error);
+    mostrarNotificacion("Error cargando ranking:","error");
     return [];  }
   const ranking = {};
   data.forEach(review => {
@@ -487,7 +487,7 @@ async function comprobarResenaUsuario(productId) {
     .maybeSingle();
 
   if (error) {
-    console.error("Error comprobando reseña:", error);
+    mostrarNotificacion("Error comprobando reseña:","error");
     return false;
   }
 
@@ -507,7 +507,7 @@ async function cargarResenas(productId) {
     .order("created_at", { ascending: false });
 
   if (error) {
-    console.error("Error cargando reseñas:", error);
+    mostrarNotificacion("Error cargando reseñas:", "error");
     reviewsList.textContent = "No se pudieron cargar las reseñas.";
     return;
   }
@@ -582,7 +582,7 @@ sendReviewBtn.disabled = true;
   if (!user) {
     sendReviewBtn.classList.remove("loading");
   sendReviewBtn.disabled = false;
-    alert("Debes iniciar sesión para publicar una reseña.");
+    mostrarNotificacion("Debes iniciar sesión para publicar una reseña.");
     return;
   }
 
@@ -590,7 +590,7 @@ sendReviewBtn.disabled = true;
   if (!currentProduct) {
     sendReviewBtn.classList.remove("loading");
   sendReviewBtn.disabled = false;
-    alert("No se ha podido identificar el producto.");
+    mostrarNotificacion("No se ha podido identificar el producto.");
     return;
   }
 
@@ -609,7 +609,7 @@ sendReviewBtn.disabled = true;
   if (!rating || rating < 1 || rating > 5) {
     sendReviewBtn.classList.remove("loading");
   sendReviewBtn.disabled = false;
-    alert("Selecciona una valoración de 1 a 5 estrellas.");
+    mostrarNotificacion("Selecciona una valoración de 1 a 5 estrellas.");
     return;
   }
 
@@ -619,7 +619,7 @@ sendReviewBtn.disabled = true;
   if (!comment) {
     sendReviewBtn.classList.remove("loading");
   sendReviewBtn.disabled = false;
-    alert("Escribe tu opinión antes de publicar.");
+    mostrarNotificacion("Escribe tu opinión antes de publicar.");
     reviewText.focus();
     return;
   }
@@ -630,7 +630,7 @@ sendReviewBtn.disabled = true;
   if (yaTieneResena) {
     sendReviewBtn.classList.remove("loading");
   sendReviewBtn.disabled = false;
-    alert("Ya has publicado una reseña para este producto.");
+    mostrarNotificacion("Ya has publicado una reseña para este producto.");
     return;
   }
 
@@ -653,13 +653,12 @@ sendReviewBtn.disabled = true;
     });
 
   if (error) {
-    
-    console.error("Error publicando reseña:", error);
+    mostrarNotificacion("Error publicando reseña:", "error");
 
     sendReviewBtn.classList.remove("loading");
   sendReviewBtn.disabled = false;
     
-    alert("No se pudo publicar la reseña: " + error.message);
+    mostrarNotificacion("No se pudo publicar la reseña: " + error.message,"error");
     return;
   }
 
@@ -679,7 +678,7 @@ sendReviewBtn.disabled = true;
 sendReviewBtn.classList.remove("loading");
 sendReviewBtn.disabled = false;
 
-  alert("¡Reseña publicada correctamente!");
+  mostrarNotificacion("¡Reseña publicada correctamente!");
 
 });
 
@@ -1266,7 +1265,7 @@ if (productModalBody) {
     const necesitaColor = currentProduct.variants?.some(v => v.color);
     const necesitaSize = currentProduct.variants?.some(v => v.size);
     if ((necesitaColor && !color) || (necesitaSize && !size)) {
-      alert("Selecciona las opciones del producto.");
+      mostrarNotificacion("Selecciona las opciones del producto.");
       return;
     }
     // Añadir al carrito
@@ -1433,7 +1432,7 @@ homeDelivery.addEventListener("change", () => {
 
 whatsappBtn.addEventListener("click", () => {
   if (!cart.length) {
-    alert("Añade al menos un producto al carrito.");
+    mostrarNotificacion("Añade al menos un producto al carrito.");
     return;
   }
   reservationForm.hidden = false;
@@ -1462,7 +1461,7 @@ confirmReservation.addEventListener("click", () => {
   const name = customerName.value.trim();
 
   if (!name) {
-    alert("Escribe el nombre de la persona a recibir.");
+    mostrarNotificacion("Escribe el nombre de la persona a recibir.");
     customerName.focus();
     return;
   }
@@ -1474,7 +1473,7 @@ if (homeDelivery.checked) {
 
  if (!address) {
 
-   alert("Escribe la dirección de entrega.");
+   mostrarNotificacion("Escribe la dirección de entrega.");
    customerAddress.focus();
 
    return;
@@ -1776,12 +1775,12 @@ if (registerSpinner) {  registerSpinner.hidden = false;}
       if (registerSubmitBtn) {  registerSubmitBtn.disabled = false;}
 if (registerBtnText) { registerBtnText.textContent = "Registrarse";}
 if (registerSpinner) {  registerSpinner.hidden = true;}
-      alert(error.message);
+      mostrarNotificacion(error.message, "error");
       return;  }
 if (registerSubmitBtn) {  registerSubmitBtn.disabled = false;}
 if (registerBtnText) { registerBtnText.textContent = "Registrarse";}
 if (registerSpinner) {  registerSpinner.hidden = true;}
-    alert("Registro realizado correctamente. Revisa tu correo para confirmar tu cuenta.");
+    mostrarNotificacion("Registro realizado correctamente. Revisa tu correo para confirmar tu cuenta.");
     registerForm.reset(); });}
 
 
@@ -1842,7 +1841,7 @@ if (loginSpinner) {
   loginSpinner.hidden = true;
 }
 
-    alert("Inicio de sesión correcto");
+    mostrarNotificacion("Inicio de sesión correcto");
     actualizarBotonUsuario();
 
     // Cerrar el panel de Login
@@ -2184,7 +2183,7 @@ if (logoutBtnText) {
 if (logoutSpinner) {
   logoutSpinner.hidden = false;
 }
-    console.log("Botón Cerrar sesión pulsado");
+    
     const { error } = await supabaseClient.auth.signOut();
     if (error) {
       logoutBtn.disabled = false;
@@ -2196,11 +2195,10 @@ if (logoutBtnText) {
 if (logoutSpinner) {
   logoutSpinner.hidden = true;
 }
-      console.error("Error al cerrar sesión:", error);
-      alert("No se pudo cerrar sesión: " + error.message);
+      mostrarNotificacion("No se pudo cerrar sesión: " + error.message, "error");
       return;
     }
-    console.log("Sesión cerrada correctamente");
+    mostrarNotificacion("Sesión cerrada correctamente");
     logoutBtn.disabled = false;
 
 if (logoutBtnText) {
@@ -2296,14 +2294,14 @@ const terminarCargaFoto = () => {
     file.type !== "image/jpeg" &&
     file.type !== "image/png"
   ) {
-    alert("Solo puedes utilizar imágenes JPG o PNG.");
+    mostrarNotificacion("Solo puedes utilizar imágenes JPG o PNG.");
     return;
   }
   // Obtener usuario
   const { data: { user }, error: userError } =
     await supabaseClient.auth.getUser();
   if (userError || !user) {
-    alert("Debes iniciar sesión para cambiar tu foto.");
+    mostrarNotificacion("Debes iniciar sesión para cambiar tu foto.");
     return;
   }
   // Crear imagen
@@ -2333,7 +2331,7 @@ const terminarCargaFoto = () => {
     canvas.toBlob(async (blob) => {
       if (!blob) {
         terminarCargaFoto();
-        alert("No se pudo procesar la imagen.");
+        mostrarNotificacion("No se pudo procesar la imagen.");
         return;
       }
       // Nombre único para cada usuario
@@ -2349,7 +2347,7 @@ const terminarCargaFoto = () => {
       if (uploadError) {
         terminarCargaFoto();
         console.error("Error al subir la foto:", uploadError);
-        alert(
+        mostrarNotificacion(
           "No se pudo subir la foto: " +
           uploadError.message
         );
@@ -2379,8 +2377,7 @@ const { data: updatedUser, error: updateError } =
 
 if (updateError) {
   terminarCargaFoto();
-  console.error("Error guardando avatar:", updateError);
-  alert("La foto se subió, pero no se pudo guardar en tu perfil.");
+  mostrarNotificacion("La foto se subió, pero no se pudo guardar en tu perfil.");
   return;
 }
 
@@ -2392,14 +2389,14 @@ if (loginBtn) {
   loginBtn.style.background = "transparent";
 }
 terminarCargaFoto();
-alert("Foto de perfil actualizada correctamente.");
+mostrarNotificacion("Foto de perfil actualizada correctamente.");
     }, "image/jpeg", 0.85);
     // Liberar memoria
     URL.revokeObjectURL(img.src);
   };
   img.onerror = () => {
     terminarCargaFoto();
-    alert("No se pudo procesar la imagen.");
+    mostrarNotificacion("No se pudo procesar la imagen.");
   };
   // Cargar archivo seleccionado
   img.src = URL.createObjectURL(file);
