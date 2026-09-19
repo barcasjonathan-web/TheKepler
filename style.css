@@ -162,7 +162,7 @@ body.no-scroll {
 
   padding: 30px;
 
-  overflow-y: visible;
+  overflow-y: auto;
 
   box-sizing: border-box;
 
