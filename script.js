@@ -1198,7 +1198,7 @@ if (closeProductModal && productModal) {
   setTimeout(() => {
     productModal.hidden = true;
     desbloquearScroll();
-  }, 350);
+  }, 500);
 
       }
 
@@ -1206,8 +1206,14 @@ if (closeProductModal && productModal) {
     }
 
     if (!productModal.hidden) {
-      productModal.hidden = true;
-      desbloquearScroll();
+
+  productModal.classList.remove("show");
+
+  setTimeout(() => {
+    productModal.hidden = true;
+    desbloquearScroll();
+  }, 500);
+
     }
 
   });
@@ -1226,7 +1232,7 @@ if (productModal) {
   setTimeout(() => {
     productModal.hidden = true;
     desbloquearScroll();
-  }, 350);
+  }, 500);
 
     }
 
