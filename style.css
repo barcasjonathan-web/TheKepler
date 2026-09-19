@@ -174,7 +174,7 @@ body.no-scroll {
 
   opacity: 0;
 
-  transform: scaleY(0.02);
+  clip-path: inset(49.5% 0 49.5% 0);
 
   transform-origin: center center;
 
@@ -197,7 +197,7 @@ body.no-scroll {
 
   opacity: 1;
 
-  transform: scaleY(1);
+  clip-path: inset(0 0 0 0);
 
   box-shadow:
     0 0 12px rgba(200, 169, 106, 0.55),
