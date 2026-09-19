@@ -10,6 +10,12 @@ html {
 #categories {
   scroll-margin-top: 100px;
 }
+#reviewBox {
+  position: fixed !important;
+  top: 0 !important;
+  left: 50% !important;
+  bottom: auto !important;
+}
 /* ===============================
    NOTIFICACIONES
    =============================== */
