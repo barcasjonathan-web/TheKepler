@@ -1,3 +1,4 @@
+alert("hi")
 const products = [
   { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta01.jpg",
   description: "Camiseta Kepler de diseño moderno y cómodo para el día a día.",
