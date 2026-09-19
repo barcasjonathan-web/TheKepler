@@ -433,6 +433,11 @@ ${product.variants && product.variants.length > 0 ? `
 }
 
 productModal.hidden = false;
+  requestAnimationFrame(() => {
+  productModal.classList.add("show");
+});
+
+  
   cargarResenas(product.id);
   const primeraVariante = product.variants?.find(v => v.stock > 0);
   const yaTieneResena = await comprobarResenaUsuario(product.id);
@@ -1188,7 +1193,13 @@ if (closeProductModal && productModal) {
         document.getElementById("reviewOverlay");
 
       if (reviewOverlay) {
-        reviewOverlay.remove();
+        productModal.classList.remove("show");
+
+  setTimeout(() => {
+    productModal.hidden = true;
+    desbloquearScroll();
+  }, 350);
+
       }
 
       desbloquearScroll();
@@ -1209,8 +1220,14 @@ if (productModal) {
   productModal.addEventListener("click", (e) => {
 
     if (e.target === productModal) {
-      productModal.hidden = true;
-      desbloquearScroll();
+
+  productModal.classList.remove("show");
+
+  setTimeout(() => {
+    productModal.hidden = true;
+    desbloquearScroll();
+  }, 350);
+
     }
 
   });
