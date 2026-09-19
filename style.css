@@ -147,17 +147,64 @@ body.no-scroll {
   z-index: 9999;}
 .product-modal[hidden] {
   display: none;}
+
+
 .product-modal-content {
   position: relative;
+
   width: min(900px, 100%);
-  max-height: 90vh;
-  background:#111;
-border:1px solid #c8a96a;
-border-radius:5px;
+  min-height: 600px;
+
+  background: #111;
+
+  border: 1px solid #c8a96a;
+  border-radius: 5px;
+
   padding: 30px;
+
   overflow-y: auto;
+
   box-sizing: border-box;
-z-index: 10000;}
+
+  z-index: 1000;
+
+  /* =========================
+     ANIMACIÓN DE APERTURA
+     ========================= */
+
+  opacity: 0;
+
+  transform: scaleY(0.02);
+
+  transform-origin: center center;
+
+  transition:
+    opacity .35s ease,
+    transform .35s ease;
+
+  /* Brillo dorado */
+  box-shadow:
+    0 0 10px rgba(200, 169, 106, 0.35),
+    0 0 25px rgba(200, 169, 106, 0.18);
+}
+
+
+/* =========================
+   PRODUCTO ABIERTO
+   ========================= */
+
+.product-modal.show .product-modal-content {
+
+  opacity: 1;
+
+  transform: scaleY(1);
+
+  box-shadow:
+    0 0 12px rgba(200, 169, 106, 0.55),
+    0 0 30px rgba(200, 169, 106, 0.25);
+}
+
+
 .product-modal-close {
   position: absolute;
   top: 15px;
