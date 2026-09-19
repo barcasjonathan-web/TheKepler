@@ -1821,8 +1821,10 @@ if (loginSpinner) {
     const loginModal = document.getElementById("loginModal");
 
     if (loginModal) {
+      loginModal.classList.remove("show");
+      setTimeout(() => {
       loginModal.style.display = "none";
-      loginModal.hidden = true;
+      LoginModal.hidden = true;}, 350);
       desbloquearScroll();
     }
     
@@ -2183,8 +2185,10 @@ if (logoutSpinner) {
     // Cerrar panel de perfil
     const profilePanel = document.getElementById("profilePanel");
     if (profilePanel && !profilePanel.hidden) {
-  profilePanel.hidden = true;
-  profilePanel.style.display = "none";
+      profilePanel.classList.remove("show");
+      setTimeout(() => {
+      profilePanel.style.display = "none";
+      profilePanel.hidden = true;}, 350);
   desbloquearScroll();
     }
     // Cambiar botón principal
