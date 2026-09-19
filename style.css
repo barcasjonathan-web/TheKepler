@@ -2579,6 +2579,11 @@ body.menu-open {
 }
 
 @media (max-width: 600px) {
+  #reviewBox {
+  position: fixed !important;
+  top: 0 !important;
+  left: 50% !important;
+  bottom: auto !important;
 
    .hero-new {
   height: 520px;
