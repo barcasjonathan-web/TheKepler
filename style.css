@@ -10,12 +10,7 @@ html {
 #categories {
   scroll-margin-top: 100px;
 }
-#reviewBox {
-  position: fixed !important;
-  top: 0 !important;
-  left: 50% !important;
-  bottom: auto !important;
-}
+
 /* ===============================
    NOTIFICACIONES
    =============================== */
@@ -180,14 +175,7 @@ body.no-scroll {
 
   opacity: 0;
 
-  transform: scaleY(0.02);
-
-  transform-origin: center center;
-
-  transition:
-    opacity .35s ease,
-    transform .35s ease;
-
+transition: opacity .5s ease;
   /* Brillo dorado */
   box-shadow:
     0 0 10px rgba(200, 169, 106, 0.35),
@@ -202,8 +190,6 @@ body.no-scroll {
 .product-modal.show .product-modal-content {
 
   opacity: 1;
-
-  transform: scaleY(1);
 
   box-shadow:
     0 0 12px rgba(200, 169, 106, 0.55),
@@ -2579,11 +2565,6 @@ body.menu-open {
 }
 
 @media (max-width: 600px) {
-  #reviewBox {
-  position: fixed !important;
-  top: 0 !important;
-  left: 50% !important;
-  bottom: auto !important;
 
    .hero-new {
   height: 520px;
