@@ -10,6 +10,117 @@ html {
 #categories {
   scroll-margin-top: 100px;
 }
+/* ===============================
+   NOTIFICACIONES
+   =============================== */
+
+#notificationContainer {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  pointer-events: none;
+}
+
+
+/* NOTIFICACIÓN */
+
+.notification {
+  position: relative;
+
+  min-width: 260px;
+  max-width: 380px;
+
+  padding: 16px 20px;
+
+  background: #111;
+
+  color: #c8a96a;
+
+  border: 1px solid #c8a96a;
+  border-radius: 4px;
+
+  box-sizing: border-box;
+
+  /* Estado inicial */
+  opacity: 0;
+  transform: translateX(120%);
+
+  /* Brillo dorado */
+  box-shadow:
+    0 0 8px rgba(200, 169, 106, 0.35),
+    0 0 20px rgba(200, 169, 106, 0.18),
+    0 10px 35px rgba(0, 0, 0, 0.45);
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+
+/* NOTIFICACIÓN VISIBLE */
+
+.notification.show {
+  opacity: 1;
+
+  transform: translateX(0);
+
+  box-shadow:
+    0 0 10px rgba(200, 169, 106, 0.55),
+    0 0 28px rgba(200, 169, 106, 0.28),
+    0 10px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+/* BRILLO INTERIOR */
+
+.notification::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  background: #c8a96a;
+
+  box-shadow:
+    0 0 8px rgba(200, 169, 106, 0.9),
+    0 0 16px rgba(200, 169, 106, 0.55);
+}
+
+
+/* TIPO ERROR */
+
+.notification.error {
+  color: #d99a9a;
+
+  border-color: #d99a9a;
+
+  box-shadow:
+    0 0 8px rgba(217, 154, 154, 0.3),
+    0 0 20px rgba(217, 154, 154, 0.15),
+    0 10px 35px rgba(0, 0, 0, 0.45);
+}
+
+.notification.error::before {
+  background: #d99a9a;
+
+  box-shadow:
+    0 0 8px rgba(217, 154, 154, 0.8),
+    0 0 16px rgba(217, 154, 154, 0.45);
+}
+
 /* =========================
    MODAL DE PRODUCTO
    ========================= */
