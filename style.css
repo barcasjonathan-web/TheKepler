@@ -134,7 +134,7 @@ body.no-scroll {
   overflow: hidden;
 }
 .product-modal-content.lock-scroll {
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 .product-modal {
   position: fixed;
