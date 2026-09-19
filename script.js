@@ -89,6 +89,34 @@ const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 const mobileSearchInput = document.getElementById("mobileSearchInput");
 const mobileSearchResults = document.getElementById("mobileSearchResults");
+// ===============================
+// SISTEMA DE NOTIFICACIONES
+// ===============================
+
+const notificationContainer = document.createElement("div");
+notificationContainer.id = "notificationContainer";
+document.body.appendChild(notificationContainer);
+
+
+function mostrarNotificacion(texto, tipo = "success") {
+  const notificacion = document.createElement("div");
+  notificacion.className = `notification ${tipo}`;
+  notificacion.textContent = texto;
+  notificationContainer.appendChild(notificacion);
+  setTimeout(() => {
+    notificacion.classList.add("show");
+  }, 10);
+  setTimeout(() => {
+    notificacion.classList.remove("show");
+    setTimeout(() => {
+      notificacion.remove();
+    }, 300);
+  }, 3000);
+}
+
+// ===============================
+// SISTEMA DE NOTIFICACIONES
+// ===============================
 
 if (searchInput) {
     searchInput.addEventListener("input", () => {
