@@ -1775,7 +1775,7 @@ if (registerSpinner) {  registerSpinner.hidden = false;}
       if (registerSubmitBtn) {  registerSubmitBtn.disabled = false;}
 if (registerBtnText) { registerBtnText.textContent = "Registrarse";}
 if (registerSpinner) {  registerSpinner.hidden = true;}
-      mostrarNotificacion(error.message, "error");
+      mostrarNotificacion("Error de conexion", "error");
       return;  }
 if (registerSubmitBtn) {  registerSubmitBtn.disabled = false;}
 if (registerBtnText) { registerBtnText.textContent = "Registrarse";}
@@ -1826,7 +1826,7 @@ if (loginSpinner) {
   if (loginSpinner) {
     loginSpinner.hidden = true;
   }
-      mostrarNotificacion(error.message);
+      mostrarNotificacion("Error de conexion", "error");
       return;
     }
     if (loginSubmitBtn) {
