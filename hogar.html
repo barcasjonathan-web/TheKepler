@@ -67,28 +67,57 @@
 <div id="loginModal" class="modal"hidden>
   <button class="close">✕</button>
 
-  <!-- Registro -->
+    <!-- Registro -->
   <form id="registerForm">
     <input type="text" id="regName" placeholder="Nombre" required>
     <input type="text" id="regSurname" placeholder="Apellido" required>
     <input type="email" id="regEmail" placeholder="Email" required>
-    <input type="password" id="regPassword" placeholder="Contraseña" required>
+    <div class="password-field">
+  <input 
+  type="password" 
+  id="regPassword" 
+  placeholder="Contraseña" 
+  required>
+
+<button type="button" class="toggle-password" data-target="regPassword">
+  <img src="img/eye-off.png" alt="Mostrar contraseña">
+</button>
+    </div>
     <button type="submit" id="registerSubmitBtn">
   <span class="register-btn-text">Registrarse</span>
   <span class="register-spinner" hidden></span>
+    </button>
+    <button type="button" id="showLoginBtn" class="auth-switch">
+    entrar
     </button>
   </form>
 
   <!-- Login -->
   <form id="loginForm">
     <input type="email" id="loginEmail" placeholder="Email" required>
-    <input type="password" id="loginPassword" placeholder="Contraseña" required>
+    <div class="password-field">
+  <input 
+  type="password" 
+  id="loginPassword" 
+  placeholder="Contraseña" 
+  required>
+
+  <button type="button" class="toggle-password" data-target="loginPassword">
+  <img src="img/eye-off.png" alt="Mostrar contraseña">
+  </button>
+    </div>
     <button type="submit" id="loginSubmitBtn">
   <span class="login-btn-text">Entrar</span>
   <span class="login-spinner" hidden></span>
     </button>
+    <button type="button" id="showRegisterBtn" class="auth-switch">
+    registrarte
+    </button>
   </form>
 </div>
+
+
+  
 
 <!-- ⭐ PANEL DE PERFIL ⭐ -->
 <div id="profilePanel" class="profile-panel" hidden>
