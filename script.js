@@ -1543,7 +1543,7 @@ document.addEventListener("click", async (e) => {
 
   if (!user) {
     starBox.classList.remove("loading");
-    alert("Debes iniciar sesión para poder valorar este producto.");
+    mostrarNotificacion("Debes iniciar sesión para poder valorar este producto.");
     return;
   }
 
