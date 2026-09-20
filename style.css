@@ -2742,11 +2742,10 @@ font-size:20px;
   }
   .product-modal {
     padding: 10px;
-    top: 50%;                 /* mitad vertical */
-  left: 50%;                /* mitad horizontal */
-  transform: translate(-50%, -50%); /* corrige el punto de referencia */
-  width: 90%;               /* ocupa 90% del ancho */
-  height: 80%;
+    top: 60px;                 /* mitad vertical */
+    left: 50%;                /* mitad horizontal */
+    width: 90%;               /* ocupa 90% del ancho */
+    height: 80%;
   }
 
    .products-section {
