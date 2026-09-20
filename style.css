@@ -2846,16 +2846,23 @@ font-size:20px;
 
   .product-modal {
     padding: 10px;
+    align-items: center;
+    justify-content: center;
   }
 
 
   .product-modal-content {
 
-    width: 95vw;
-    max-width: 95vw;
+    width: 700px;
+    max-width: 90vw;
+    min-height: auto;
+    max-height: 85vh;
 
-    padding: 15px;
+    padding: 20px;
 
+    transform-origin: center;
+
+    overflow-y: auto;
     overflow-x: hidden;
   }
 
@@ -2867,8 +2874,10 @@ font-size:20px;
     grid-template-columns: 45% 55%;
 
     gap: 15px;
+    transform: scale(0.75);
+    transform-origin: center top;
 
-    width: 100%;
+    width: 133%;
   }
 
 
