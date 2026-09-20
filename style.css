@@ -2742,9 +2742,8 @@ font-size:20px;
   }
   .product-modal {
     padding: 10px;
-    top: 60px;                 /* mitad vertical */
-    left: 50%;                /* mitad horizontal */
-    width: 90%;               /* ocupa 90% del ancho */
+    top: 60px;               
+    width: 90%;              
     height: 80%;
   }
 
