@@ -2870,9 +2870,9 @@ font-size:20px;
 
     display: grid;
 
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 55% 45%;
 
-    gap: 15px;
+    gap: 10px;
     transform: none;
   }
 
@@ -2925,34 +2925,29 @@ font-size:20px;
 
 
   .product-detail-info {
-
+    font-size: 12px;
     width: 100%;
   }
 
 
   .product-detail-info h2 {
-
-    font-size: clamp(16px, 4vw, 28px);
-
+    font-size: 20px;
+    line-height: 1.2;
   }
 
 
   .product-detail-price {
-
-    font-size: clamp(16px, 3vw, 24px);
-
+    font-size: 18px;
   }
 
 
   .product-detail-rating {
-
-    font-size: clamp(14px, 3vw, 22px);
+    font-size: 16px;
 
   }
 
 
   .product-detail-info h3 {
-
     font-size: 14px;
   }
 
@@ -2960,6 +2955,7 @@ font-size:20px;
   .product-detail-info p {
 
     font-size: 12px;
+    line-height: 1.4;
   }
 
 
@@ -2969,9 +2965,9 @@ font-size:20px;
     align-items: flex-start;
     margin-left: 0;
 
-    padding: 8px 10px;
+    padding: 6px 8px;
 
-    font-size: 12px;
+    font-size: 11px;
 
   }
 
