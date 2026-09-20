@@ -2870,7 +2870,7 @@ font-size:20px;
 
     display: grid;
 
-    grid-template-columns: 55% 45%;
+    flex-direction: column;
 
     gap: 10px;
     transform: none;
