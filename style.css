@@ -2821,6 +2821,7 @@ font-size:20px;
 
   .product-option {
     margin-top: 12px;
+    text-align: left;
   }
 
 
@@ -2964,6 +2965,9 @@ font-size:20px;
 
   .color-option,
   .size-option {
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 0;
 
     padding: 8px 10px;
 
