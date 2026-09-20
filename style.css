@@ -2743,6 +2743,7 @@ font-size:20px;
   .product-modal {
     padding: 10px;
     max-height: 80vh;
+    max-width: 80vh;
   }
 
    .products-section {
