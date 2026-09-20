@@ -2878,42 +2878,32 @@ font-size:20px;
 
 
   .product-detail-gallery {
-
-    width: 100%;
+    width:100%;
+    display:flex;
+    flex-direction:column;
   }
 
 
   .product-detail-image {
-
     width:100%;
-    max-width:none;
     aspect-ratio:1 / 1;
   }
 
 
   .product-thumbnails {
-
-    display: flex;
-
-    gap: 3px;
-
-    width: 100%;
-
-    overflow: hidden;
-    flex:1;
-    min-width:0;
+    display:flex;
+    gap:6px;
+    width:100%;
+    margin-top:10px;
+    overflow:hidden;
   }
 
 
   .product-thumbnail {
-
-    flex: 1;
-
-    min-width: 0;
-
-    height: auto;
-
-    aspect-ratio: 1 / 1;
+    flex:1;
+    aspect-ratio:1 / 1;
+    min-width:0;
+    
   }
 
 
@@ -2935,7 +2925,7 @@ font-size:20px;
   .product-detail-info h2 {
     font-size: 20px;
     line-height: 1.2;
-  }
+
 
 
   .product-detail-price {
