@@ -2832,10 +2832,20 @@ font-size:20px;
   }
 
   .product-detail-image {
+    width: 100%;
     max-width: 260px;
+    height: 260px;
+    aspect-ratio: auto;
     margin: 0 auto;
     border-radius: 10px;
-  }
+    overflow: hidden;
+}
+
+.product-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
   .product-thumbnails {
     gap: 6px;
