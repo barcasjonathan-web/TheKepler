@@ -2870,10 +2870,10 @@ font-size:20px;
 
     display: grid;
 
-    flex-direction: column;
+    grid-template-columns:1fr;
 
     gap: 10px;
-    transform: none;
+    width:100%;
   }
 
 
@@ -2885,9 +2885,9 @@ font-size:20px;
 
   .product-detail-image {
 
-    width: 100%;
-
-    aspect-ratio: 1 / 1;
+    width:100%;
+    max-width:none;
+    aspect-ratio:1 / 1;
   }
 
 
@@ -2900,6 +2900,8 @@ font-size:20px;
     width: 100%;
 
     overflow: hidden;
+    flex:1;
+    min-width:0;
   }
 
 
