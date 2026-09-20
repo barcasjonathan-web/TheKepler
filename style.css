@@ -2742,11 +2742,7 @@ font-size:20px;
   }
   .product-modal {
     padding: 10px;
-    top: 60px; 
-    left: 50%;                      /* lo llevamos al centro horizontal */
-  transform: translateX(-50%); 
-    width: 90%;              
-    height: 80%;
+    inset: 5%;
   }
 
    .products-section {
@@ -2776,6 +2772,7 @@ font-size:20px;
     padding: 15px;
     border-radius: 14px;
      z-index: 10000;
+    max-height: 90vh;
   }
 
    #categoryFilter {
