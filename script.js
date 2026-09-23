@@ -45,11 +45,11 @@ const products = [
          "products/004ext04.png",
          "products/004ext05.png",
          "products/004ext06.png"],
-   variants:[{color:"Negro-Liso",size:"26"",stock:5},
-         {color:"Negro-Ondulada",size:"26"",stock:5}]},
+   variants:[{color:"Negro-Liso",size:"26",stock:5},
+         {color:"Negro-Ondulada",size:"26",stock:5}]},
 
   {id:005, name:"Golden Vertex Sunglasses", category:"Accesorios", price:6.00, image:"products/005gafas01.png",
-   description:"Montura negra con acentos metálicos y detalle dorado en forma de “V”, lentes rectangulares oscuros de estilo moderno y sofisticado.",
+   description:"Montura negra con acentos metálicos y detalle dorado en forma de V, lentes rectangulares oscuros de estilo moderno y sofisticado.",
    gallery:["products/005gafas01.png",
             "products/005gafas02.png",
             "products/005gafas03.png",
@@ -96,7 +96,7 @@ const products = [
             "products/008ventilador04.png",
             "products/008ventilador05.png",
             "products/008ventilador06.png"],
-   variants:[{color:"Negro",size:"18"",stock:3}]},
+   variants:[{color:"Negro",size:"18",stock:3}]},
   
   
 ];
