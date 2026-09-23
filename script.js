@@ -1,63 +1,32 @@
 const products = [
-  { id: 1, name: "Camiseta Kepler", category: "Ropa", price: 24.90, image: "img/camiseta01.jpg",
-  description: "Camiseta Kepler de diseño moderno y cómodo para el día a día.",
-  variants: [
-  { color: "Blanco", size: "m", stock: 3 },
-  { color: "purpura", size: "xl", stock: 2 },
-  { color: "Gris", size: "l", stock: 1 },
-  { color: "Blanco", size: "xl", stock: 3 }
-]},
-  
-  { id: 2, name: "Zapatillas Urban", category: "Calzado", price: 49.90, image: "img/zapatos01.jpg",
-  description: "Zapatillas Urban de estilo moderno, cómodas y perfectas para el uso diario.",
-  variants: [
-  { color: "Blanco", size: "42", stock: 4 },
-  { color: "Negro", size: "39", stock: 1 },
-  { color: "Gris", size: "41", stock: 3 }
-]},
 
-  { id: 3, name: "Sudadera Classic", category: "Ropa", price: 39.90, image: "img/sudadera01.jpg",
-  description: "Sudadera Classic cómoda y versátil, perfecta para combinar con cualquier estilo.",
-  variants: [
-  { color: "roja", size: "xl", stock: 3 },
-  { color: "azul", size: "xxx", stock: 1 },
-  { color: "rosada", size: "l", stock: 2 }
-]},
-  
-  { id: 4, name: "Lámpara Minimal", category: "Hogar", price: 34.90, image: "img/lampara01.jpg",
-  description: "Lámpara de diseño minimalista para darle un toque moderno a tu hogar.",
-  variants: [
-  { color: "Blanco", stock: 4 }
-]},
-  
-  { id: 5, name: "Cojín Home", category: "Hogar", price: 18.90, image: "img/cojin01.jpg",
-  description: "Cojín decorativo cómodo y elegante para cualquier espacio del hogar.",
-  variants: [
-  { color: "Blanco", stock: 2 },
-  { color: "Negro", stock: 1 }
-]},
-  
-  { id: 6, name: "Bolso Essential", category: "Accesorios", price: 29.90, image: "img/bolso01.jpg",
-  description: "Bolso Essential práctico y versátil para acompañarte todos los días.",
-  variants: [
-  { color: "Blanco", stock: 2 },
-  { color: "Negro", stock: 2 },
-  { color: "Gris", stock: 1 }
-]},
+//{id:#, name:"#", category: "Calzado" "Accesorios" "Hogar" "Ropa", price:#, image:"products/#.png", description:"#",//
+//gallery:["products/#.png","products/#.png","products/#.png","products/#.png","products/#.png","products/#.png"],//
+//variants:[{color:"#",size:"#",stock:#}]},//
 
+  {id:002, name:"Colchón Cœur de Lune (D25)", category:"Hogar", price: 120.00, image:"products/002colchon01.png", 
+    description:" Descanso inspirado en la elegancia parisina, con firmeza media y espuma D25 que asegura confort cotidiano y durabilidad.",
+    gallery:["products/002colchon01.png",
+             "products/002colchon02.png",
+             "products/002colchon03.png",
+             "products/002colchon04.png",
+             "products/002colchon05.png",
+             "products/002colchon06.png"],
+    variants:[{color:"Blanco",size:"169x190x19",stock:2}]},
+  
+
+  
   { id: 7, name: "Zapatillas Kepler", category: "Calzado", price: 50.90, image: "products/zapataillakepler.png",
   description: "Zapatillas Kepler de estilo moderno, unico, cómodas, lo ultimo en calzado",
-  gallery: [
+  gallery:[
   "products/zapataillakepler01.png",
   "products/zapataillakepler02.png",
   "products/zapataillakepler03.png",
   "products/zapataillakepler04.png",
   "products/zapataillakepler05.png"],
-  variants: [
-  { color: "Blanco", size: "40", stock: 2 },
-  { color: "Negro", size: "39", stock: 2 },
-  { color: "Gris", size: "44", stock: 1 }]
-  }
+  variants:[{color: "Blanco", size: "40", stock: 2 },
+            {color: "Negro", size: "39", stock: 2 },
+            {color: "Gris", size: "44", stock: 1 }]}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
