@@ -4,8 +4,20 @@ const products = [
 //gallery:["products/#.png","products/#.png","products/#.png","products/#.png","products/#.png","products/#.png"],//
 //variants:[{color:"#",size:"#",stock:#}]},//
 
+  
+
+  {id:001, name:"Hexagon Sunglasses", category: "Accesorios", price:6.00, image:"products/001gafas01.png",
+   description:"Montura plateada con lentes hexagonales negros, diseño moderno y elegante.",
+   gallery:["products/001gafas01.png",
+            "products/001gafas02.png",
+            "products/001gafas03.png",
+            "products/001gafas04.png",
+            "products/001gafas05.png",
+            "products/001gafas06.png"],
+   variants:[{color:"Plateado",size:"Universal",stock:5}]},
+  
   {id:002, name:"Colchón Cœur de Lune (D25)", category:"Hogar", price: 120.00, image:"products/002colchon01.png", 
-    description:" Descanso inspirado en la elegancia parisina, con firmeza media y espuma D25 que asegura confort cotidiano y durabilidad.",
+    description:"Con firmeza media y espuma D25 que asegura confort cotidiano y durabilidad.",
     gallery:["products/002colchon01.png",
              "products/002colchon02.png",
              "products/002colchon03.png",
@@ -13,7 +25,17 @@ const products = [
              "products/002colchon05.png",
              "products/002colchon06.png"],
     variants:[{color:"Blanco",size:"169x190x19",stock:2}]},
-  
+
+  {id:003, name:"Rectangular Sunglasses", category: "Accesorios", price:6.00, image:"products/003gafas01.png",
+   description:"Montura negra con detalles dorados y lentes rectangulares, estilo refinado y contemporáneo.",
+   gallery:["products/003gafas01.png",
+            "products/003gafas02.png",
+            "products/003gafas03.png",
+            "products/003gafas04.png",
+            "products/003gafas05.png",
+            "products/003gafas06.png"],
+   variants:[{color:"Negro",size:"Universal",stock:2},
+            {color:"Ambar",size:"Universal",stock:1}]},
 
   
   { id: 7, name: "Zapatillas Kepler", category: "Calzado", price: 50.90, image: "products/zapataillakepler.png",
