@@ -212,7 +212,7 @@ function desbloquearScroll() {
 
 
 function money(value) {
-  return value.toLocaleString("es-ES", { style: "currency", currency: "EUR" });}
+  return value.toLocaleString("es-ES", { style: "currency", currency: "USD" });}
 
 
 async function obtenerRankingProductos() {
