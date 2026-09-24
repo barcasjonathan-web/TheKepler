@@ -37,7 +37,7 @@ const products = [
    variants:[{color:"Negro",size:"Universal",stock:2},
             {color:"Ambar",size:"Universal",stock:1}]},
 
-  {id:004, name:"Extensiones Easy Braid Keeley", category:"Accesorios", price:10.00, image:"products/004ext01.png", 
+  {id:004, name:"Extensiones Easy Braid Keeley", category:"Accesorios", price:4.00, image:"products/004ext01.png", 
    description:"Fibras sintéticas Kanekalon, suaves y resistentes, ideales para trenzas rápidas y peinados duraderos.",
    gallery:["products/004ext01.png",
          "products/004ext02.png",
